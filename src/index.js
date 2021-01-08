@@ -50,6 +50,7 @@ if(prefix === null) prefix = default_prefix;
         .setColor("#00FFFF")
         .addField('`add`', `Add key(s). \nArgs: **${prefix}add [expiry in days] [amount] [level]**`)
         .addField('`del`', `Delete key. \nArgs: **${prefix}del [key]**`)
+	.addField('`info`', `Key Information. \nArgs: **${prefix}info [key]**`)
         .addField('`reset`', `Reset key. \nArgs: **${prefix}reset [key]**`)
 	.addField('`resethash`', `Reset App Hash. \nArgs: **${prefix}resethash**`)
 	.addField('`download`', `Download All Keys. \nArgs: **${prefix}download**`)
@@ -62,15 +63,11 @@ if(prefix === null) prefix = default_prefix;
 
     if(message.content.startsWith(prefix)) {
 
-	if (message.guild.id == 780636139659722772) {
-      	message.channel.send('For security reasons add bot to your server and do commands in private ==> https://discord.com/api/oauth2/authorize?client_id=784252793149325312&permissions=8&scope=bot');
-    	}
-
         const args = message.content.slice(prefix.length).trim().split(/ +/g);
         const command = args.shift().toLowerCase();
 
-        if(!client.commands.has(command)) return;
-        if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send('You Need The \`ADMINISTRATOR\` Permission To Use This Command. Add KeyAuth bot to your server ==> https://discord.com/api/oauth2/authorize?client_id=784252793149325312&permissions=8&scope=bot');
+        if(!client.commands.has(command)) return;;
+        if(!message.member.roles.cache.find(x => x.name == "perms")) return message.channel.send(`${message.author.toString()} does not have a role named \`perms\` and therefore cant execute any commands. If you're a server owner create role called that and give it to users you want to be able to execute commands`);
         try {
             message.delete();
             client.commands.get(command).run(client, message, args);
@@ -83,5 +80,3 @@ if(prefix === null) prefix = default_prefix;
 
 
 client.login(token);
-
-    
