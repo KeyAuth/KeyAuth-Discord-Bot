@@ -20,6 +20,7 @@ module.exports = {
         .setColor("#00FFFF")
         .addField('`add`', `Add key(s). \nArgs: **${prefix}add [expiry in days]**`)
         .addField('`del`', `Delete key. \nArgs: **${prefix}del [key]**`)
+        .addField('`info`', `Key Information. \nArgs: **${prefix}info [key]**`)
         .addField('`reset`', `Reset key. \nArgs: **${prefix}reset [key]**`)
 	.addField('`resethash`', `Reset App Hash. \nArgs: **${prefix}resethash**`)
 	.addField('`download`', `Download All Keys. \nArgs: **${prefix}download**`)
@@ -30,4 +31,3 @@ module.exports = {
         
     }
 }
-
