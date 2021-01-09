@@ -7,7 +7,7 @@ module.exports = {
 
     async run (client, message, args) {
 
-    if(!args[0]) return message.channel.send('Please Provide A Valid AuthKey');
+    if(!args[0]) return message.channel.send('Please Provide A Valid Seller Key');
 
     if(args[1]) return message.channel.send('Invalid Seller Key');
 
