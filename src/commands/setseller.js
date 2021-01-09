@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 
 module.exports = {
     name: "setseller",
-    description: "Sets The authkey",
+    description: "Sets The sellerkey",
 
     async run (client, message, args) {
 
