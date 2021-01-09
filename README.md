@@ -1,6 +1,8 @@
 # KeyAuth-Discord-Bot
 Discord Bot For KeyAuth.com
 
+Credits to vittiwolf#1337 for developing
+
 **Setup**
 
 - Install Python (add to path) And NodeJS
