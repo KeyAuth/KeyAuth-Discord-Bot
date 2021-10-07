@@ -13,6 +13,6 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "vittiwolf#1337",
-  "license": "ISC"
+  "author": "Nelson Cybersecurity LLC",
+  "license": "https://github.com/KeyAuth/KeyAuth-Source-Code/blob/main/LICENSE_KEYAUTH.txt"
 }

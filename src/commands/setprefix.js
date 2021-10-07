@@ -1,18 +1,33 @@
+const Discord = require('discord.js');
 const db = require('quick.db');
 
 module.exports = {
     name: "setprefix",
     description: "Set a server's prefix",
 
-    async run (client, message, args) {
+    async run (client, message) {
 
-    if(!args[0]) return message.channel.send('Please Provide A Valid Prefix');
+        let filteeer = m => m.author.id === message.author.id
+    message.channel.send(new Discord.MessageEmbed().setTitle('Specify bot prefix for commands:').setColor("YELLOW")).then(() => {
+      message.channel.awaitMessages(filteeer, {
+          max: 1,
+          time: 30000,
+          errors: ['time']
+        })
+        .then(message => {
+          message = message.first()
+          let prefix = message.content;
 
-    if(args[1]) return message.channel.send('The Prefix Can\'t Have Two Spaces');
+db.set(`prefix_${message.guild.id}`, prefix)
+    message.channel.send(new Discord.MessageEmbed().setTitle('Bot Prefix Successfully Set!').addField('Set By:', message.author).setColor("GREEN").setTimestamp());
 
-    db.set(`prefix_${message.guild.id}`, args[0])
 
-    message.channel.send(`Succesffully Set New Prefix To \`${args[0]}\``)
+        })
+        .catch(collected => {
+            return message.channel.send(new Discord.MessageEmbed().setTitle('Failure, didn\'t respond in time.').setColor("RED"));
+        });
+    })
+
     
     }
 }

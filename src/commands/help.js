@@ -6,24 +6,34 @@ module.exports = {
     name: "help",
     description: "The help command, what do you expect?",
 
-    async run (client, message, args) {
+    async run (client, message) {
 
         let prefix = await db.get(`prefix_${message.guild.id}`);
         if(prefix === null) prefix = default_prefix;
 
         const embed = new Discord.MessageEmbed()
-        .setTitle('KeyAuth Discord Bot | Help\n\n')
+        .setTitle('Help\n\n')
         .setThumbnail(client.user.displayAvatarURL())
-	.addField('`setseller`', `Sets Seller Key. Run again to change applications \nArgs: **${prefix}setseller [sellerkey]**`)
-        .addField('`setprefix`', `Change the bot prefix. \nArgs: **${prefix}setprefix [prefix]**`)
+	.addField('`setseller`', `Sets Seller Key. Run again to change applications \nArgs: **${prefix}setseller**`)
+        .addField('`setprefix`', `Change the bot prefix. \nArgs: **${prefix}setprefix**`)
         .addField("Current Bot Prefix Is:", `\`${prefix}\``)
         .setColor("#00FFFF")
-        .addField('`add`', `Add key(s). \nArgs: **${prefix}add [expiry in days]**`)
-        .addField('`del`', `Delete key. \nArgs: **${prefix}del [key]**`)
-        .addField('`info`', `Key Information. \nArgs: **${prefix}info [key]**`)
-        .addField('`reset`', `Reset key. \nArgs: **${prefix}reset [key]**`)
-	.addField('`resethash`', `Reset App Hash. \nArgs: **${prefix}resethash**`)
-	.addField('`download`', `Download All Keys. \nArgs: **${prefix}download**`)
+        .addField('`activate`', `Activate License Keys. \nArgs: **${prefix}activate**`, true)
+        .addField('`addhwid`', `Add HWIDs to user. \nArgs: **${prefix}addhwid**`, true)
+        .addField('`addsub`', `Create subscription. \nArgs: **${prefix}addsub**`, true)
+        .addField('`addvar`', `Create Variable. \nArgs: **${prefix}addvar**`, true)
+        .addField('`delunused`', `Delete Unused Licenses. \nArgs: **${prefix}delunused**`, true)
+        .addField('`deluser`', `Delete users. \nArgs: **${prefix}deluser**`, true)
+        .addField('`editvar`', `Edit variable data. \nArgs: **${prefix}editvar**`, true)
+        .addField('`extend`', `Extend user expiry. \nArgs: **${prefix}extend**`, true)
+        .addField('`resetuser`', `Reset user HWID. \nArgs: **${prefix}resetuser**`, true)
+        .addField('`verify`', `Verify License Key. \nArgs: **${prefix}verify**`, true)
+        .addField('`add`', `Add key(s). \nArgs: **${prefix}add**`, true)
+        .addField('`del`', `Delete key. \nArgs: **${prefix}del**`, true)
+        .addField('`info`', `Key Information. \nArgs: **${prefix}info**`, true)
+		.addField('`stats`', `Application Statistics. \nArgs: **${prefix}stats**`, true)
+        .addField('`reset`', `Reset key. \nArgs: **${prefix}reset**`, true)
+		.addField('`upload`', `Upload File. \nArgs: **${prefix}reset**`, true)
         .setFooter('KeyAuth Discord Bot', client.user.displayAvatarURL())
         .setTimestamp()
 
@@ -31,3 +41,4 @@ module.exports = {
         
     }
 }
+
