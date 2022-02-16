@@ -1,7 +1,7 @@
 # KeyAuth-Discord-Bot-Source
 Source Code of the KeyAuth.com Discord Bot
 
-Hosted with https://www.omgserv.com/en/hosting/vps/ssd/
+Hosted with https://plox.host/discordbot-hosting
 Edit `config.json` add token within the empty quotes on line 2
 cd to current folder in command line
 run `npm i`
