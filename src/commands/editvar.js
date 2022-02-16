@@ -36,7 +36,7 @@ let filter = m => m.author.id === message.author.id
           message = message.first()
           let varvalue = message.content;
           
-		                fetch(`https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=editvar&varid=${varname}&data=${varvalue}&format=text`)
+		                fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=editvar&varid=${varname}&data=${varvalue}&format=text`)
     .then(res => res.text())
     .then(text => {
     message.channel.send(new Discord.MessageEmbed().setTitle('Variable Successfully Edited!').addField('Var Edit By:', message.author).setColor("GREEN").setTimestamp());
