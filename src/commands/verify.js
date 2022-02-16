@@ -32,7 +32,7 @@ module.exports = {
     }
 }
 
-    fetch(`https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=verify&key=${key}`)
+    fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=verify&key=${key}`)
     .then(checkResponseStatus);
 
         })
