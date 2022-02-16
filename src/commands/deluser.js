@@ -25,7 +25,7 @@ module.exports = {
           message = message.first()
           let un = message.content;
 
-    fetch(`https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=deluser&username=${un}`)
+    fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=deluser&username=${un}`)
     .then(res => res.text())
     .then(text => {
     message.channel.send(new Discord.MessageEmbed().setTitle(`Successfully Deleted User`).setColor("GREEN").setTimestamp());
