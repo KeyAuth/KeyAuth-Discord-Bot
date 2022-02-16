@@ -51,7 +51,7 @@ let filter = m => m.author.id === message.author.id
           return message.channel.send(new Discord.MessageEmbed().setTitle('Failure, non-numerical answer provided.').setColor("RED"));
           }
 
-              fetch(`https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=extend&user=${un}&name=${subname}&expiry=${days}&format=text`)
+              fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=extend&user=${un}&name=${subname}&expiry=${days}&format=text`)
     .then(res => res.text())
     .then(text => {
     message.channel.send(new Discord.MessageEmbed().setTitle('User Successfully Extended!').addField('Extend By:', message.author).addField('User Extended:', `${un}`).setColor("GREEN").setTimestamp());
