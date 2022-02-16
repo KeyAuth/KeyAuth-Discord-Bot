@@ -19,6 +19,6 @@ module.exports = {
     let sellerkey = await db.get(`token_${message.guild.id}`)
     if(sellerkey === null) return message.channel.send(new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp());
 
-    message.channel.send(`Go to the following link to download all your keys:\n https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=download`);
+    message.channel.send(`Go to the following link to download all your keys:\n https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=download`);
     }
 }
