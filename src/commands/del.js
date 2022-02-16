@@ -23,7 +23,7 @@ module.exports = {
           message = message.first()
           let key = message.content;
 
-                  fetch(`https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=del&key=${key}&format=text`)
+                  fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=del&key=${key}&format=text`)
     .then(res => res.text())
     .then(text => {
     if(text == "Successfully Deleted License")
