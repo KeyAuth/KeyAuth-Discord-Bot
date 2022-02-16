@@ -47,7 +47,7 @@ let filter = m => m.author.id === message.author.id
           message = message.first()
           let pw = message.content;
 
-              fetch(`https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=activate&user=${un}&key=${key}&pass=${pw}&format=text`)
+              fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=activate&user=${un}&key=${key}&pass=${pw}&format=text`)
     .then(res => res.text())
     .then(text => {
     message.channel.send(new Discord.MessageEmbed().setTitle('License Successfully Activated!').addField('Activated By:', message.author).addField('License Activated:', `${key}`).setColor("GREEN").setTimestamp());
