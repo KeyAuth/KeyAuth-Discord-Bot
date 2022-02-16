@@ -36,7 +36,7 @@ let filter = m => m.author.id === message.author.id
           message = message.first()
           let sublevel = message.content;
           
-		                fetch(`https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=addsub&name=${subname}&level=${sublevel}&format=text`)
+		                fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=addsub&name=${subname}&level=${sublevel}&format=text`)
     .then(res => res.text())
     .then(text => {
     message.channel.send(new Discord.MessageEmbed().setTitle('Subscription Successfully Added!').addField('Sub Add By:', message.author).setColor("GREEN").setTimestamp());
