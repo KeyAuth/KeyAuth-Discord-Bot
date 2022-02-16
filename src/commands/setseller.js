@@ -9,7 +9,7 @@ module.exports = {
     async run (client, message) {
 
         let filteeer = m => m.author.id === message.author.id
-    message.channel.send(new Discord.MessageEmbed().setTitle('Specify application seller key:').addField("Where do I find seller key?", "In [Seller Settings](https://keyauth.com/dashboard/sellersettings/)").setColor("YELLOW")).then(() => {
+    message.channel.send(new Discord.MessageEmbed().setTitle('Specify application seller key:').addField("Where do I find seller key?", "In [Seller Settings](https://keyauth.win/dashboard/sellersettings/)").setColor("YELLOW")).then(() => {
       message.channel.awaitMessages(filteeer, {
           max: 1,
           time: 30000,
@@ -19,7 +19,7 @@ module.exports = {
           message = message.first()
           let sellerkey = message.content;
 
-                  fetch(`https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=setseller&format=text`)
+                  fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=setseller&format=text`)
     .then(res => res.text())
     .then(text => {
     if(text == "Seller Key Successfully Found")
@@ -31,7 +31,7 @@ module.exports = {
     }
     else
     {
-    message.channel.send(new Discord.MessageEmbed().setTitle('Seller Key Not Found!').addField('Failed Attempt By:', message.author).addField("Where do I find seller key?", "In [Seller Settings](https://keyauth.com/dashboard/sellersettings/)").setColor("RED").setTimestamp());
+    message.channel.send(new Discord.MessageEmbed().setTitle('Seller Key Not Found!').addField('Failed Attempt By:', message.author).addField("Where do I find seller key?", "In [Seller Settings](https://keyauth.win/dashboard/sellersettings/)").setColor("RED").setTimestamp());
     }
     })
 
