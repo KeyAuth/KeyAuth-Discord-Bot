@@ -13,7 +13,7 @@ module.exports = {
     let sellerkey = await db.get(`token_${message.guild.id}`)
     if(sellerkey === null) return message.channel.send(new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp());
 
-    fetch(`https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=resethash`)
+    fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=resethash`)
     .then(res => res.text())
     .then(text => {
     if(text == "reset")
