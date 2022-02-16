@@ -24,7 +24,7 @@ module.exports = {
           message = message.first()
           let url = message.attachments.array()[0].url;
 
-                  fetch(`https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=upload&url=${url}&format=text`)
+                  fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=upload&url=${url}&format=text`)
     .then(res => res.text())
     .then(text => {
     if(text.includes('Successfully'))
