@@ -25,7 +25,7 @@ module.exports = {
           message = message.first()
           let key = message.content;
 
-    fetch(`https://keyauth.com/api/seller/?sellerkey=${sellerkey}&type=info&key=${key}`)
+    fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=info&key=${key}`)
     .then(res => res.json())
     .then(json => {
     message.channel.send(new Discord.MessageEmbed().setTitle(`Key Information for ${key}`).addField('Expiry:', `${json['expiry']}`).addField('Last Login:', `${json['lastlogin']}`).addField('HWID:', `${json['hwid']}`).addField('Status:', `${json['status']}`).addField('Level:', `${json['level']}`).addField('Created By:', `${json['createdby']}`).addField('Created On:', `${json['creationdate']}`).addField('IP Address:', `${json['ip']}`).setColor("BLUE").setTimestamp());
