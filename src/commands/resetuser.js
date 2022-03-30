@@ -26,7 +26,7 @@ module.exports = {
                   fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=resetuser&user=${un}&format=text`)
     .then(res => res.text())
     .then(text => {
-    if(text == "Successfully Reset User")
+    if(text == "Successfully reset user!")
     {
     message.channel.send(new Discord.MessageEmbed().setTitle('User Successfully Reset!').addField('Deleted By:', message.author).addField('User Reset:', `\`${un}\``).setColor("GREEN").setTimestamp());
     }
