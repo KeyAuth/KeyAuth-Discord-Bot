@@ -5,18 +5,18 @@ const Discord = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("editvar")
-        .setDescription("Edit Variable")
+        .setName("mute")
+        .setDescription("Mute user from sending messages in chat channels")
         .addStringOption((option) => 
         option
-            .setName("name")
-            .setDescription("Variable Name?")
+            .setName("user")
+            .setDescription("The user's username")
             .setRequired(true)
         )
         .addStringOption((option) => 
         option
-            .setName("value")
-            .setDescription("Variable Value?")
+            .setName("time")
+            .setDescription("Time in seconds user is muted for")
             .setRequired(true)
         ),
     async execute(interaction) {
@@ -30,17 +30,16 @@ module.exports = {
         let sellerkey = await db.get(`token_${idfrom}`)
         if(sellerkey === null) return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp()], ephemeral: true})
 
-        let varname = interaction.options.getString("name")
-        let varvalue = interaction.options.getString("value")
+        let user = interaction.options.getString("user")
+        let time = interaction.options.getString("time")
 
-        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=editvar&varid=${varname}&data=${varvalue}`)
+        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=muteuser&user=${user}&time=${time}`)
         .then(res => res.json())
         .then(json => {
-			if (json.success)
-            {
+			if (json.success) {
 				interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).setColor("GREEN").setTimestamp()], ephemeral: true})
 			} else {
-                interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`).setColor("RED").setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: true})
+                interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`).setColor("RED").setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: true})
             }
         })
     },

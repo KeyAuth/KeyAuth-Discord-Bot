@@ -1,96 +1,132 @@
+require("dotenv").config();
+const fs = require("fs");
+const db = require('quick.db')
+const fetch = require('node-fetch')
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
+const { Client, Intents, Collection, MessageEmbed } = require("discord.js");
+const { token, devserverid, type } = require("./config.json");
 const Discord = require('discord.js');
 
-const client = new Discord.Client();
-
-const { token, default_prefix } = require('./config.json');
-
-const config = require('./config.json');
-client.config = config;
-
-const db = require('quick.db')
-
-const { readdirSync } = require('fs');
-
-const { join } = require('path');
-
-
-client.commands= new Discord.Collection();
-const commandFiles = readdirSync(join(__dirname, "commands")).filter(file => file.endsWith(".js"));
-
-for (const file of commandFiles) {
-    const command = require(join(__dirname, "commands", `${file}`));
-    client.commands.set(command.name, command);
-}
-
-
-client.on("error", console.error);
-
-client.on('ready', () => {
-    console.clear();
-    console.log("Bot Online");
-    console.log("Bot Default Prefix is:", config.default_prefix)
-    console.log("Logged in as:", client.user.tag)
-   client.user.setActivity(".help | keyauth.win");  
-});
-
-client.on("message", async message => {
-
-let prefix = await db.get(`prefix_${message.guild.id}`);
-if(prefix === null) prefix = default_prefix;
-
-    if (message.author.bot) return false;
-
-    if (message.content.includes("@here") || message.content.includes("@everyone")) return false;
-
-    if (message.mentions.has(client.user.id)) {
-        const embed = new Discord.MessageEmbed()
-        .setTitle('Help\n\n')
-        .setThumbnail(client.user.displayAvatarURL())
-	.addField('`setseller`', `Sets Seller Key. Run again to change applications \nArgs: **${prefix}setseller**`)
-        .addField('`setprefix`', `Change the bot prefix. \nArgs: **${prefix}setprefix**`)
-        .addField("Current Bot Prefix Is:", `\`${prefix}\``)
-        .setColor("#00FFFF")
-        .addField('`activate`', `Activate License Keys. \nArgs: **${prefix}activate**`, true)
-        .addField('`addhwid`', `Add HWIDs to user. \nArgs: **${prefix}addhwid**`, true)
-        .addField('`addsub`', `Create subscription. \nArgs: **${prefix}addsub**`, true)
-        .addField('`addvar`', `Create Variable. \nArgs: **${prefix}addvar**`, true)
-        .addField('`delunused`', `Delete Unused Licenses. \nArgs: **${prefix}delunused**`, true)
-        .addField('`deluser`', `Delete users. \nArgs: **${prefix}deluser**`, true)
-        .addField('`editvar`', `Edit variable data. \nArgs: **${prefix}editvar**`, true)
-        .addField('`extend`', `Extend user expiry. \nArgs: **${prefix}extend**`, true)
-        .addField('`resetuser`', `Reset user HWID. \nArgs: **${prefix}resetuser**`, true)
-        .addField('`verify`', `Verify License Key. \nArgs: **${prefix}verify**`, true)
-        .addField('`add`', `Add key(s). \nArgs: **${prefix}add**`, true)
-        .addField('`del`', `Delete key. \nArgs: **${prefix}del**`, true)
-        .addField('`info`', `Key Information. \nArgs: **${prefix}info**`, true)
-		.addField('`stats`', `Application Statistics. \nArgs: **${prefix}stats**`, true)
-        .addField('`reset`', `Reset key. \nArgs: **${prefix}reset**`, true)
-		.addField('`upload`', `Upload File. \nArgs: **${prefix}reset**`, true)
-        .setFooter('KeyAuth Discord Bot', client.user.displayAvatarURL())
-        .setTimestamp()
-
-        message.channel.send(embed)
-    };
-
-
-    if(message.content.startsWith(prefix)) {
-
-        const args = message.content.slice(prefix.length).trim().split(/ +/g);
-        const command = args.shift().toLowerCase();
-
-        if(!client.commands.has(command)) return;;
-        if(!message.member.roles.cache.find(x => x.name == "perms")) return message.channel.send(`${message.author.toString()} does not have a role named \`perms\` and therefore cant execute any commands. If you're a server owner create role called that and give it to users you want to be able to execute commands`);
-        try {
-            message.delete();
-            client.commands.get(command).run(client, message, args);
-        } catch (error){
-            console.error(error);
-        }
-    }
-
+const client = new Client({
+    intents: [
+        Intents.FLAGS.GUILDS,
+        Intents.FLAGS.GUILD_MESSAGES,
+        Intents.FLAGS.GUILD_PRESENCES,
+        Intents.FLAGS.DIRECT_MESSAGES
+    ]
 })
 
+const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
+const commands = [];
+
+client.commands = new Collection();
+
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`);
+    commands.push(command.data.toJSON());
+    client.commands.set(command.data.name, command)
+}
+
+client.once('ready', async() => {
+    console.clear();
+    console.log("Bot Online");
+    console.log("Logged in as:", client.user.tag)
+
+    const CLIENT_ID = client.user.id;
+
+    const rest = new REST({
+        version: "9"
+    }).setToken(token);
+
+    (async () => {
+        try {
+            if (type === "production") {
+                await rest.put(Routes.applicationCommands(CLIENT_ID), {
+                    body: commands
+                });
+                console.log("Commands are added to GLOBAL Commands")
+            } else {
+                await rest.put(Routes.applicationGuildCommands(CLIENT_ID, devserverid), {
+                    body: commands
+                })
+                console.log("Commands Are setuped to Guild Only")
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    })();
+
+    client.user.setPresence({
+        activities: [
+            {
+                name: "keyauth.win",
+                type: "WATCHING",
+            }
+        ],
+        status: 'online'
+    })
+
+
+});
+
+client.on('interactionCreate', async interaction => {
+    if (!interaction.isCommand()) return;
+
+    const command = client.commands.get(interaction.commandName);
+
+    if (!command) return;
+	
+	// console.log(interaction)
+	
+	if(interaction.member != null)
+	if(!interaction.member.roles.cache.find(x => x.name == "perms")) return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`You need a role with the name \`perms\` to execute commands. Please ask an administrator to create a role with this name if not already done and assign it to you.`).setColor("RED").setTimestamp()], ephemeral: true})
+
+    const errorembed = new MessageEmbed()
+    .setAuthor({ name: "Interaction Failed" })
+    .setColor("RED")
+    .setTimestamp()
+    .setFooter({ text: "KeyAuth Discord Bot", iconURL: client.user.displayAvatarURL()})
+
+
+	let idfrom = null;
+	
+	if(interaction.guild == null)
+		idfrom = interaction.user.id;
+	else
+		idfrom = interaction.guild.id;
+	
+	let content = `**${interaction.user.username}#${interaction.user.discriminator} (ID: ${interaction.user.id})** executed the command \`/${interaction.commandName}\`\n`;
+	
+	for (var i = 0; i < interaction.options._hoistedOptions.length; i++) {
+    content += "\n" + interaction.options._hoistedOptions[i].name + " : " + interaction.options._hoistedOptions[i].value;
+	}
+	
+	let wh_url = await db.get(`wh_url_${idfrom}`)
+	if(wh_url != null) {
+		var params = {
+			// content: `**${interaction.user.username}#${interaction.user.discriminator} (ID: ${interaction.user.id})** executed the command \`/${interaction.commandName}\`\n\nwith the paramaters:\`${JSON.stringify(interaction.options._hoistedOptions)}\``
+			content: content
+		}
+		fetch(wh_url, {
+			method: "POST",
+			headers: {
+				'Content-type': 'application/json'
+			},
+			body: JSON.stringify(params)
+		})
+	}
+		
+    try {
+        await command.execute(interaction);
+    } catch(err) {
+        if (err) console.error(err);
+
+        await interaction.reply({
+            embeds: [errorembed],
+            ephemeral: true
+        })
+    }
+});
 
 client.login(token);
-
-    

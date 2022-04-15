@@ -5,12 +5,12 @@ const Discord = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("resetuser")
-        .setDescription("Reset a user")
+        .setName("unban")
+        .setDescription("Unban license key")
         .addStringOption((option) => 
         option
-            .setName("username")
-            .setDescription("Specify username")
+            .setName("key")
+            .setDescription("Key you wish to unban")
             .setRequired(true)
         ),
     async execute(interaction) {
@@ -24,19 +24,16 @@ module.exports = {
         let sellerkey = await db.get(`token_${idfrom}`)
         if(sellerkey === null) return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp()], ephemeral: true})
 
-        let un = interaction.options.getString("username")
-        
-        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=resetuser&user=${un}`)
+        let key = interaction.options.getString("key")
+
+        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=unban&key=${key}`)
         .then(res => res.json())
         .then(json => {
-        if(json.success)
-        {
-            interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle('User Successfully Reset!').addField('Username:', `\`${un}\``).setColor("GREEN").setTimestamp()], ephemeral: true})
-        }
-        else
-        {
-            interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`).setColor("RED").setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: true})
-        }
+            if (json.success) {
+                interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).setColor("GREEN").setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: true})
+            } else {
+                interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`).setColor("RED").setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: true})
+            }
         })
     },
 };

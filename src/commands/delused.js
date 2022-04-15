@@ -5,8 +5,8 @@ const Discord = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("delunused")
-        .setDescription("Delete Unused Licenses"),
+        .setName("delused")
+        .setDescription("Delete Used Licenses"),
     async execute(interaction) {
 		let idfrom = null;
 		
@@ -19,7 +19,7 @@ module.exports = {
         if(sellerkey === null) return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp()], ephemeral: true})
 
 
-        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=delunused`)
+        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=delused`)
         .then(res => res.json())
         .then(json => {
 			if(json.success)

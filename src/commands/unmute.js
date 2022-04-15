@@ -5,8 +5,14 @@ const Discord = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("delunused")
-        .setDescription("Delete Unused Licenses"),
+        .setName("unmute")
+        .setDescription("Unmute user so they can send messages before their mute time is up")
+        .addStringOption((option) => 
+        option
+            .setName("user")
+            .setDescription("The user's username")
+            .setRequired(true)
+        ),
     async execute(interaction) {
 		let idfrom = null;
 		
@@ -18,17 +24,16 @@ module.exports = {
         let sellerkey = await db.get(`token_${idfrom}`)
         if(sellerkey === null) return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp()], ephemeral: true})
 
+        let user = interaction.options.getString("user")
 
-        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=delunused`)
+        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=unmuteuser&user=${user}`)
         .then(res => res.json())
         .then(json => {
-			if(json.success)
-			{
+			if (json.success) {
 				interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).setColor("GREEN").setTimestamp()], ephemeral: true})
-			} else
-			{
-				interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`setseller\` command.`).setColor("RED").setTimestamp()], ephemeral: true})
-			}
+			} else {
+                interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`).setColor("RED").setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: true})
+            }
         })
     },
 };

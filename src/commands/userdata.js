@@ -5,12 +5,12 @@ const Discord = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("info")
-        .setDescription("Info On key")
+        .setName("userdata")
+        .setDescription("Retrieve info from a user")
         .addStringOption((option) => 
         option
-            .setName("license")
-            .setDescription("Specify key")
+            .setName("user")
+            .setDescription("Specify user to lookup")
             .setRequired(true)
         ),
     async execute(interaction) {
@@ -24,17 +24,19 @@ module.exports = {
         let sellerkey = await db.get(`token_${idfrom}`)
         if(sellerkey === null) return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp()], ephemeral: true})
 
-        let key = interaction.options.getString("license")
+        let user = interaction.options.getString("user")
         let hwid;
         let ip;
+        let lastlogin;
 
-        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=info&key=${key}`)
+        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=userdata&user=${user}`)
         .then(res => res.json())
         .then(json => {
             if (!json.success) return interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`).setColor("RED").setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: true})
-            if (json.hwid == null) { hwid == null} else { }
-            if (json.ip == null) { ip == null} else { }
-            interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(`Key Information for ${key}`).addField('Expiry:', `${json['expiry']}`).addField('Last Login:', `${json['lastlogin']}`).addField('HWID:', `${hwid}`).addField('Status:', `${json['status']}`).addField('Level:', `${json['level']}`).addField('Created By:', `${json['createdby']}`).addField('Created On:', `${json['creationdate']}`).addField('IP Address:', `${ip}`).setColor("BLUE").setTimestamp()], ephemeral: true})
+            if (json.hwid == null) { hwid = null} else { hwid = json.hwid}
+            if (json.ip == null) { ip = null} else { ip = json.ip}
+			if (json.lastlogin == null) { lastlogin == null} else { lastlogin = `<t:${json.lastlogin}:f>`}
+			interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(`User data for ${user}`).addField('Expiry:', `<t:${json['subscriptions'][0]['expiry']}:f>`).addField('Subscription name:', `${json['subscriptions'][0]['subscription']}`).addField('Last Login:', `${lastlogin}`).addField('HWID:', `${hwid}`).addField('Created On:', `<t:${json['createdate']}:f>`).addField('IP Address:', `${ip}`).setColor("BLUE").setTimestamp()], ephemeral: true})
         })
     },
 };
