@@ -1,46 +1,39 @@
+const { SlashCommandBuilder } = require("@discordjs/builders");
 const db = require('quick.db')
 const fetch = require('node-fetch')
 const Discord = require('discord.js');
 
 module.exports = {
-    name: "setseller",
-    description: "Sets The authkey",
+    data: new SlashCommandBuilder()
+        .setName("setseller")
+        .setDescription("Sets The seller key")
+        .addStringOption((option) => 
+        option
+            .setName("sellerkey")
+            .setDescription("Specify application seller key")
+            .setRequired(true)
+        ),
+    async execute(interaction) {
 
-    async run (client, message) {
+    let sellerkey = interaction.options.getString("sellerkey")
 
-        let filteeer = m => m.author.id === message.author.id
-    message.channel.send(new Discord.MessageEmbed().setTitle('Specify application seller key:').addField("Where do I find seller key?", "In [Seller Settings](https://keyauth.win/dashboard/sellersettings/)").setColor("YELLOW")).then(() => {
-      message.channel.awaitMessages(filteeer, {
-          max: 1,
-          time: 30000,
-          errors: ['time']
-        })
-        .then(message => {
-          message = message.first()
-          let sellerkey = message.content;
-
-                  fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=setseller&format=text`)
-    .then(res => res.text())
-    .then(text => {
-    if(text == "Seller Key Successfully Found")
+    fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=setseller`)
+    .then(res => res.json())
+    .then(json => {
+    if(json.success)
     {
-    message.delete()
-    db.fetch(`token_${message.guild.id}`)
-    db.set(`token_${message.guild.id}`, sellerkey)
-    message.channel.send(new Discord.MessageEmbed().setTitle('Seller Key Successfully Set!').addField('Set By:', message.author).setColor("GREEN").setTimestamp());
+		if(interaction.guild == null)
+			idfrom = interaction.user.id;
+		else
+			idfrom = interaction.guild.id;
+		db.fetch(`token_${idfrom}`)
+		db.set(`token_${idfrom}`, sellerkey)
+		interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle('Seller Key Successfully Set!').setColor("GREEN").setTimestamp()], ephemeral: true})
     }
     else
     {
-    message.channel.send(new Discord.MessageEmbed().setTitle('Seller Key Not Found!').addField('Failed Attempt By:', message.author).addField("Where do I find seller key?", "In [Seller Settings](https://keyauth.win/dashboard/sellersettings/)").setColor("RED").setTimestamp());
+		interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`).setColor("RED").setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: true})
     }
     })
-
-        })
-        .catch(collected => {
-            return message.channel.send(new Discord.MessageEmbed().setTitle('Failure, didn\'t respond in time.').setColor("RED"));
-        });
-    })
-
-    }
-
-}
+    },
+};

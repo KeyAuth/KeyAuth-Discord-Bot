@@ -1,18 +1,32 @@
 {
-  "name": "keyauth.com",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "dependencies": {
-    "discord.js": "^12.3.1",
-    "discord.js-pagination": "^1.0.2",
-    "node-fetch": "^2.6.1",
-    "quick.db": "^7.1.2"
+    "@discordjs/builders": "^0.12.0",
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.27.0",
+    "discord.js": "^13.6.0",
+    "dotenv": "^16.0.0",
+    "fs": "^0.0.1-security",
+    "quick.db": "^7.1.3"
   },
-  "devDependencies": {},
+  "name": "keyauth_discord_bot",
+  "version": "2.0.0",
+  "description": "KeyAuth Authentication SellerAPI Discord Bot",
+  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "/help"
   },
-  "author": "Nelson Cybersecurity LLC",
-  "license": "https://github.com/KeyAuth/KeyAuth-Source-Code/blob/main/LICENSE_KEYAUTH.txt"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KeyAuth/KeyAuth-Discord-Bot.git"
+  },
+  "keywords": [
+    "keyauth",
+    "sellerapi"
+  ],
+  "author": "KeyAuth, mazk#9154",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KeyAuth/KeyAuth-Discord-Bot/issues"
+  },
+  "homepage": "https://github.com/KeyAuth/KeyAuth-Discord-Bot#readme"
 }
