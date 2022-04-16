@@ -28,6 +28,8 @@ for (const file of commandFiles) {
     client.commands.set(command.data.name, command)
 }
 
+client.on("error", console.error);
+
 client.once('ready', async() => {
     console.clear();
     console.log("Bot Online");
