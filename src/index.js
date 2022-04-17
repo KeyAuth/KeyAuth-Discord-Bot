@@ -30,6 +30,10 @@ for (const file of commandFiles) {
 
 client.on("error", console.error);
 
+process.on('unhandledRejection', error => {
+	console.error('Unhandled promise rejection:', error);
+});
+
 client.once('ready', async() => {
     console.clear();
     console.log("Bot Online");
