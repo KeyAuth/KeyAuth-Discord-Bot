@@ -1,4 +1,3 @@
-require("dotenv").config();
 const fs = require("fs");
 const db = require('quick.db')
 const fetch = require('node-fetch')
@@ -8,11 +7,12 @@ const { Client, Intents, Collection, MessageEmbed } = require("discord.js");
 const { token, devserverid, type } = require("./config.json");
 const Discord = require('discord.js');
 
+// Enable Intents from discord developer panel https://i.imgur.com/lZvyONH.png
 const client = new Client({
     intents: [
         Intents.FLAGS.GUILDS,
         Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_PRESENCES,
+        Intents.FLAGS.GUILD_PRESENCES, 
         Intents.FLAGS.DIRECT_MESSAGES
     ]
 })
@@ -25,7 +25,7 @@ client.commands = new Collection();
 for (const file of commandFiles) {
     const command = require(`./commands/${file}`);
     commands.push(command.data.toJSON());
-    client.commands.set(command.data.name, command)
+    client.commands.set(command.data.name, command);
 }
 
 client.on("error", console.error);
@@ -82,8 +82,6 @@ client.on('interactionCreate', async interaction => {
     const command = client.commands.get(interaction.commandName);
 
     if (!command) return;
-	
-	// console.log(interaction)
 	
 	if(interaction.member != null)
 	if(!interaction.member.roles.cache.find(x => x.name == "perms")) return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`You need a role with the name \`perms\` to execute commands. Please ask an administrator to create a role with this name if not already done and assign it to you.`).setColor("RED").setTimestamp()], ephemeral: true})

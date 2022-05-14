@@ -22,7 +22,8 @@
   },
   "keywords": [
     "keyauth",
-    "sellerapi"
+    "sellerapi",
+    "discordjs13"
   ],
   "author": "KeyAuth, mazk#9154",
   "license": "ISC",
