@@ -2,7 +2,7 @@
 Source Code of the KeyAuth.win Discord Bot
 
 ###### Our Discord Bot is hosted on:
-https://plox.host/discordbot-hosting
+https://www.oracle.com/cloud/free/ free forever, watch video for tutorial https://www.youtube.com/watch?v=90JbCrB3m3I
 
 
 ###### Installation
@@ -17,13 +17,13 @@ https://plox.host/discordbot-hosting
 ###### Discord Developer Portal
 ```
 1. Go to Discord Developer Portal
-2. Click on your Discord Bot 
-3. Click on the "BOT" tab
-4. Turn on all these: PRESENCE INTENT, SERVER MEMBERS INTENT, MESSAGE CONTENT INTENT
-5. Go to OAuth2 Tab -> URL Generator
-6. Add these Scopes: bot, application.commands
-7. Add thse Bot Permissions: Adminstrator, Then copy Generated URL and authorize it.
-8. Invite server of your choice.
+2. Create application 
+3. Click on the "BOT" tab and add bot.
+4. Go to OAuth2 Tab -> URL Generator
+5. Add these Scopes: bot, application.commands
+6. Add thse Bot Permissions: Adminstrator, Then copy Generated URL and authorize it.
+7. Add bot to server.
+8. Do `/` to see bot's commands
 ```
 
 Enjoy
