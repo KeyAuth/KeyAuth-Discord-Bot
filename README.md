@@ -23,7 +23,7 @@ https://www.oracle.com/cloud/free/ free forever, watch video for tutorial https:
 5. Add these Scopes: bot, application.commands
 6. Add thse Bot Permissions: Adminstrator, Then copy Generated URL and authorize it.
 7. Add bot to server.
-8. Do `/` to see bot's commands
+8. Type / in a channel to see bot's commands
 ```
 
 Enjoy
