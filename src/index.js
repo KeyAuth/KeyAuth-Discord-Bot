@@ -7,13 +7,9 @@ const { Client, Intents, Collection, MessageEmbed } = require("discord.js");
 const { token, devserverid, type } = require("./config.json");
 const Discord = require('discord.js');
 
-// Enable Intents from discord developer panel https://i.imgur.com/lZvyONH.png
 const client = new Client({
     intents: [
-        Intents.FLAGS.GUILDS,
-        Intents.FLAGS.GUILD_MESSAGES,
-        Intents.FLAGS.GUILD_PRESENCES, 
-        Intents.FLAGS.DIRECT_MESSAGES
+        Intents.FLAGS.GUILDS
     ]
 })
 
