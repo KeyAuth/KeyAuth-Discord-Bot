@@ -22,7 +22,7 @@ module.exports = {
 			idfrom = interaction.guild.id;
 		
         let sellerkey = await db.get(`token_${idfrom}`)
-        if(sellerkey === null) return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp()], ephemeral: true})
+        if(sellerkey === null) return interaction.editReply({ embeds: [new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp()], ephemeral: true})
 
         let user = interaction.options.getString("user")
 
@@ -31,11 +31,11 @@ module.exports = {
         .then(json => {
         if(json.success)
         {
-            interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('User exists:', `\`${user}\``).setColor("GREEN").setTimestamp()], ephemeral: true})
+            interaction.editReply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('User exists:', `\`${user}\``).setColor("GREEN").setTimestamp()], ephemeral: true})
         }
         else
         {
-            interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`setseller\` command.`).setColor("RED").setTimestamp()], ephemeral: true})
+            interaction.editReply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`setseller\` command.`).setColor("RED").setTimestamp()], ephemeral: true})
         }
         })
     },

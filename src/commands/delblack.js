@@ -28,16 +28,16 @@ module.exports = {
 			idfrom = interaction.guild.id;
 		
         let sellerkey = await db.get(`token_${idfrom}`)
-        if(sellerkey === null) return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp()], ephemeral: true})
+        if(sellerkey === null) return interaction.editReply({ embeds: [new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp()], ephemeral: true})
 
         let ip = interaction.options.getString("ip")
         let hwid = interaction.options.getString("hwid")
 		
 		if(!ip && !hwid) {
-			return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`You need to either define hwid or ip paramater. Please try again defining one of these paramaters..`).setColor("RED").setTimestamp()], ephemeral: true})
+			return interaction.editReply({ embeds: [new Discord.MessageEmbed().setDescription(`You need to either define hwid or ip paramater. Please try again defining one of these paramaters..`).setColor("RED").setTimestamp()], ephemeral: true})
 		}
 		if(ip && hwid) {
-			return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`Please only define one paramater per command..`).setColor("RED").setTimestamp()], ephemeral: true})
+			return interaction.editReply({ embeds: [new Discord.MessageEmbed().setDescription(`Please only define one paramater per command..`).setColor("RED").setTimestamp()], ephemeral: true})
 		}
 		
 		let url = null;
@@ -48,9 +48,9 @@ module.exports = {
         .then(res => res.json())
         .then(json => {
 			if (json.success) {
-				interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).setColor("GREEN").setTimestamp()], ephemeral: true})
+				interaction.editReply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).setColor("GREEN").setTimestamp()], ephemeral: true})
 			} else {
-                interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`).setColor("RED").setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: true})
+                interaction.editReply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`).setColor("RED").setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: true})
             }
         })
     },

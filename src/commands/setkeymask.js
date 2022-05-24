@@ -31,7 +31,7 @@ module.exports = {
 		
     db.fetch(`licensemask_${idfrom}`)
     db.set(`licensemask_${idfrom}`, license_mask)
-    interaction.reply({ embeds: [new Discord.MessageEmbed().setTitle('License Mask Successfully Set!').setColor("GREEN").setTimestamp()], ephemeral: true})
+    interaction.editReply({ embeds: [new Discord.MessageEmbed().setTitle('License Mask Successfully Set!').setColor("GREEN").setTimestamp()], ephemeral: true})
 
     },
 };

@@ -67,7 +67,7 @@ client.once('ready', async() => {
         activities: [
             {
                 name: "keyauth.win",
-                type: "WATCHING",
+                type: "COMPETING",
             }
         ],
         status: 'online'
@@ -82,9 +82,11 @@ client.on('interactionCreate', async interaction => {
     const command = client.commands.get(interaction.commandName);
 
     if (!command) return;
+
+    await interaction.deferReply({ ephemeral: true });
 	
 	if(interaction.member != null)
-	if(!interaction.member.roles.cache.find(x => x.name == "perms")) return interaction.reply({ embeds: [new Discord.MessageEmbed().setDescription(`You need a role with the name \`perms\` to execute commands. Please ask an administrator to create a role with this name if not already done and assign it to you.`).setColor("RED").setTimestamp()], ephemeral: true})
+	if(!interaction.member.roles.cache.find(x => x.name == "perms")) return interaction.editReply({ embeds: [new Discord.MessageEmbed().setDescription(`You need a role with the name \`perms\` to execute commands. Please ask an administrator to create a role with this name if not already done and assign it to you.`).setColor("RED").setTimestamp()], ephemeral: true})
 
     const errorembed = new MessageEmbed()
     .setAuthor({ name: "Interaction Failed" })
@@ -126,7 +128,7 @@ client.on('interactionCreate', async interaction => {
     } catch(err) {
         if (err) console.error(err);
 
-        await interaction.reply({
+        await interaction.editReply({
             embeds: [errorembed],
             ephemeral: true
         })
