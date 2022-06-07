@@ -5,7 +5,13 @@ Source Code of the KeyAuth.win Discord Bot
 https://www.oracle.com/cloud/free/ free forever, watch video for tutorial https://www.youtube.com/watch?v=90JbCrB3m3I
 
 
+
 ###### Installation
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=oJzMVIM3kbk
+" target="_blank"><img src="https://i.imgur.com/bdjleDy.png" 
+alt="Click here to see Installation Video!" width="500" height="250" border="10" /></a>
+
+
 ```
 1. Install Source code.
 2. Extract to folder of your choice.
