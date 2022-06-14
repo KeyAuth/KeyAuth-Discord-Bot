@@ -69,7 +69,6 @@ client.once('ready', async() => {
         status: 'online'
     })
 
-
 });
 
 client.on('interactionCreate', async interaction => {
@@ -90,6 +89,15 @@ client.on('interactionCreate', async interaction => {
     .setTimestamp()
     .setFooter({ text: "KeyAuth Discord Bot", iconURL: client.user.displayAvatarURL()})
 
+	client.user.setPresence({
+        activities: [
+            {
+                name: "keyauth.win",
+                type: "COMPETING",
+            }
+        ],
+        status: 'online'
+    })
 
 	let idfrom = null;
 	
