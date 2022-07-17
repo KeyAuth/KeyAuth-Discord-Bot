@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
+const { SlashCommandBuilder, Colors } = require("discord.js");
 const db = require('quick.db')
 const Discord = require('discord.js');
 
@@ -24,7 +24,7 @@ module.exports = {
 	
 	db.fetch(`wh_url_${idfrom}`)
 	db.set(`wh_url_${idfrom}`, webhook)
-    interaction.editReply({ embeds: [new Discord.MessageEmbed().setTitle('Successfully set discord webhook to log commands to').setColor("GREEN").setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: true})
+    interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle('Successfully set discord webhook to log commands to').setColor(Colors.Green).setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: true})
 	
     },
 };

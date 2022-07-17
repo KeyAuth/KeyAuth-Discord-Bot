@@ -2,15 +2,17 @@ const fs = require("fs");
 const db = require('quick.db')
 const fetch = require('node-fetch')
 const { REST } = require("@discordjs/rest");
-const { Routes } = require("discord-api-types/v9");
-const { Client, Intents, Collection, MessageEmbed } = require("discord.js");
-const { token, devserverid, type } = require("./config.json");
+const { Client, GatewayIntentBits, Collection, EmbedBuilder, Routes, Partials, Colors } = require("discord.js");
+const { token, DevelopmentServerId, type } = require("./config.json");
+
 const Discord = require('discord.js');
 
 const client = new Client({
     intents: [
-        Intents.FLAGS.GUILDS
-    ]
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildPresences
+    ],
+    partials: [Partials.Channel]
 })
 
 const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
@@ -38,7 +40,7 @@ client.once('ready', async() => {
     const CLIENT_ID = client.user.id;
 
     const rest = new REST({
-        version: "9"
+        version: "10"
     }).setToken(token);
 
     (async () => {
@@ -47,12 +49,12 @@ client.once('ready', async() => {
                 await rest.put(Routes.applicationCommands(CLIENT_ID), {
                     body: commands
                 });
-                console.log("Commands are added to GLOBAL Commands")
+                console.log("Commands have been added to Global Usage.")
             } else {
-                await rest.put(Routes.applicationGuildCommands(CLIENT_ID, devserverid), {
+                await rest.put(Routes.applicationGuildCommands(CLIENT_ID, DevelopmentServerId), {
                     body: commands
                 })
-                console.log("Commands Are setuped to Guild Only")
+                console.log(`Commands have been added as Guild Only Usage.`)
             }
         } catch (err) {
             console.error(err);
@@ -64,15 +66,16 @@ client.once('ready', async() => {
             {
                 name: "keyauth.win",
                 type: "COMPETING",
+                url: "https://keyauth.win"
             }
         ],
         status: 'online'
-    })
+    });
 
 });
 
 client.on('interactionCreate', async interaction => {
-    if (!interaction.isCommand()) return;
+    if (!interaction.type === 2) return;
 
     const command = client.commands.get(interaction.commandName);
 
@@ -81,23 +84,24 @@ client.on('interactionCreate', async interaction => {
     await interaction.deferReply({ ephemeral: true });
 	
 	if(interaction.member != null)
-	if(!interaction.member.roles.cache.find(x => x.name == "perms")) return interaction.editReply({ embeds: [new Discord.MessageEmbed().setDescription(`You need a role with the name \`perms\` to execute commands. Please ask an administrator to create a role with this name if not already done and assign it to you.`).setColor("RED").setTimestamp()], ephemeral: true})
+	if(!interaction.member.roles.cache.find(x => x.name == "perms")) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`You need a role with the name \`perms\` to execute commands. Please ask an administrator to create a role with this name if not already done and assign it to you.`).setColor(Colors.Red).setTimestamp()], ephemeral: true})
 
-    const errorembed = new MessageEmbed()
+    const ErrorEmbed = new EmbedBuilder()
     .setAuthor({ name: "Interaction Failed" })
-    .setColor("RED")
+    .setColor(Colors.Red)
     .setTimestamp()
     .setFooter({ text: "KeyAuth Discord Bot", iconURL: client.user.displayAvatarURL()})
 
-	client.user.setPresence({
+    client.user.setPresence({
         activities: [
             {
                 name: "keyauth.win",
                 type: "COMPETING",
+                url: "https://keyauth.win"
             }
         ],
         status: 'online'
-    })
+    });
 
 	let idfrom = null;
 	
@@ -133,7 +137,7 @@ client.on('interactionCreate', async interaction => {
         if (err) console.error(err);
 
         await interaction.editReply({
-            embeds: [errorembed],
+            embeds: [ErrorEmbed],
             ephemeral: true
         })
     }

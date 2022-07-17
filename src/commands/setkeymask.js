@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
+const { SlashCommandBuilder, Colors } = require("discord.js");
 const db = require('quick.db')
 const Discord = require('discord.js');
 
@@ -31,7 +31,7 @@ module.exports = {
 		
     db.fetch(`licensemask_${idfrom}`)
     db.set(`licensemask_${idfrom}`, license_mask)
-    interaction.editReply({ embeds: [new Discord.MessageEmbed().setTitle('License Mask Successfully Set!').setColor("GREEN").setTimestamp()], ephemeral: true})
+    interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle('License Mask Successfully Set!').setColor(Colors.Green).setTimestamp()], ephemeral: true})
 
     },
 };
