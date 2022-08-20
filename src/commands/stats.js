@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require("@discordjs/builders");
+const { SlashCommandBuilder, Colors } = require("discord.js");
 const db = require('quick.db')
 const fetch = require('node-fetch')
 const Discord = require('discord.js');
@@ -16,16 +16,35 @@ module.exports = {
 			idfrom = interaction.guild.id;
 		
         let sellerkey = await db.get(`token_${idfrom}`)
-        if(sellerkey === null) return interaction.editReply({ embeds: [new Discord.MessageEmbed().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor("RED").setTimestamp()], ephemeral: true})
+        if(sellerkey === null) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: true})
 
         fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=stats`)
         .then(res => res.json())
         .then(json => {
 			if(json.success) {
-				interaction.editReply({ embeds: [new Discord.MessageEmbed().setTitle('Application Statistics').addField('Unused Keys:', `${json['unused']}`).addField('Used Keys:', `${json['used']}`).addField('Paused Keys:', `${json['paused']}`).addField('Banned Keys:', `${json['banned']}`).addField('Total Keys:', `${json['totalkeys']}`).addField('Webhooks:', `${json['webhooks']}`).addField('Files:', `${json['files']}`).addField('Vars:', `${json['vars']}`).addField('Reseller Accounts:', `${json['resellers']}`).addField('Manager Accounts:', `${json['managers']}`).addField('Total Accounts:', `${json['totalaccs']}`).setColor("BLUE").setTimestamp()], ephemeral: true})
+
+                const embed = new Discord.EmbedBuilder()
+                .setTitle('Application Statistics')
+                .addFields([
+                    { name: 'Total Keys:', value: `${json['totalkeys']}` },
+                    { name: 'Unused Keys:', value: `${json['unused']}` },
+                    { name: 'Used Keys:', value: `${json['used']}` },
+                    { name: 'Paused Keys:', value: `${json['paused']}` },
+                    { name: 'Banned Keys:', value: `${json['banned']}` },
+                    { name: 'Webhooks:', value: `${json['webhooks']}` },
+                    { name: 'Files:', value: `${json['files']}` },
+                    { name: 'Vars:', value: `${json['vars']}` },
+                    { name: 'Total Accounts:', value: `${json['totalaccs']}` },
+                    { name: 'Reseller Accounts:', value: `${json['resellers']}` },
+                    { name: 'Manager Accounts:', value: `${json['managers']}` },
+                ])
+                .setColor(Colors.Blue).setTimestamp()
+
+
+				interaction.editReply({ embeds: [embed], ephemeral: true})
 			}
 			else {
-				interaction.editReply({ embeds: [new Discord.MessageEmbed().setTitle(json.message).addField('Note:', `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`).setColor("RED").setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: true})
+				interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`}]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: true})
 			}
         })
 
