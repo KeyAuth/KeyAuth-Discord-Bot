@@ -41,7 +41,7 @@ module.exports = {
         let subname = interaction.options.getString("subname")
         let days = interaction.options.getString("expiry")
 
-        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=extend&user=${un}&name=${subname}&expiry=${days}`)
+        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=extend&user=${un}&sub=${subname}&expiry=${days}`)
         .then(res => res.json())
         .then(json => {
 			if (json.success)

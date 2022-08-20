@@ -2,15 +2,14 @@ const fs = require("fs");
 const db = require('quick.db')
 const fetch = require('node-fetch')
 const { REST } = require("@discordjs/rest");
-const { Client, GatewayIntentBits, Collection, EmbedBuilder, Routes, Partials, Colors } = require("discord.js");
+const { Client, GatewayIntentBits, ActivityType, Collection, EmbedBuilder, Routes, Partials, Colors } = require("discord.js");
 const { token, DevelopmentServerId, type } = require("./config.json");
 
 const Discord = require('discord.js');
 
 const client = new Client({
     intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildPresences
+        GatewayIntentBits.Guilds
     ],
     partials: [Partials.Channel]
 })
@@ -62,15 +61,9 @@ client.once('ready', async() => {
     })();
 
     client.user.setPresence({
-        activities: [
-            {
-                name: "keyauth.win",
-                type: "COMPETING",
-                url: "https://keyauth.win"
-            }
-        ],
-        status: 'online'
-    });
+		activities: [{ name: `keyauth.cc`, type: ActivityType.Competing }],
+		status: 'online',
+	});
 
 });
 
@@ -93,15 +86,9 @@ client.on('interactionCreate', async interaction => {
     .setFooter({ text: "KeyAuth Discord Bot", iconURL: client.user.displayAvatarURL()})
 
     client.user.setPresence({
-        activities: [
-            {
-                name: "keyauth.win",
-                type: "COMPETING",
-                url: "https://keyauth.win"
-            }
-        ],
-        status: 'online'
-    });
+		activities: [{ name: `keyauth.cc`, type: ActivityType.Competing }],
+		status: 'online',
+	});
 
 	let idfrom = null;
 	
