@@ -7,10 +7,38 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("setseller")
     .setDescription("Sets The seller key")
+    .setDescriptionLocalizations({
+      "en-US": "Sets The seller key",
+      "fi": "Asettaa myyjän avaimen",
+      "fr": "Définit la clé du vendeur",
+      "de": "Setzt den Verkäufer-Schlüssel",
+      "it": "Imposta la chiave del venditore",
+      "nl": "Stelt de verkoperssleutel in",
+      "ru": "Устанавливает ключ продавца",
+      "pl": "Ustawia klucz sprzedawcy",
+      "tr": "Satıcı anahtarını ayarlar",
+      "cs": "Nastaví klíč prodejce",
+      "ja": "販売者キーを設定します",
+      "ko": "판매자 키 설정",
+    })
     .addStringOption((option) =>
       option
         .setName("sellerkey")
         .setDescription("Specify application seller key")
+        .setDescriptionLocalizations({
+          "en-US": "Specify application seller key",
+          "fi": "Määritä sovelluksen myyjän avain",
+          "fr": "Spécifiez la clé du vendeur de l'application",
+          "de": "Geben Sie den Verkäufer-Schlüssel der Anwendung an",
+          "it": "Specifica la chiave del venditore dell'applicazione",
+          "nl": "Geef de verkoperssleutel van de applicatie op",
+          "ru": "Укажите ключ продавца приложения",
+          "pl": "Określ klucz sprzedawcy aplikacji",
+          "tr": "Uygulama satıcı anahtarını belirtin",
+          "cs": "Zadejte klíč prodejce aplikace",
+          "ja": "アプリケーションの販売者キーを指定してください",
+          "ko": "응용 프로그램 판매자 키 지정",
+        })
         .setRequired(true)
     ),
   async execute(interaction) {

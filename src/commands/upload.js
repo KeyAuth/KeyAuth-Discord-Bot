@@ -7,10 +7,38 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("upload")
         .setDescription("Upload a file")
+        .setDescriptionLocalizations({
+            "en-US": "Upload a file",
+            "fi": "Lataa tiedosto",
+            "fr": "Télécharger un fichier",
+            "de": "Lade eine Datei hoch",
+            "it": "Carica un file",
+            "nl": "Upload een bestand",
+            "ru": "Загрузить файл",
+            "pl": "Prześlij plik",
+            "tr": "Bir dosya yükle",
+            "cs": "Nahrát soubor",
+            "ja": "ファイルをアップロードする",
+            "ko": "파일 업로드",
+        })
         .addStringOption((option) => 
         option
             .setName("url")
             .setDescription("File URL what you want to upload")
+            .setDescriptionLocalizations({
+                "en-US": "File URL what you want to upload",
+                "fi": "Tiedoston URL, jonka haluat ladata",
+                "fr": "URL du fichier que vous souhaitez télécharger",
+                "de": "Datei-URL, die Sie hochladen möchten",
+                "it": "URL del file che desideri caricare",
+                "nl": "Bestands-URL die u wilt uploaden",
+                "ru": "URL-адрес файла, который вы хотите загрузить",
+                "pl": "Adres URL pliku, który chcesz przesłać",
+                "tr": "Yüklemek istediğiniz dosya URL'si",
+                "cs": "URL souboru, který chcete nahrát",
+                "ja": "アップロードしたいファイルのURL",
+                "ko": "업로드 할 파일 URL",
+            })
             .setRequired(true)
         ),
     async execute(interaction) {

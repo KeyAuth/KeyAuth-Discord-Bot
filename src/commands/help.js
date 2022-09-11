@@ -4,7 +4,21 @@ const Discord = require('discord.js');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("help")
-    .setDescription("Help command for bot"),
+    .setDescription("Help command for bot")
+    .setDescriptionLocalizations({
+      "en-US": "Help command for bot",
+      "fi": "Ohje-komento bottia varten",
+      "fr": "Commande d'aide pour le bot",
+      "de": "Hilfsbefehl für den Bot",
+      "it": "Comando di aiuto per il bot",
+      "nl": "Helpcommando voor bot",
+      "ru": "Команда справки для бота",
+      "pl": "Polecenie pomocy dla bota",
+      "tr": "Bot için yardım komutu",
+      "cs": "Příkaz nápovědy pro bota",
+      "ja": "ボットのヘルプコマンド",
+      "ko": "봇의 도움말 명령",
+    }),
   async execute(interaction) {
     const embed = new Discord.EmbedBuilder()
     .setTitle(`KeyAuth help menu`)

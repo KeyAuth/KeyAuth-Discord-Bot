@@ -7,10 +7,38 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("deluser")
         .setDescription("Delete user")
+        .setDescriptionLocalizations({
+            "en-US": "Delete user",
+            "fi": "Poista käyttäjä",
+            "fr": "Supprimer l'utilisateur",
+            "de": "Benutzer löschen",
+            "it": "Elimina utente",
+            "nl": "Verwijder gebruiker",
+            "ru": "Удалить пользователя",
+            "pl": "Usuń użytkownika",
+            "tr": "Kullanıcıyı sil",
+            "cs": "Smazat uživatele",
+            "ja": "ユーザーを削除する",
+            "ko": "사용자 삭제",
+        })
         .addStringOption((option) => 
         option
             .setName("username")
             .setDescription("Enter Username")
+            .setDescriptionLocalizations({
+                "en-US": "Enter Username",
+                "fi": "Anna käyttäjätunnus",
+                "fr": "Entrez le nom d'utilisateur",
+                "de": "Geben Sie den Benutzernamen ein",
+                "it": "Inserisci il nome utente",
+                "nl": "Voer gebruikersnaam in",
+                "ru": "Введите имя пользователя",
+                "pl": "Wprowadź nazwę użytkownika",
+                "tr": "Kullanıcı adını girin",
+                "cs": "Zadejte uživatelské jméno",
+                "ja": "ユーザー名を入力してください",
+                "ko": "사용자 이름을 입력하십시오",
+            })
             .setRequired(true)
         ),
     async execute(interaction) {

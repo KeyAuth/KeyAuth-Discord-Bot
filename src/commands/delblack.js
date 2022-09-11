@@ -7,16 +7,58 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("delblack")
         .setDescription("Delete blacklist")
+        .setDescriptionLocalizations({
+            "en-US": "Delete blacklist",
+            "fi": "Poista musta lista",
+            "fr": "Supprimer la liste noire",
+            "de": "Schwarze Liste löschen",
+            "it": "Elimina blacklist",
+            "nl": "Verwijder zwarte lijst",
+            "ru": "Удалить черный список",
+            "pl": "Usuń czarną listę",
+            "tr": "Kara listeyi sil",
+            "cs": "Odstranit černou listinu",
+            "ja": "ブラックリストを削除する",
+            "ko": "블랙리스트 삭제",
+        })
         .addStringOption((option) => 
         option
             .setName("ip")
             .setDescription("IP Address you want to remove from blacklist")
+            .setDescriptionLocalizations({
+                "en-US": "IP Address you want to remove from blacklist",
+                "fi": "IP-osoite, jonka haluat poistaa mustasta listasta",
+                "fr": "Adresse IP que vous souhaitez supprimer de la liste noire",
+                "de": "IP-Adresse, die Sie von der schwarzen Liste entfernen möchten",
+                "it": "Indirizzo IP che si desidera rimuovere dalla blacklist",
+                "nl": "IP-adres dat u wilt verwijderen van de zwarte lijst",
+                "ru": "IP-адрес, который вы хотите удалить из черного списка",
+                "pl": "Adres IP, który chcesz usunąć z czarnej listy",
+                "tr": "Kara listeden kaldırmak istediğiniz IP adresi",
+                "cs": "IP adresa, kterou chcete odstranit z černé listiny",
+                "ja": "ブラックリストから削除したいIPアドレス",
+                "ko": "블랙리스트에서 제거하려는 IP 주소",
+            })
             .setRequired(false)
         )
         .addStringOption((option) => 
         option
             .setName("hwid")
             .setDescription("Hardware-ID you want to remove from blacklist")
+            .setDescriptionLocalizations({
+                "en-US": "Hardware-ID you want to remove from blacklist",
+                "fi": "Laitteiston tunnus, jonka haluat poistaa mustasta listasta",
+                "fr": "ID matériel que vous souhaitez supprimer de la liste noire",
+                "de": "Hardware-ID, die Sie von der schwarzen Liste entfernen möchten",
+                "it": "ID hardware che si desidera rimuovere dalla blacklist",
+                "nl": "Hardware-ID die u wilt verwijderen van de zwarte lijst",
+                "ru": "Идентификатор аппаратного обеспечения, который вы хотите удалить из черного списка",
+                "pl": "ID sprzętu, który chcesz usunąć z czarnej listy",
+                "tr": "Kara listeden kaldırmak istediğiniz donanım kimliği",
+                "cs": "ID hardwaru, který chcete odstranit z černé listiny",
+                "ja": "ブラックリストから削除したいハードウェアID",
+                "ko": "블랙리스트에서 제거하려는 하드웨어 ID",
+            })
             .setRequired(false)
         ),
     async execute(interaction) {

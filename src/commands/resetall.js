@@ -6,7 +6,21 @@ const Discord = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("resetall")
-        .setDescription("Reset all user's hwid"),
+        .setDescription("Reset all user's hwid")
+        .setDescriptionLocalizations({
+            "en-US": "Reset all user's hwid",
+            "fi": "Nollaa kaikkien käyttäjien hwid",
+            "fr": "Réinitialiser l'identifiant matériel de tous les utilisateurs",
+            "de": "Setzen Sie die Hardware-ID aller Benutzer zurück",
+            "it": "Reimposta l'ID hardware di tutti gli utenti",
+            "nl": "Reset alle gebruikers hwid",
+            "ru": "Сбросить идентификатор аппаратного обеспечения всех пользователей",
+            "pl": "Zresetuj wszystkie identyfikatory sprzętu użytkowników",
+            "tr": "Tüm kullanıcının donanım kimliğini sıfırlayın",
+            "cs": "Obnovte identifikátor hardwaru všech uživatelů",
+            "ja": "すべてのユーザーのハードウェアIDをリセットします",
+            "ko": "모든 사용자의 하드웨어 ID를 재설정합니다",
+        }),
     async execute(interaction) {
 		let idfrom = null;
 		

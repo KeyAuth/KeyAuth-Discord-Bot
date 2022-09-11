@@ -3,10 +3,25 @@ const db = require('quick.db')
 const fetch = require('node-fetch')
 const Discord = require('discord.js');
 
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("delexpusers")
-        .setDescription("Delete users with no active subscriptions"),
+        .setDescription("Delete users with no active subscriptions")
+        .setDescriptionLocalizations({
+            "en-US": "Delete users with no active subscriptions",
+            "fi": "Poista käyttäjät, joilla ei ole aktiivisia tilauksia",
+            "fr": "Supprimer les utilisateurs sans abonnement actif",
+            "de": "Benutzer mit keinem aktiven Abonnement löschen",
+            "it": "Elimina gli utenti senza sottoscrizioni attive",
+            "nl": "Gebruikers met geen actieve abonnementen verwijderen",
+            "ru": "Удалить пользователей без активных подписок",
+            "pl": "Usuń użytkowników bez aktywnych subskrypcji",
+            "tr": "Aktif abonelik olmayan kullanıcıları sil",
+            "cs": "Odstranit uživatele bez aktivních předplatných",
+            "ja": "アクティブなサブスクリプションのないユーザーを削除する",
+            "ko": "활성 구독이없는 사용자 삭제",
+        }),
     async execute(interaction) {
 		let idfrom = null;
 		

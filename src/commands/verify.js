@@ -7,10 +7,38 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("verify")
         .setDescription("Verify license exists")
+        .setDescriptionLocalizations({
+            "en-US": "Verify license exists",
+            "fi": "Tarkista, että lisenssi on olemassa",
+            "fr": "Vérifiez que la licence existe",
+            "de": "Überprüfen Sie, ob die Lizenz vorhanden ist",
+            "it": "Verifica che la licenza esista",
+            "nl": "Controleer of de licentie bestaat",
+            "ru": "Проверьте, существует ли лицензия",
+            "pl": "Sprawdź, czy licencja istnieje",
+            "tr": "Lisansın var olup olmadığını doğrulayın",
+            "cs": "Ověřte, zda licenční klíč existuje",
+            "ja": "ライセンスが存在することを確認します",
+            "ko": "라이센스가 존재하는지 확인하십시오",
+        })
         .addStringOption((option) =>
             option
                 .setName("license")
                 .setDescription("License key you would like to check the existence of")
+                .setDescriptionLocalizations({
+                    "en-US": "License key you would like to check the existence of",
+                    "fi": "Lisenssikoodi, jonka olemassaolon haluat tarkistaa",
+                    "fr": "Clé de licence dont vous souhaitez vérifier l'existence",
+                    "de": "Lizenzschlüssel, dessen Existenz Sie überprüfen möchten",
+                    "it": "Chiave di licenza di cui desideri verificare l'esistenza",
+                    "nl": "Licentiesleutel waarvan u wilt controleren of deze bestaat",
+                    "ru": "Ключ лицензии, существование которого вы хотите проверить",
+                    "pl": "Klucz licencyjny, którego istnienie chcesz sprawdzić",
+                    "tr": "Varlığını kontrol etmek istediğiniz lisans anahtarınız",
+                    "cs": "Klíč licenčního klíče, jehož existenci chcete ověřit",
+                    "ja": "存在を確認したいライセンスキー",
+                    "ko": "존재 여부를 확인하려는 라이센스 키",
+                })
                 .setRequired(true)
         ),
     async execute(interaction) {

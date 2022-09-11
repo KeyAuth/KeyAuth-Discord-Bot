@@ -6,7 +6,21 @@ const Discord = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("stats")
-        .setDescription("Application Statistics"),
+        .setDescription("Application Statistics")
+        .setDescriptionLocalizations({
+            "en-US": "Application Statistics",
+            "fi": "Sovelluksen tilastot",
+            "fr": "Statistiques de l'application",
+            "de": "Anwendungsstatistiken",
+            "it": "Statistiche dell'applicazione",
+            "nl": "Applicatiestatistieken",
+            "ru": "Статистика приложения",
+            "pl": "Statystyki aplikacji",
+            "tr": "Uygulama İstatistikleri",
+            "cs": "Statistiky aplikace",
+            "ja": "アプリケーションの統計",
+            "ko": "응용 프로그램 통계",
+        }),
     async execute(interaction) {
 		let idfrom = null;
 		

@@ -7,10 +7,38 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("info")
         .setDescription("Info On key")
+        .setDescriptionLocalizations({
+            "en-US": "Info On key",
+            "fi": "Tietoja avaimesta",
+            "fr": "Info sur la clé",
+            "de": "Info zur Taste",
+            "it": "Info sulla chiave",
+            "nl": "Info over sleutel",
+            "ru": "Информация о ключе",
+            "pl": "Informacje o kluczu",
+            "tr": "Anahtar hakkında bilgi",
+            "cs": "Informace o klíči",
+            "ja": "キーに関する情報",
+            "ko": "키 정보",
+        })
         .addStringOption((option) => 
         option
             .setName("license")
             .setDescription("Specify key")
+            .setDescriptionLocalizations({
+                "en-US": "Specify key",
+                "fi": "Määritä avain",
+                "fr": "Spécifier la clé",
+                "de": "Schlüssel angeben",
+                "it": "Specifica la chiave",
+                "nl": "Geef sleutel op",
+                "ru": "Укажите ключ",
+                "pl": "Określ klucz",
+                "tr": "Anahtarı belirtin",
+                "cs": "Zadejte klíč",
+                "ja": "キーを指定する",
+                "ko": "키 지정",
+            })
             .setRequired(true)
         ),
     async execute(interaction) {

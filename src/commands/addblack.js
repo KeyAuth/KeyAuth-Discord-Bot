@@ -3,20 +3,63 @@ const db = require('quick.db')
 const fetch = require('node-fetch')
 const Discord = require('discord.js');
 
+
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("addblack")
         .setDescription("Add blacklist")
+        .setDescriptionLocalizations({
+            "en-US": "Add blacklist",
+            "fi": "Lisää musta lista",
+            "fr": "Ajouter une liste noire",
+            "de": "Schwarze Liste hinzufügen",
+            "it": "Aggiungi blacklist",
+            "nl": "Zwarte lijst toevoegen",
+            "ru": "Добавить черный список",
+            "pl": "Dodaj czarną listę",
+            "tr": "Kara listeye ekle",
+            "cs": "Přidat černou listinu",
+            "ja": "ブラックリストを追加する",
+            "ko": "블랙리스트 추가",
+        })
         .addStringOption((option) => 
         option
             .setName("ip")
             .setDescription("IP Address you want to blacklist")
+            .setDescriptionLocalizations({
+                "en-US": "IP Address you want to blacklist",
+                "fi": "IP-osoite, jonka haluat mustalle listalle",
+                "fr": "Adresse IP que vous souhaitez ajouter à la liste noire",
+                "de": "IP-Adresse, die Sie auf die schwarze Liste setzen möchten",
+                "it": "Indirizzo IP che si desidera aggiungere alla blacklist",
+                "nl": "IP-adres dat u op de zwarte lijst wilt zetten",
+                "ru": "IP-адрес, который вы хотите добавить в черный список",
+                "pl": "Adres IP, który chcesz dodać do czarnej listy",
+                "tr": "Kara listeye eklemek istediğiniz IP adresi",
+                "cs": "IP adresa, kterou chcete přidat do černé listiny",
+                "ja": "ブラックリストに追加したいIPアドレス",
+                "ko": "블랙리스트에 추가하려는 IP 주소"
+            })
             .setRequired(false)
         )
         .addStringOption((option) => 
         option
             .setName("hwid")
             .setDescription("Hardware-ID you want to blacklist")
+            .setDescriptionLocalizations({
+                "en-US": "Hardware-ID you want to blacklist",
+                "fi": "Laitteiston tunnus, jonka haluat mustalle listalle",
+                "fr": "ID matériel que vous souhaitez ajouter à la liste noire",
+                "de": "Hardware-ID, die Sie auf die schwarze Liste setzen möchten",
+                "it": "ID hardware che si desidera aggiungere alla blacklist",
+                "nl": "Hardware-ID die u op de zwarte lijst wilt zetten",
+                "ru": "Идентификатор аппаратного обеспечения, который вы хотите добавить в черный список",
+                "pl": "ID sprzętu, który chcesz dodać do czarnej listy",
+                "tr": "Kara listeye eklemek istediğiniz donanım kimliği",
+                "cs": "ID hardwaru, který chcete přidat do černé listiny",
+                "ja": "ブラックリストに追加したいハードウェアID",
+                "ko": "블랙리스트에 추가하려는 하드웨어 ID"
+            })
             .setRequired(false)
         ),
     async execute(interaction) {

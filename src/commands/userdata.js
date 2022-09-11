@@ -7,10 +7,38 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("userdata")
         .setDescription("Retrieve info from a user")
+        .setDescriptionLocalizations({
+            "en-US": "Retrieve info from a user",
+            "fi": "Hae tietoja käyttäjältä",
+            "fr": "Récupérer des informations sur un utilisateur",
+            "de": "Informationen von einem Benutzer abrufen",
+            "it": "Recupera informazioni da un utente",
+            "nl": "Informatie ophalen van een gebruiker",
+            "ru": "Получить информацию о пользователе",
+            "pl": "Pobierz informacje o użytkowniku",
+            "tr": "Bir kullanıcıdan bilgi al",
+            "cs": "Získejte informace o uživateli",
+            "ja": "ユーザーから情報を取得する",
+            "ko": "사용자에서 정보 검색",
+        })
         .addStringOption((option) =>
             option
                 .setName("user")
                 .setDescription("Specify user to lookup")
+                .setDescriptionLocalizations({
+                    "en-US": "Specify user to lookup",
+                    "fi": "Määritä käyttäjä, jota etsitään",
+                    "fr": "Spécifiez l'utilisateur à rechercher",
+                    "de": "Geben Sie den Benutzer an, nach dem gesucht werden soll",
+                    "it": "Specifica l'utente da cercare",
+                    "nl": "Geef de gebruiker op die u wilt opzoeken",
+                    "ru": "Укажите пользователя для поиска",
+                    "pl": "Określ użytkownika do wyszukania",
+                    "tr": "Aranacak kullanıcıyı belirtin",
+                    "cs": "Zadejte uživatele, kterého chcete vyhledat",
+                    "ja": "検索するユーザーを指定してください",
+                    "ko": "찾을 사용자 지정",
+                })
                 .setRequired(true)
         ),
     async execute(interaction) {
