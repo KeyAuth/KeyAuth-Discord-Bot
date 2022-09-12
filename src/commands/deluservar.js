@@ -7,16 +7,58 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("deluservar")
         .setDescription("Delete user variable")
+        .setDescriptionLocalizations({
+            "en-US": "Delete user variable",
+            "fi": "Poista käyttäjän muuttuja",
+            "fr": "Supprimer la variable utilisateur",
+            "de": "Benutzervariable löschen",
+            "it": "Elimina variabile utente",
+            "nl": "Gebruikersvariabele verwijderen",
+            "ru": "Удалить переменную пользователя",
+            "pl": "Usuń zmienną użytkownika",
+            "tr": "Kullanıcı değişkenini sil",
+            "cs": "Odstranit uživatelskou proměnnou",
+            "ja": "ユーザー変数を削除",
+            "ko": "사용자 변수 삭제",
+        })
         .addStringOption((option) =>
             option
                 .setName("user")
                 .setDescription("Username of user variable you wish to delete")
+                .setDescriptionLocalizations({
+                    "en-US": "Username of user variable you wish to delete",
+                    "fi": "Poistettavan käyttäjän muuttujan käyttäjätunnus",
+                    "fr": "Nom d'utilisateur de la variable utilisateur que vous souhaitez supprimer",
+                    "de": "Benutzername der Benutzervariable, die Sie löschen möchten",
+                    "it": "Nome utente della variabile utente che si desidera eliminare",
+                    "nl": "Gebruikersnaam van de gebruikersvariabele die u wilt verwijderen",
+                    "ru": "Имя пользователя переменной пользователя, которую вы хотите удалить",
+                    "pl": "Nazwa użytkownika zmiennej użytkownika, którą chcesz usunąć",
+                    "tr": "Silmek istediğiniz kullanıcı değişkeninin kullanıcı adı",
+                    "cs": "Uživatelské jméno uživatelské proměnné, kterou chcete odstranit",
+                    "ja": "削除したいユーザー変数のユーザー名",
+                    "ko": "삭제하려는 사용자 변수의 사용자 이름",
+                })
                 .setRequired(true)
         )
         .addStringOption((option) =>
             option
                 .setName("name")
                 .setDescription("Name of user variable you wish to delete")
+                .setDescriptionLocalizations({
+                    "en-US": "Name of user variable you wish to delete",
+                    "fi": "Poistettavan käyttäjän muuttujan nimi",
+                    "fr": "Nom de la variable utilisateur que vous souhaitez supprimer",
+                    "de": "Name der Benutzervariable, die Sie löschen möchten",
+                    "it": "Nome della variabile utente che si desidera eliminare",
+                    "nl": "Naam van de gebruikersvariabele die u wilt verwijderen",
+                    "ru": "Имя переменной пользователя, которую вы хотите удалить",
+                    "pl": "Nazwa zmiennej użytkownika, którą chcesz usunąć",
+                    "tr": "Silmek istediğiniz kullanıcı değişkeninin adı",
+                    "cs": "Název uživatelské proměnné, kterou chcete odstranit",
+                    "ja": "削除したいユーザー変数の名前",
+                    "ko": "삭제하려는 사용자 변수의 이름",
+                })
                 .setRequired(true)
         ),
     async execute(interaction) {

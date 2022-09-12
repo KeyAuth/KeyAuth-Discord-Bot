@@ -7,10 +7,38 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("userlicense")
         .setDescription("Get License from user")
+        .setDescriptionLocalizations({
+            "en-US": "Get License from user",
+            "fi": "Hae lisenssi käyttäjältä",
+            "fr": "Obtenir une licence de l'utilisateur",
+            "de": "Lizenz von Benutzer erhalten",
+            "it": "Ottieni licenza dall'utente",
+            "nl": "Licentie van gebruiker ophalen",
+            "ru": "Получить лицензию от пользователя",
+            "pl": "Uzyskaj licencję od użytkownika",
+            "tr": "Kullanıcıdan lisans al",
+            "cs": "Získejte licenci od uživatele",
+            "ja": "ユーザーからライセンスを取得する",
+            "ko": "사용자로부터 라이센스 가져 오기",
+        })
         .addStringOption((option) => 
             option
                 .setName("username")
                 .setDescription("Username where you want the license")
+                .setDescriptionLocalizations({
+                    "en-US": "Username where you want the license",
+                    "fi": "Käyttäjätunnus, johon haluat lisenssin",
+                    "fr": "Nom d'utilisateur où vous souhaitez la licence",
+                    "de": "Benutzername, an dem Sie die Lizenz möchten",
+                    "it": "Nome utente dove vuoi la licenza",
+                    "nl": "Gebruikersnaam waar u de licentie wilt",
+                    "ru": "Имя пользователя, где вы хотите лицензию",
+                    "pl": "Nazwa użytkownika, w której chcesz licencję",
+                    "tr": "Lisans istediğiniz kullanıcı adı",
+                    "cs": "Uživatelské jméno, kde chcete licenci",
+                    "ja": "ライセンスを取得したいユーザー名",
+                    "ko": "라이센스를 원하는 사용자 이름",
+                })
                 .setRequired(true)
         ),
     async execute(interaction) {

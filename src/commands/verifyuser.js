@@ -7,10 +7,38 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("verifyuser")
         .setDescription("Verify user exists")
+        .setDescriptionLocalizations({
+            "en-US": "Verify user exists",
+            "fi": "Tarkista, että käyttäjä on olemassa",
+            "fr": "Vérifier que l'utilisateur existe",
+            "de": "Überprüfen, ob Benutzer existiert",
+            "it": "Verifica che l'utente esista",
+            "nl": "Controleer of gebruiker bestaat",
+            "ru": "Проверить, существует ли пользователь",
+            "pl": "Sprawdź, czy użytkownik istnieje",
+            "tr": "Kullanıcının olup olmadığını doğrulayın",
+            "cs": "Ověřte, zda uživatel existuje",
+            "ja": "ユーザーが存在することを確認します",
+            "ko": "사용자가 존재하는지 확인하십시오",
+        })
         .addStringOption((option) =>
             option
                 .setName("user")
                 .setDescription("Username of user you would like to check the existence of")
+                .setDescriptionLocalizations({
+                    "en-US": "Username of user you would like to check the existence of",
+                    "fi": "Käyttäjän käyttäjätunnus, jonka olemassaolon haluat tarkistaa",
+                    "fr": "Nom d'utilisateur de l'utilisateur dont vous souhaitez vérifier l'existence",
+                    "de": "Benutzername des Benutzers, dessen Existenz Sie überprüfen möchten",
+                    "it": "Nome utente dell'utente di cui desideri verificare l'esistenza",
+                    "nl": "Gebruikersnaam van de gebruiker waarvan u de bestaande wilt controleren",
+                    "ru": "Имя пользователя пользователя, существование которого вы хотите проверить",
+                    "pl": "Nazwa użytkownika użytkownika, którego istnienie chcesz sprawdzić",
+                    "tr": "Varlığını kontrol etmek istediğiniz kullanıcının kullanıcı adı",
+                    "cs": "Uživatelské jméno uživatele, jehož existenci chcete ověřit",
+                    "ja": "存在を確認したいユーザーのユーザー名",
+                    "ko": "존재 여부를 확인하려는 사용자의 사용자 이름",
+                })
                 .setRequired(true)
         ),
     async execute(interaction) {

@@ -7,16 +7,58 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("addhwid")
         .setDescription("Add HWID")
+        .setDescriptionLocalizations({
+            "en-US": "Add HWID",
+            "fi": "Lisää HWID",
+            "fr": "Ajouter HWID",
+            "de": "HWID hinzufügen",
+            "it": "Aggiungi HWID",
+            "nl": "Voeg HWID toe",
+            "ru": "Добавить HWID",
+            "pl": "Dodaj HWID",
+            "tr": "HWID ekle",
+            "cs": "Přidat HWID",
+            "ja": "HWIDを追加",
+            "ko": "HWID 추가",
+        })
         .addStringOption((option) => 
         option
             .setName("username")
             .setDescription("Enter Username")
+            .setDescriptionLocalizations({
+                "en-US": "Enter Username",
+                "fi": "Anna käyttäjätunnus",
+                "fr": "Entrez le nom d'utilisateur",
+                "de": "Geben Sie den Benutzernamen ein",
+                "it": "Inserisci il nome utente",
+                "nl": "Voer gebruikersnaam in",
+                "ru": "Введите имя пользователя",
+                "pl": "Wprowadź nazwę użytkownika",
+                "tr": "Kullanıcı adını girin",
+                "cs": "Zadejte uživatelské jméno",
+                "ja": "ユーザー名を入力してください",
+                "ko": "사용자 이름을 입력하십시오",
+            })
             .setRequired(true)
         )
         .addStringOption((option) => 
         option
             .setName("hwid")
             .setDescription("Enter Additional HWID")
+            .setDescriptionLocalizations({
+                "en-US": "Enter Additional HWID",
+                "fi": "Anna lisä HWID",
+                "fr": "Entrez un HWID supplémentaire",
+                "de": "Geben Sie zusätzliche HWID ein",
+                "it": "Inserisci HWID aggiuntivo",
+                "nl": "Voer extra HWID in",
+                "ru": "Введите дополнительный HWID",
+                "pl": "Wprowadź dodatkowy HWID",
+                "tr": "Ek HWID girin",
+                "cs": "Zadejte další HWID",
+                "ja": "追加のHWIDを入力してください",
+                "ko": "추가 HWID 입력",
+            })
             .setRequired(true)
         ),
     async execute(interaction) {

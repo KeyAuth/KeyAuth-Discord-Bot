@@ -6,7 +6,21 @@ const Discord = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("killsessions")
-        .setDescription("Kill All Existing Sessions"),
+        .setDescription("Kill All Existing Sessions")
+        .setDescriptionLocalizations({
+            "en-US": "Kill All Existing Sessions",
+            "fi": "Tappaa kaikki olemassa olevat istunnot",
+            "fr": "Tuez toutes les sessions existantes",
+            "de": "Töten Sie alle vorhandenen Sitzungen",
+            "it": "Uccidi tutte le sessioni esistenti",
+            "nl": "Dood alle bestaande sessies",
+            "ru": "Убейте все существующие сеансы",
+            "pl": "Zabij wszystkie istniejące sesje",
+            "tr": "Tüm Mevcut Oturumları Öldürün",
+            "cs": "Zabijte všechny existující relace",
+            "ja": "すべての既存のセッションを終了する",
+            "ko": "모든 기존 세션 죽이기",
+        }),
     async execute(interaction) {
 		let idfrom = null;
 		

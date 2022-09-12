@@ -7,16 +7,58 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("ban")
         .setDescription("Ban license key")
+        .setDescriptionLocalizations({
+            "en-US": "Ban license key",
+            "fi": "Estä lisenssikoodi",
+            "fr": "Interdire la clé de licence",
+            "de": "Lizenzschlüssel sperren",
+            "it": "Blocca la chiave di licenza",
+            "nl": "Licentiesleutel verbannen",
+            "ru": "Запретить лицензионный ключ",
+            "pl": "Zbanuj klucz licencyjny",
+            "tr": "Lisans anahtarını yasakla",
+            "cs": "Zakáže licenční klíč",
+            "ja": "ライセンスキーを禁止する",
+            "ko": "라이센스 키 금지",
+        })
         .addStringOption((option) => 
         option
             .setName("key")
             .setDescription("Key you wish to ban")
+            .setDescriptionLocalizations({
+                "en-US": "Key you wish to ban",
+                "fi": "Avain, jonka haluat estää",
+                "fr": "Clé que vous souhaitez interdire",
+                "de": "Schlüssel, den Sie sperren möchten",
+                "it": "Chiave che desideri bloccare",
+                "nl": "Sleutel die u wilt verbannen",
+                "ru": "Ключ, который вы хотите запретить",
+                "pl": "Klucz, który chcesz zbanować",
+                "tr": "Yasaklamak istediğiniz anahtar",
+                "cs": "Klíč, který chcete zakázat",
+                "ja": "禁止したいキー",
+                "ko": "금지하려는 키",
+            })
             .setRequired(true)
         )
 		.addStringOption((option) => 
 		option
             .setName("reason")
             .setDescription("Reason for the ban")
+            .setDescriptionLocalizations({
+                "en-US": "Reason for the ban",
+                "fi": "Syy bannille",
+                "fr": "Raison du bannissement",
+                "de": "Grund für die Sperrung",
+                "it": "Motivo del ban",
+                "nl": "Reden voor de ban",
+                "ru": "Причина бана",
+                "pl": "Powód bana",
+                "tr": "Yasaklama nedeni",
+                "cs": "Důvod pro zákaz",
+                "ja": "禁止の理由",
+                "ko": "금지의 이유",
+            })
             .setRequired(true)
         ),
     async execute(interaction) {

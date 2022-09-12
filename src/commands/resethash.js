@@ -6,7 +6,21 @@ const Discord = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("resethash")
-        .setDescription("Reset app hash"),
+        .setDescription("Reset app hash")
+        .setDescriptionLocalizations({
+            "en-US": "Reset app hash",
+            "fi": "Nollaa sovelluksen tunniste",
+            "fr": "Réinitialiser l'empreinte de l'application",
+            "de": "App-Hash zurücksetzen",
+            "it": "Reimposta l'hash dell'app",
+            "nl": "App-hash opnieuw instellen",
+            "ru": "Сбросить хэш приложения",
+            "pl": "Zresetuj hash aplikacji",
+            "tr": "Uygulama karmaşasını sıfırla",
+            "cs": "Obnovit hash aplikace",
+            "ja": "アプリのハッシュをリセットする",
+            "ko": "앱 해시 재설정",
+        }),
     async execute(interaction) {
 		let idfrom = null;
 		

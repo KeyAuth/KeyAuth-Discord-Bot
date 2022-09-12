@@ -7,10 +7,38 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("del")
         .setDescription("Delete a key")
+        .setDescriptionLocalizations({
+            "en-US": "Delete a key",
+            "fi": "Poista avain",
+            "fr": "Supprimer une clé",
+            "de": "Schlüssel löschen",
+            "it": "Elimina una chiave",
+            "nl": "Sleutel verwijderen",
+            "ru": "Удалить ключ",
+            "pl": "Usuń klucz",
+            "tr": "Bir anahtarı sil",
+            "cs": "Odstranit klíč",
+            "ja": "キーを削除する",
+            "ko": "키 삭제",
+        })
         .addStringOption((option) => 
         option
             .setName("license")
             .setDescription("Specify key you would like deleted")
+            .setDescriptionLocalizations({
+                "en-US": "Specify key you would like deleted",
+                "fi": "Määritä poistettava avain",
+                "fr": "Spécifiez la clé que vous souhaitez supprimer",
+                "de": "Geben Sie den Schlüssel an, den Sie löschen möchten",
+                "it": "Specifica la chiave che desideri eliminare",
+                "nl": "Geef de sleutel op die u wilt verwijderen",
+                "ru": "Укажите ключ, который вы хотите удалить",
+                "pl": "Określ klucz, który chcesz usunąć",
+                "tr": "Silmek istediğiniz anahtarı belirtin",
+                "cs": "Zadejte klíč, který chcete odstranit",
+                "ja": "削除したいキーを指定してください",
+                "ko": "삭제할 키를 지정하십시오",
+            })
             .setRequired(true)
         ),
     async execute(interaction) {

@@ -6,7 +6,21 @@ const Discord = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("delused")
-        .setDescription("Delete Used Licenses"),
+        .setDescription("Delete Used Licenses")
+		.setDescriptionLocalizations({
+			"en-US": "Delete Used Licenses",
+			"fi": "Poista käytetyt lisenssit",
+			"fr": "Supprimer les licences utilisées",
+			"de": "Verwendete Lizenzen löschen",
+			"it": "Elimina licenze utilizzate",
+			"nl": "Verwijder gebruikte licenties",
+			"ru": "Удалить использованные лицензии",
+			"pl": "Usuń używane licencje",
+			"tr": "Kullanılan Lisansları Sil",
+			"cs": "Odstranit použité licence",
+			"ja": "使用済みのライセンスを削除する",
+			"ko": "사용된 라이센스 삭제",
+		}),
     async execute(interaction) {
 		let idfrom = null;
 		

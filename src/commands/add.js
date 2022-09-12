@@ -7,22 +7,78 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName("add")
         .setDescription("Add key. You must specify the optional parameters the first time. After that they're saved.")
+		.setDescriptionLocalizations({
+			"en-US": "Add key. You must specify the optional parameters the first time. After that they're saved.",
+			"fi": "Lisää avain. Sinun on määritettävä valinnaiset parametrit ensimmäisen kerran. Sen jälkeen ne tallennetaan.",
+			"fr": "Ajouter une clé. Vous devez spécifier les paramètres facultatifs la première fois. Après cela, ils sont enregistrés.",
+			"de": "Schlüssel hinzufügen. Sie müssen die optionalen Parameter beim ersten Mal angeben. Danach werden sie gespeichert.",
+			"it": "Aggiungi chiave. Devi specificare i parametri facoltativi la prima volta. Dopo di che vengono salvati.",
+			"nl": "Sleutel toevoegen. U moet de optionele parameters opgeven voor de eerste keer. Daarna worden ze opgeslagen.",
+			"ru": "Добавить ключ. Вы должны указать необязательные параметры в первый раз. После этого они сохраняются.",
+			"pl": "Dodaj klucz. Musisz określić opcjonalne parametry po raz pierwszy. Po tym są zapisywane.",
+			"tr": "Anahtar ekleyin. İlk kez isteğe bağlı parametreleri belirtmeniz gerekir. Sonra kaydedilirler.",
+			"cs": "Přidejte klíč. Musíte zadat volitelné parametry poprvé. Poté jsou uloženy.",
+			"ja": "キーを追加します。最初にオプションのパラメータを指定する必要があります。その後、保存されます。",
+			"ko": "키를 추가하십시오. 최초에 선택적 매개 변수를 지정해야합니다. 그 후 저장됩니다."
+		})
         .addStringOption((option) => 
         option
             .setName("expiry")
             .setDescription("How many days?")
+			.setDescriptionLocalizations({
+				"en-US": "How many days?",
+				"fi": "Kuinka monta päivää?",
+				"fr": "Combien de jours?",
+				"de": "Wie viele Tage?",
+				"it": "Quanti giorni?",
+				"nl": "Hoeveel dagen?",
+				"ru": "Сколько дней?",
+				"pl": "Ile dni?",
+				"tr": "Kaç gün?",
+				"cs": "Kolik dní?",
+				"ja": "何日？",
+				"ko": "몇 일?"
+			})
             .setRequired(false)
         )
         .addStringOption((option) => 
         option
             .setName("level")
             .setDescription("What level?")
+			.setDescriptionLocalizations({
+				"en-US": "What level?",
+				"fi": "Mikä taso?",
+				"fr": "Quel niveau?",
+				"de": "Welche Ebene?",
+				"it": "Qual è il livello?",
+				"nl": "Welk niveau?",
+				"ru": "Какой уровень?",
+				"pl": "Jaki poziom?",
+				"tr": "Ne seviye?",
+				"cs": "Jaká úroveň?",
+				"ja": "どのレベル？",
+				"ko": "어떤 레벨?"
+			})
             .setRequired(false)
         )
         .addStringOption((option) => 
         option
             .setName("amount")
             .setDescription("What amount?")
+			.setDescriptionLocalizations({
+				"en-US": "What amount?",
+				"fi": "Mikä määrä?",
+				"fr": "Quel montant?",
+				"de": "Wie viel?",
+				"it": "Quanto?",
+				"nl": "Hoeveel?",
+				"ru": "Какая сумма?",
+				"pl": "Jaka kwota?",
+				"tr": "Ne kadar?",
+				"cs": "Jaká částka?",
+				"ja": "何量？",
+				"ko": "얼마?"
+			})
             .setRequired(false)
         ),
     async execute(interaction) {
