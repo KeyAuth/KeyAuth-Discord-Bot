@@ -48,7 +48,7 @@ module.exports = {
             .setDescriptionLocalizations({
                 "en-US": "Chat channel delay (how often user can send messages in seconds)",
                 "fi": "Keskustelukanavan viive (kuinka usein käyttäjä voi lähettää viestejä sekunneissa)",
-                "fr": "Délai du canal de discussion (fréquence à laquelle l'utilisateur peut envoyer des messages en secondes)",
+                "fr": "Délai du canal de chat (fréquence des messages en secondes)",
                 "de": "Chatkanalverzögerung (wie oft der Benutzer Nachrichten in Sekunden senden kann)",
                 "it": "Ritardo del canale di chat (con quale frequenza l'utente può inviare messaggi in secondi)",
                 "nl": "Chatkanaalvertraging (hoe vaak gebruiker berichten kan verzenden in seconden)",

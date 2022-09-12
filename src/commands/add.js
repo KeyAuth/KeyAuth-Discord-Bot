@@ -8,12 +8,12 @@ module.exports = {
         .setName("add")
         .setDescription("Add key. You must specify the optional parameters the first time. After that they're saved.")
 		.setDescriptionLocalizations({
-			"en-US": "Add key. You must specify the optional parameters the first time. After that they're saved.",
-			"fi": "Lisää avain. Sinun on määritettävä valinnaiset parametrit ensimmäisen kerran. Sen jälkeen ne tallennetaan.",
-			"fr": "Ajouter une clé. Vous devez spécifier les paramètres facultatifs la première fois. Après cela, ils sont enregistrés.",
-			"de": "Schlüssel hinzufügen. Sie müssen die optionalen Parameter beim ersten Mal angeben. Danach werden sie gespeichert.",
-			"it": "Aggiungi chiave. Devi specificare i parametri facoltativi la prima volta. Dopo di che vengono salvati.",
-			"nl": "Sleutel toevoegen. U moet de optionele parameters opgeven voor de eerste keer. Daarna worden ze opgeslagen.",
+			"en-US": "Add key. You must specify the optional parameters the first time. After they're saved.",
+			"fi": "Lisää avain. Sinun on määritettävä valinnaiset parametrit ensimmäistä kertaa.",
+			"fr": "Ajouter une clé. Vous devez spécifier les paramètres facultatifs la première fois.",
+			"de": "Schlüssel hinzufügen. Sie müssen die optionalen Parameter beim ersten Mal angeben.",
+			"it": "Aggiungi chiave. È necessario specificare i parametri facoltativi la prima volta.",
+			"nl": "Sleutel toevoegen. U moet de eerste keer de optionele parameters opgeven.",
 			"ru": "Добавить ключ. Вы должны указать необязательные параметры в первый раз. После этого они сохраняются.",
 			"pl": "Dodaj klucz. Musisz określić opcjonalne parametry po raz pierwszy. Po tym są zapisywane.",
 			"tr": "Anahtar ekleyin. İlk kez isteğe bağlı parametreleri belirtmeniz gerekir. Sonra kaydedilirler.",

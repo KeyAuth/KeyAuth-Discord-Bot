@@ -87,13 +87,13 @@ module.exports = {
             .setDescription("Password for user (optional) if not set, will be set later on login")
             .setDescriptionLocalizations({
                 "en-US": "Password for user (optional) if not set, will be set later on login",
-                "fi": "Salasana käyttäjälle (valinnainen), jos ei ole asetettu, asetetaan myöhemmin kirjautumisen yhteydessä",
-                "fr": "Mot de passe pour l'utilisateur (facultatif) s'il n'est pas défini, il sera défini ultérieurement lors de la connexion",
+                "fi": "Salasana käyttäjälle. Jos ei ole asetettu, asetetaan myöhemmin sisäänkirjautumisen yhteydessä",
+                "fr": "Mot de passe pour l'utilisateur. S'il n'est pas défini, il est défini plus tard lors de la connexion",
                 "de": "Passwort für Benutzer (optional) Wenn nicht festgelegt, wird es später beim Anmelden festgelegt",
                 "it": "Password per l'utente (opzionale) se non impostata, verrà impostata successivamente durante il login",
                 "nl": "Wachtwoord voor gebruiker (optioneel) als niet ingesteld, wordt later ingesteld bij aanmelden",
-                "ru": "Пароль для пользователя (необязательно), если не установлен, будет установлен позже при входе в систему",
-                "pl": "Hasło dla użytkownika (opcjonalne), jeśli nie jest ustawione, zostanie ustawione później podczas logowania",
+                "ru": "Пароль для пользователя. Если не установлено, оно устанавливается позже при входе в систему",
+                "pl": "Hasło dla użytkownika. Jeśli nie jest ustawiony, zostanie ustawiony później podczas logowania",
                 "tr": "Kullanıcı için şifre (isteğe bağlı) ayarlanmamışsa, giriş yaptıktan sonra ayarlanır",
                 "cs": "Heslo pro uživatele (volitelné), pokud není nastaveno, bude nastaveno později při přihlášení",
                 "ja": "ユーザーのパスワード（オプション）設定されていない場合は、ログイン後に設定されます",

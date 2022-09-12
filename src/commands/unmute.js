@@ -6,20 +6,20 @@ const Discord = require('discord.js');
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("unmute")
-        .setDescription("Unmute user so they can send messages before their mute time is up")
+        .setDescription("Unmute user from chat channel")
         .setDescriptionLocalizations({
-            "en-US": "Unmute user so they can send messages before their mute time is up",
-            "fi": "Poista käyttäjän mykistys, jotta he voivat lähettää viestejä ennen kuin heidän mykistysaikansa on ohi",
-            "fr": "Démutez l'utilisateur afin qu'il puisse envoyer des messages avant que leur temps de sourdine ne soit écoulé",
-            "de": "Deaktivieren Sie den Benutzer, damit er Nachrichten senden kann, bevor die Zeit für die Stummschaltung abgelaufen ist",
-            "it": "Disattiva l'utente in modo che possa inviare messaggi prima che il tempo di muting scada",
-            "nl": "Deactiveer de gebruiker zodat ze berichten kunnen verzenden voordat hun mute-tijd is verstreken",
-            "ru": "Отключите пользователя, чтобы он мог отправлять сообщения до истечения времени его отключения",
-            "pl": "Wyłącz użytkownika, aby mógł wysyłać wiadomości przed upływem czasu wyciszenia",
-            "tr": "Kullanıcıyı devre dışı bırakın, böylece sessizlik süresi dolmadan mesaj gönderebilir",
-            "cs": "Vypněte uživatele, aby mohl posílat zprávy, než vyprší časový limit pro ztlumení",
-            "ja": "ミュートされたユーザーを無効にして、ミュート時間が終了する前にメッセージを送信できるようにします",
-            "ko": "사용자를 뮤트 해제하여 뮤트 시간이 지나기 전에 메시지를 보낼 수 있습니다",
+            "en-US": "Unmute user from chat channel",
+            "fi": "Poista käyttäjän mykistys chat-kanavalta",
+            "fr": "Réactiver l'utilisateur du canal de chat",
+            "de": "Stummschaltung des Benutzers im Chat-Kanal aufheben",
+            "it": "Attiva l'audio dell'utente dal canale di chat",
+            "nl": "Dempen van gebruiker van chatkanaal opheffen",
+            "ru": "Включить пользователя из канала чата",
+            "pl": "Wyłącz wyciszenie użytkownika z kanału czatu",
+            "tr": "Kullanıcının sohbet kanalından sesini aç",
+            "cs": "Přestat ignorovat uživatele z chatovacího kanálu",
+            "ja": "チャット チャネルからユーザーのミュートを解除",
+            "ko": "채팅 채널에서 사용자 음소거 해제",
         })
         .addStringOption((option) => 
         option
