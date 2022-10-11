@@ -1,5 +1,5 @@
 # KeyAuth-Discord-Bot-Source
-Source Code of the KeyAuth.cc Discord Bot
+Source Code of Discord bot for https://keyauth.cc
 
 ###### Our Discord Bot is hosted on:
 https://www.oracle.com/cloud/free/ free forever, watch video for tutorial https://www.youtube.com/watch?v=90JbCrB3m3I
