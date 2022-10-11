@@ -36,4 +36,4 @@ Enjoy
 
 **What is KeyAuth?**
 
-KeyAuth is an Open source authentication system with cloud hosting plans as well. Client SDKs available for C++, C#, Python, Rust, PHP, JS, Perl, Ruby and VB.NET. KeyAuth several unique features such as memory streaming, webhook function where you can send requests to API without leaking the API, discord webhook notifications, ban the user securely through the application at your discretion. Feel free to create Topic on [KeyAuth Forums](https://community.keyauth.win) if you have questions or suggestions.
+KeyAuth is an Open source authentication system with cloud hosting plans as well. Client SDKs available for C++, C#, Python, Rust, PHP, JS, Perl, Ruby and VB.NET. KeyAuth several unique features such as memory streaming, webhook function where you can send requests to API without leaking the API, discord webhook notifications, ban the user securely through the application at your discretion. Join https://discord.gg/keyauth to view our Discord server
