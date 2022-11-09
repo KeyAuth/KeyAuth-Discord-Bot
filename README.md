@@ -1,6 +1,12 @@
 # KeyAuth-Discord-Bot-Source
 Source Code of Discord bot for https://keyauth.cc
 
+###### **Bugs**
+
+If there's a problem with **running** the bot after following the instructions, please join the Discord server https://discord.gg/keyauth and submit the issue in the `#bugs` channel
+
+Do **not** submit a bug report if you're having issues installing NPM packages. That has nothing to do with KeyAuth and you'll need to Google/YouTube your instillation error(s)
+
 ###### Our Discord Bot is hosted on:
 https://www.oracle.com/cloud/free/ free forever, watch video for tutorial https://www.youtube.com/watch?v=90JbCrB3m3I
 
@@ -36,4 +42,4 @@ Enjoy
 
 **What is KeyAuth?**
 
-KeyAuth is an Open source authentication system with cloud hosting plans as well. Client SDKs available for C++, C#, Python, Rust, PHP, JS, Perl, Ruby and VB.NET. KeyAuth several unique features such as memory streaming, webhook function where you can send requests to API without leaking the API, discord webhook notifications, ban the user securely through the application at your discretion. Join https://discord.gg/keyauth to view our Discord server
+KeyAuth is an Open source authentication system with cloud hosting plans as well. Client SDKs available for [C#](https://github.com/KeyAuth/KeyAuth-CSHARP-Example), [C++](https://github.com/KeyAuth/KeyAuth-CPP-Example), [Python](https://github.com/KeyAuth/KeyAuth-Python-Example), [Java](https://github.com/SprayDown/KeyAuth-JAVA-api), [JavaScript](https://github.com/mazkdevf/KeyAuth-JS-Example), [VB.NET](https://github.com/KeyAuth/KeyAuth-VB-Example), [PHP](https://github.com/KeyAuth/KeyAuth-PHP-Example), [Rust](https://github.com/KeyAuth/KeyAuth-Rust-Example), [Go](https://github.com/mazkdevf/KeyAuth-Go-Example), [Lua](https://github.com/mazkdevf/KeyAuth-Lua-Examples), [Ruby](https://github.com/mazkdevf/KeyAuth-Ruby-Example), and [Perl](https://github.com/mazkdevf/KeyAuth-Perl-Example). KeyAuth has several unique features such as memory streaming, webhook function where you can send requests to API without leaking the API, discord webhook notifications, ban the user securely through the application at your discretion. Feel free to join https://discord.gg/keyauth if you have questions or suggestions.
