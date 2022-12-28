@@ -107,7 +107,7 @@ module.exports = {
 			.then(text => {
 				if(!text.includes("message"))
 				{
-					interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle('Key(s) Successfully Added!').addFields([{name: 'Key(s) Added:', value: `${text}`}]).setColor(Colors.Green).setTimestamp()], ephemeral: true})
+					interaction.followUp({ content: `${text}`, ephemeral: true });
 					db.fetch(`licenseAdd_${idfrom}`)
 					db.set(`licenseAdd_${idfrom}`, `{ "days": ${days}, "level": ${level}, "amount": ${amount}}`)
 				}
@@ -129,7 +129,7 @@ module.exports = {
 			.then(text => {
 				if(!text.includes("message"))
 				{
-					interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle('Key(s) Successfully Added!').addFields([{name: 'Key(s) Added:', value: `${text}`}]).setColor(Colors.Green).setTimestamp()], ephemeral: true})
+					interaction.followUp({ content: `${text}`, ephemeral: true });
 				}
 				else
 				{
