@@ -4,7 +4,7 @@ const fetch = require('node-fetch')
 const { REST } = require("@discordjs/rest");
 const { Client, GatewayIntentBits, ActivityType, Collection, EmbedBuilder, Routes, Partials, Colors } = require("discord.js");
 const { token, DevelopmentServerId, type } = require("./config.json");
-
+const { no_perms, error_embed } = require("./responses.json");
 const Discord = require('discord.js');
 
 const client = new Client({
@@ -69,15 +69,13 @@ client.once('ready', async() => {
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.type === 2) return;
-
     const command = client.commands.get(interaction.commandName);
-
     if (!command) return;
 
     await interaction.deferReply({ ephemeral: true });
 	
 	if(interaction.member != null)
-	if(!interaction.member.roles.cache.find(x => x.name == "perms")) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`You need a role with the name \`perms\` to execute commands. Please ask an administrator to create a role with this name if not already done and assign it to you.`).setColor(Colors.Red).setTimestamp()], ephemeral: true})
+	if(!interaction.member.roles.cache.find(x => x.name == "perms")) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(no_perms.response[interaction.locale] || no_perms.response['default']).setColor(Colors.Red).setTimestamp()], ephemeral: true})
 
     const ErrorEmbed = new EmbedBuilder()
     .setAuthor({ name: "Interaction Failed" })
