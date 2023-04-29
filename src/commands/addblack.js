@@ -64,23 +64,27 @@ module.exports = {
         ),
     async execute(interaction) {
 		let idfrom = null;
+		let ephemeral = true;
 		
-		if(interaction.guild == null)
+		if(interaction.guild == null) {
 			idfrom = interaction.user.id;
-		else
+			ephemeral = false;
+		}
+		else {
 			idfrom = interaction.guild.id;
+		}
 		
         let sellerkey = await db.get(`token_${idfrom}`)
-        if(sellerkey === null) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: true})
+        if(sellerkey === null) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral})
 
         let ip = interaction.options.getString("ip")
         let hwid = interaction.options.getString("hwid")
 		
 		if(!ip && !hwid) {
-			return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`You need to either define hwid or ip paramater. Please try again defining one of these paramaters..`).setColor(Colors.Red).setTimestamp()], ephemeral: true})
+			return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`You need to either define hwid or ip paramater. Please try again defining one of these paramaters..`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral})
 		}
 		if(ip && hwid) {
-			return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`Please only define one paramater per command..`).setColor(Colors.Red).setTimestamp()], ephemeral: true})
+			return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`Please only define one paramater per command..`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral})
 		}
 		
 		let url = null;
@@ -91,9 +95,9 @@ module.exports = {
         .then(res => res.json())
         .then(json => {
 			if (json.success) {
-				interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).setColor(Colors.Green).setTimestamp()], ephemeral: true})
+				interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral})
 			} else {
-                interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`}]).setColor(Colors.Red).setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: true})
+                interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`}]).setColor(Colors.Red).setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: ephemeral})
             }
         })
     },

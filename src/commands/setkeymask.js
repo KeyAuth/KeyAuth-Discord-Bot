@@ -51,15 +51,19 @@ module.exports = {
         license_mask = licensestring; // ELSE IT WILL PUT USER INPUT AS MASK
 
 	let idfrom = null;
+	let ephemeral = true;
 		
-	if(interaction.guild == null)
+	if(interaction.guild == null) {
 		idfrom = interaction.user.id;
-	else
+		ephemeral = false;
+	}
+	else {
 		idfrom = interaction.guild.id;
+	}
 		
     db.fetch(`licensemask_${idfrom}`)
     db.set(`licensemask_${idfrom}`, license_mask)
-    interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle('License Mask Successfully Set!').setColor(Colors.Green).setTimestamp()], ephemeral: true})
+    interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle('License Mask Successfully Set!').setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral})
 
     },
 };

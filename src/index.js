@@ -4,7 +4,7 @@ const fetch = require('node-fetch')
 const { REST } = require("@discordjs/rest");
 const { Client, GatewayIntentBits, ActivityType, Collection, EmbedBuilder, Routes, Partials, Colors } = require("discord.js");
 const { token, DevelopmentServerId, type } = require("./config.json");
-const { no_perms, error_embed } = require("./responses.json");
+
 const Discord = require('discord.js');
 
 const client = new Client({
@@ -69,13 +69,26 @@ client.once('ready', async() => {
 
 client.on('interactionCreate', async interaction => {
     if (!interaction.type === 2) return;
-    const command = client.commands.get(interaction.commandName);
-    if (!command) return;
 
-    await interaction.deferReply({ ephemeral: true });
+    const command = client.commands.get(interaction.commandName);
+
+    if (!command) return;
+	
+	let idfrom = null;
+	let ephemeral = true;
+	
+	if(interaction.guild == null) {
+		idfrom = interaction.user.id;
+		ephemeral = false;
+	}
+	else {
+		idfrom = interaction.guild.id;
+	}
+	
+    await interaction.deferReply({ ephemeral: ephemeral });
 	
 	if(interaction.member != null)
-	if(!interaction.member.roles.cache.find(x => x.name == "perms")) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(no_perms.response[interaction.locale] || no_perms.response['default']).setColor(Colors.Red).setTimestamp()], ephemeral: true})
+	if(!interaction.member.roles.cache.find(x => x.name == "perms")) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`You need a role with the name \`perms\` to execute commands. Please ask an administrator to create a role with this name if not already done and assign it to you.`).setColor(Colors.Red).setTimestamp()], ephemeral: true})
 
     const ErrorEmbed = new EmbedBuilder()
     .setAuthor({ name: "Interaction Failed" })
@@ -87,13 +100,6 @@ client.on('interactionCreate', async interaction => {
 		activities: [{ name: `keyauth.cc`, type: ActivityType.Competing }],
 		status: 'online',
 	});
-
-	let idfrom = null;
-	
-	if(interaction.guild == null)
-		idfrom = interaction.user.id;
-	else
-		idfrom = interaction.guild.id;
 	
 	let content = `**${interaction.user.username}#${interaction.user.discriminator} (ID: ${interaction.user.id})** executed the command \`/${interaction.commandName}\`\n`;
 	

@@ -43,14 +43,18 @@ module.exports = {
         ),
     async execute(interaction) {
 		let idfrom = null;
+		let ephemeral = true;
 		
-		if(interaction.guild == null)
+		if(interaction.guild == null) {
 			idfrom = interaction.user.id;
-		else
+			ephemeral = false;
+		}
+		else {
 			idfrom = interaction.guild.id;
+		}
 		
         let sellerkey = await db.get(`token_${idfrom}`)
-        if(sellerkey === null) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: true})
+        if(sellerkey === null) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral})
 
         let key = interaction.options.getString("license")
         let hwid;
@@ -59,7 +63,7 @@ module.exports = {
         fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=info&key=${key}`)
         .then(res => res.json())
         .then(json => {
-            if (!json.success) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`}]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: true})
+            if (!json.success) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`}]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral})
             if (json.hwid == null) { hwid == null} else { }
             if (json.ip == null) { ip == null} else { }
 
@@ -78,7 +82,7 @@ module.exports = {
             .setColor(Colors.Blue)
             .setTimestamp()
 
-            interaction.editReply({ embeds: [embed], ephemeral: true});
+            interaction.editReply({ embeds: [embed], ephemeral: ephemeral});
         })
     },
 };

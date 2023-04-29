@@ -83,14 +83,18 @@ module.exports = {
         ),
     async execute(interaction) {
 		let idfrom = null;
+		let ephemeral = true;
 		
-		if(interaction.guild == null)
+		if(interaction.guild == null) {
 			idfrom = interaction.user.id;
-		else
+			ephemeral = false;
+		}
+		else {
 			idfrom = interaction.guild.id;
+		}
 		
         let sellerkey = await db.get(`token_${idfrom}`)
-        if(sellerkey === null) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: true})
+        if(sellerkey === null) return interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral})
     
         let un = interaction.options.getString("username")
         let pw = interaction.options.getString("password")
@@ -100,11 +104,11 @@ module.exports = {
         .then(res => res.json())
         .then(json => {
 		if(json.success) {
-			interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle('License Successfully Activated!').addFields([{ name: 'License Activated:', value: `${key}`}]).setColor(Colors.Green).setTimestamp()], ephemeral: true})
+			interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle('License Successfully Activated!').addFields([{ name: 'License Activated:', value: `${key}`}]).setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral})
         }
 		else
         {
-            interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`setseller\` command.`}]).setColor(Colors.Red).setTimestamp()], ephemeral: true})
+            interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`setseller\` command.`}]).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral})
         }
 		})
     },

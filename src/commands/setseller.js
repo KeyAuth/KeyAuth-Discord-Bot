@@ -2,7 +2,7 @@ const { SlashCommandBuilder, Colors } = require("discord.js");
 const db = require('quick.db')
 const fetch = require('node-fetch')
 const Discord = require('discord.js');
-const { set_seller } = require('../responses.json')
+
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("setseller")
@@ -49,16 +49,23 @@ module.exports = {
       .then(res => res.json())
       .then(json => {
         if (json.success) {
-          if (interaction.guild == null)
-            idfrom = interaction.user.id;
-          else
-            idfrom = interaction.guild.id;
+		  let idfrom = null;
+          let ephemeral = true;
+		
+		  if(interaction.guild == null) {
+		  	idfrom = interaction.user.id;
+		  	ephemeral = false;
+		  }
+		  else {
+			idfrom = interaction.guild.id;
+		  }
+		  
           db.fetch(`token_${idfrom}`)
           db.set(`token_${idfrom}`, sellerkey)
-          interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(set_seller.success[interaction.locale] || set_seller.success['default']).setColor(Colors.Green).setTimestamp()], ephemeral: true })
+          interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle('Seller Key Successfully Set!').setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
         }
         else {
-          interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).addFields([{ name:  set_seller.fail[interaction.locale] ? set_seller.fail[interaction.locale].name : set_seller.fail['default'].name , value: set_seller.fail[interaction.locale] ? set_seller.fail[interaction.locale].value : set_seller.fail['default'].value }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: true })
+          interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
         }
       })
   },

@@ -20,6 +20,17 @@ module.exports = {
       "ko": "봇의 도움말 명령",
     }),
   async execute(interaction) {
+	let idfrom = null;
+	let ephemeral = true;
+	
+	if(interaction.guild == null) {
+		idfrom = interaction.user.id;
+		ephemeral = false;
+	}
+	else {
+		idfrom = interaction.guild.id;
+	}
+	
     const embed = new Discord.EmbedBuilder()
     .setTitle(`KeyAuth help menu`)
     .addFields([
@@ -31,6 +42,6 @@ module.exports = {
     .setColor(Colors.Blue)
     .setTimestamp();
 
-    interaction.editReply({ embeds: [embed], ephemeral: true })
+    interaction.editReply({ embeds: [embed], ephemeral: ephemeral })
   },
 };

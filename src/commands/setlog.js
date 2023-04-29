@@ -45,14 +45,19 @@ module.exports = {
     let webhook = interaction.options.getString("webhook")
 	
 	let idfrom = null;
-	if(interaction.guild == null)
+	let ephemeral = true;
+		
+	if(interaction.guild == null) {
 		idfrom = interaction.user.id;
-	else
+		ephemeral = false;
+	}
+	else {
 		idfrom = interaction.guild.id;
+	}
 	
 	db.fetch(`wh_url_${idfrom}`)
 	db.set(`wh_url_${idfrom}`, webhook)
-    interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle('Successfully set discord webhook to log commands to').setColor(Colors.Green).setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: true})
+    interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle('Successfully set discord webhook to log commands to').setColor(Colors.Green).setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: ephemeral})
 	
     },
 };
