@@ -265,12 +265,7 @@ module.exports = {
                 if (json.success) {
                     var webhooks = "";
                     for (var i = 0; i < json.webhooks.length; i++) {
-                        let authed = "";
-                        if (json.webhooks[i].authed == "0") {
-                            authed = "False";
-                        } else if (json.webhooks[i].authed == "1"){
-                            authed = "True";
-                        }
+			let authed = (json.webhooks[i].authed == "1") ? "True" : "False";
                         webhooks += `Web ID: \`${json.webhooks[i].webid}\` - Base link: \`${json.webhooks[i].short_baselink}\` - Useragent: \`${json.webhooks[i].useragent}\` - Authed: \`${authed}\`\n`
                     }
                     
