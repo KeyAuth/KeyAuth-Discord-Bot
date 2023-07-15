@@ -49,6 +49,11 @@ module.exports = {
         )
         .addSubcommand((subcommand) =>
             subcommand
+                .setName('webhooks')
+                .setDescription("Fetch All Webhooks")
+        )
+        .addSubcommand((subcommand) =>
+            subcommand
                 .setName('buttons')
                 .setDescription('Fetch All Buttons')
         ),
@@ -251,6 +256,32 @@ module.exports = {
                 }
             })
 
+        } else if (subcommand === "webhooks") {
+            interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle("Fetching Webhooks...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+
+            fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallwebhooks`)
+            .then(res => res.json())
+            .then(json => {
+                if (json.success) {
+                    var webhooks = "";
+                    for (var i = 0; i < json.webhooks.length; i++) {
+                        let authed = "";
+                        if (json.webhooks[i].authed == "0") {
+                            authed = "False";
+                        } else if (json.webhooks[i].authed == "1"){
+                            authed = "True";
+                        }
+                        webhooks += `Web ID: \`${json.webhooks[i].webid}\` - Base link: \`${json.webhooks[i].short_baselink}\` - Useragent: \`${json.webhooks[i].useragent}\` - Authed: \`${authed}\`\n`
+                    }
+                    
+                    interaction.editReply({
+                        embeds: [new Discord.EmbedBuilder().setTitle("KeyAuth Application Webhooks").setDescription(`**${webhooks}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                        ephemeral: ephemeral
+                    });
+                } else {
+                    interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`}]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral})
+                }
+            })
         } else if (subcommand === "buttons") {
             interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle("Fetching Buttons...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
             
@@ -273,7 +304,6 @@ module.exports = {
                     interaction.editReply({ embeds: [new Discord.EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.`}]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral})
                 }
             })
-
         } else {
             interaction.editReply({ embeds: [new Discord.EmbedBuilder().setDescription(`The \`Subcommand\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
