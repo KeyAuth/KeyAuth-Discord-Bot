@@ -21,16 +21,8 @@ module.exports = {
             "ko": "활성 구독이없는 사용자 삭제",
         }),
     async execute(interaction) {
-        let idfrom = null;
-        let ephemeral = true;
-
-        if (interaction.guild == null) {
-            idfrom = interaction.user.id;
-            ephemeral = false;
-        }
-        else {
-            idfrom = interaction.guild.id;
-        }
+        let idfrom = interaction.guild ? interaction.guild.id : interaction.user.id;
+        let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
         if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })

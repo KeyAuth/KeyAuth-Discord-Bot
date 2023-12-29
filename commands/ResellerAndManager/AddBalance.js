@@ -161,7 +161,7 @@ module.exports = {
                 .setRequired(true)
         ),
     async execute(interaction) {
-let idfrom = interaction.guild ? interaction.guild.id : interaction.user.id;
+        let idfrom = interaction.guild ? interaction.guild.id : interaction.user.id;
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)

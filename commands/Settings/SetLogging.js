@@ -43,16 +43,8 @@ module.exports = {
 
         let webhook = interaction.options.getString("webhook")
 
-        let idfrom = null;
-        let ephemeral = true;
-
-        if (interaction.guild == null) {
-            idfrom = interaction.user.id;
-            ephemeral = false;
-        }
-        else {
-            idfrom = interaction.guild.id;
-        }
+        let idfrom = interaction.guild ? interaction.guild.id : interaction.user.id;
+        let ephemeral = !interaction.guild ? false : true;
 
         db.get(`wh_url_${idfrom}`)
         db.set(`wh_url_${idfrom}`, webhook)

@@ -49,16 +49,8 @@ module.exports = {
         else
             license_mask = licensestring; // ELSE IT WILL PUT USER INPUT AS MASK
 
-        let idfrom = null;
-        let ephemeral = true;
-
-        if (interaction.guild == null) {
-            idfrom = interaction.user.id;
-            ephemeral = false;
-        }
-        else {
-            idfrom = interaction.guild.id;
-        }
+        let idfrom = interaction.guild ? interaction.guild.id : interaction.user.id;
+        let ephemeral = !interaction.guild ? false : true;
 
         db.get(`licensemask_${idfrom}`)
         db.set(`licensemask_${idfrom}`, license_mask)
