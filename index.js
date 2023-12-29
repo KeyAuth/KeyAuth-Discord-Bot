@@ -81,7 +81,7 @@ client.once('ready', async () => {
         }
     })();
 
-    await setPresence(client, `mazkdevf_bot`, { type: ActivityType.Competing, status: 'online' });
+    await setPresence(client, `KeyAuth.cc`, { type: ActivityType.Competing, status: 'online' });
 });
 
 client.on('interactionCreate', async interaction => {
@@ -100,7 +100,7 @@ client.on('interactionCreate', async interaction => {
     if (interaction.member != null)
         if (!interaction.member.roles.cache.find(x => x.name == "perms")) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`You need a role with the name \`perms\` to execute commands. Please ask an administrator to create a role with this name if not already done and assign it to you.`).setColor(Colors.Red).setTimestamp()], ephemeral: true })
 
-    await setPresence(client, `mazkdevf_bot`, { type: ActivityType.Competing, status: 'online' });
+    await setPresence(client, `KeyAuth.cc`, { type: ActivityType.Competing, status: 'online' });
 
     let content = `**${interaction.user.username}${interaction.user.discriminator ? ("#" + interaction.user.discriminator) : ''} (ID: ${interaction.user.id})** executed the command \`/${interaction.commandName}\`\n`;
 
@@ -132,7 +132,7 @@ client.on('interactionCreate', async interaction => {
                 .setAuthor({ name: "Interaction was unsuccessful." })
                 .setColor(Colors.Red)
                 .setTimestamp()
-                .setFooter({ text: "mazkdevf_bot Discord Bot", iconURL: client.user.displayAvatarURL() })],
+                .setFooter({ text: "KeyAuth Discord Bot", iconURL: client.user.displayAvatarURL() })],
             ephemeral: true
         })
     }

@@ -31,10 +31,10 @@ module.exports = {
 	}
 	
 /*     const embed = new EmbedBuilder()
-    .setTitle(`mazkdevf_bot help menu`)
+    .setTitle(`keyauth help menu`)
     .addFields([
-      { name: '_ _', value: 'This bot is for the open-source authentication system [mazkdevf_bot](https://mazkdevf_bot)\n\nIf you\'re using the cloud hosted version of mazkdevf_bot, you\'ll need the seller plan to use. You can test before purchase by using the demo seller account in the #demo-accounts channel of the [Discord server](https://discord.gg/mazkdevf_bot)'},
-      { name: 'Source code:', value: `[https://github.com/mazkdevf_bot/mazkdevf_bot-Discord-Bot](https://github.com/mazkdevf_bot/mazkdevf_bot-Discord-Bot)`},
+      { name: '_ _', value: 'This bot is for the open-source authentication system [keyauth ](https://keyauth )\n\nIf you\'re using the cloud hosted version of keyauth , you\'ll need the seller plan to use. You can test before purchase by using the demo seller account in the #demo-accounts channel of the [Discord server](https://discord.gg/keyauth )'},
+      { name: 'Source code:', value: `[https://github.com/keyauth /keyauth -Discord-Bot](https://github.com/keyauth /keyauth -Discord-Bot)`},
       { name: 'Library', value: "Discord.JS v14.0.1"},
       { name: 'Tutorial video', value: '[https://www.youtube.com/watch?v=orQ_5BQCd-U](https://www.youtube.com/watch?v=orQ_5BQCd-U)'}
     ])

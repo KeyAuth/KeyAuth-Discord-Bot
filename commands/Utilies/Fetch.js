@@ -105,7 +105,7 @@ module.exports = {
 
             var KeyList = `https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallkeys&format=${format}`;
             interaction.editReply({
-                embeds: [new EmbedBuilder().setAuthor({ name: "mazkdevf_bot Application Keys" }).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                embeds: [new EmbedBuilder().setAuthor({ name: "keyauth Application Keys" }).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                 files: [{
                     attachment: KeyList,
                     name: 'keys.' + (format === "text" ? "txt" : "json")
@@ -127,12 +127,12 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application Users").setDescription(`**${users}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application Users").setDescription(`**${users}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
         } else if (subcommand === "user-vars") {
@@ -144,11 +144,11 @@ module.exports = {
                     if (json.success) {
                         var vars = "";
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application User Vars").setDescription(`**${vars}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application User Vars").setDescription(`**${vars}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
         } else if (subcommand === "usernames") {
@@ -164,12 +164,12 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application User Vars").setDescription(`**${usernames}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application User Vars").setDescription(`**${usernames}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
         } else if (subcommand === "subs") {
@@ -186,12 +186,12 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application Subscriptions").setDescription(`**${subs}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application Subscriptions").setDescription(`**${subs}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
 
@@ -209,12 +209,12 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application Chat Channels").setDescription(`**${chats}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application Chat Channels").setDescription(`**${chats}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
 
@@ -232,12 +232,12 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application Sessions").setDescription(`**${sessions}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application Sessions").setDescription(`**${sessions}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
 
@@ -256,12 +256,12 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application Files").setDescription(`**${files}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application Files").setDescription(`**${files}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
 
@@ -280,12 +280,12 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application Variables").setDescription(`**${vars}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application Variables").setDescription(`**${vars}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
 
@@ -310,12 +310,12 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application Blacklists").setDescription(`${blacklists}`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application Blacklists").setDescription(`${blacklists}`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
 
@@ -333,11 +333,11 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application Webhooks").setDescription(`**${webhooks}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application Webhooks").setDescription(`**${webhooks}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
         } else if (subcommand === "buttons") {
@@ -354,12 +354,12 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application Buttons").setDescription(`**${buttons}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application Buttons").setDescription(`**${buttons}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
         } else if (subcommand === "mutes") {
@@ -376,12 +376,12 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application Mutes").setDescription(`**${mutes}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application Mutes").setDescription(`**${mutes}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
         } else if (subcommand === "channels") {
@@ -398,12 +398,12 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("mazkdevf_bot Application Channels").setDescription(`**${channels}**`).setFooter({ text: "mazkdevf_bot Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("keyauth Application Channels").setDescription(`**${channels}**`).setFooter({ text: "keyauth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
         } else if (subcommand === "appdetails") {
@@ -416,8 +416,8 @@ module.exports = {
                         interaction.editReply({
                             embeds: [
                                 new EmbedBuilder()
-                                    .setTitle("mazkdevf_bot Application Details")
-                                    .setFooter({ text: "mazkdevf_bot Discord Bot" })
+                                    .setTitle("keyauth Application Details")
+                                    .setFooter({ text: "keyauth Discord Bot" })
                                     .addFields(
                                         { name: 'Application Name', value: json.appdetails.name },
                                         { name: 'Owner ID', value: json.appdetails.ownerid },
@@ -429,7 +429,7 @@ module.exports = {
                         });
 
                     } else {
-                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
         } else {

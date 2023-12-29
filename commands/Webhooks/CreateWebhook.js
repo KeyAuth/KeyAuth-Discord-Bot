@@ -23,40 +23,40 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("baseurl")
-                .setDescription("URL that's hidden on mazkdevf_bot server")
+                .setDescription("URL that's hidden on keyauth server")
                 .setDescriptionLocalizations({
-                    "en-US": "URL that's hidden on mazkdevf_bot server",
-                    "fi": "URL, joka on piilotettu mazkdevf_bot-palvelimella",
-                    "fr": "URL qui est caché sur le serveur mazkdevf_bot",
-                    "de": "URL, die auf dem mazkdevf_bot-Server versteckt ist",
-                    "it": "URL che è nascosto sul server mazkdevf_bot",
-                    "nl": "URL die verborgen is op de mazkdevf_bot-server",
-                    "ru": "URL, который скрыт на сервере mazkdevf_bot",
-                    "pl": "URL ukryty na serwerze mazkdevf_bot",
-                    "tr": "URL, mazkdevf_bot sunucusunda gizli",
-                    "cs": "URL, který je skrytý na serveru mazkdevf_bot",
-                    "ja": "mazkdevf_botサーバーで隠されているURL",
-                    "ko": "mazkdevf_bot 서버에서 숨겨진 URL",
+                    "en-US": "URL that's hidden on keyauth server",
+                    "fi": "URL, joka on piilotettu keyauth -palvelimella",
+                    "fr": "URL qui est caché sur le serveur keyauth ",
+                    "de": "URL, die auf dem keyauth -Server versteckt ist",
+                    "it": "URL che è nascosto sul server keyauth ",
+                    "nl": "URL die verborgen is op de keyauth -server",
+                    "ru": "URL, который скрыт на сервере keyauth ",
+                    "pl": "URL ukryty na serwerze keyauth ",
+                    "tr": "URL, keyauth sunucusunda gizli",
+                    "cs": "URL, který je skrytý na serveru keyauth ",
+                    "ja": "keyauth サーバーで隠されているURL",
+                    "ko": "keyauth 서버에서 숨겨진 URL",
                 })
                 .setRequired(true)
         )
         .addStringOption((option) =>
             option
                 .setName("useragent")
-                .setDescription("User agent, optional. If not set, it will default to mazkdevf_bot")
+                .setDescription("User agent, optional. If not set, it will default to keyauth ")
                 .setDescriptionLocalizations({
-                    "en-US": "User agent, optional. If not set, it will default to mazkdevf_bot",
-                    "fi": "Käyttäjäagentti, valinnainen. Jos ei ole asetettu, se on oletusarvoisesti mazkdevf_bot",
-                    "fr": "Agent utilisateur, facultatif. Si non défini, il sera par défaut à mazkdevf_bot",
-                    "de": "Benutzeragent, optional. Wenn nicht festgelegt, wird es standardmäßig auf mazkdevf_bot gesetzt",
-                    "it": "User agent, facoltativo. Se non impostato, verrà impostato come mazkdevf_bot",
-                    "nl": "Gebruikersagent, optioneel. Als het niet is ingesteld, wordt het standaard ingesteld op mazkdevf_bot",
-                    "ru": "Агент пользователя, необязательный. Если не установлен, по умолчанию будет mazkdevf_bot",
-                    "pl": "Agent użytkownika, opcjonalny. Jeśli nie jest ustawiony, domyślnie będzie mazkdevf_bot",
-                    "tr": "Kullanıcı aracısı, isteğe bağlı. Ayarlanmamışsa, mazkdevf_bot olarak varsayılacaktır",
-                    "cs": "Uživatelský agent, volitelný. Pokud není nastaven, bude nastaven jako výchozí mazkdevf_bot",
-                    "ja": "ユーザーエージェント、オプション。設定されていない場合は、デフォルトでmazkdevf_botになります",
-                    "ko": "사용자 에이전트, 선택 사항. 설정되지 않은 경우 기본적으로 mazkdevf_bot가됩니다",
+                    "en-US": "User agent, optional. If not set, it will default to keyauth ",
+                    "fi": "Käyttäjäagentti, valinnainen. Jos ei ole asetettu, se on oletusarvoisesti keyauth ",
+                    "fr": "Agent utilisateur, facultatif. Si non défini, il sera par défaut à keyauth ",
+                    "de": "Benutzeragent, optional. Wenn nicht festgelegt, wird es standardmäßig auf keyauth gesetzt",
+                    "it": "User agent, facoltativo. Se non impostato, verrà impostato come keyauth ",
+                    "nl": "Gebruikersagent, optioneel. Als het niet is ingesteld, wordt het standaard ingesteld op keyauth ",
+                    "ru": "Агент пользователя, необязательный. Если не установлен, по умолчанию будет keyauth ",
+                    "pl": "Agent użytkownika, opcjonalny. Jeśli nie jest ustawiony, domyślnie będzie keyauth ",
+                    "tr": "Kullanıcı aracısı, isteğe bağlı. Ayarlanmamışsa, keyauth olarak varsayılacaktır",
+                    "cs": "Uživatelský agent, volitelný. Pokud není nastaven, bude nastaven jako výchozí keyauth ",
+                    "ja": "ユーザーエージェント、オプション。設定されていない場合は、デフォルトでkeyauth になります",
+                    "ko": "사용자 에이전트, 선택 사항. 설정되지 않은 경우 기본적으로 keyauth 가됩니다",
                 })
                 .setRequired(true)
         )
@@ -104,16 +104,16 @@ module.exports = {
         }
 
         if (baseurl.includes("http://") || baseurl.includes("https://")) { } else {
-            return interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Failure, Please Include `http:\/\/` or `https:\/\/` on webhook link").setColor(Colors.Red).setTimestamp().setFooter({ text: "mazkdevf_bot Discord Bot" })], ephemeral: ephemeral })
+            return interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Failure, Please Include `http:\/\/` or `https:\/\/` on webhook link").setColor(Colors.Red).setTimestamp().setFooter({ text: "keyauth Discord Bot" })], ephemeral: ephemeral })
         }
 
         fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=addwebhook&baseurl=${baseurl}&us=${useragent}&authed=${authed}`)
             .then(res => res.json())
             .then(json => {
                 if (json.success) {
-                    interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).setColor(Colors.Green).setTimestamp().setFooter({ text: "mazkdevf_bot Discord Bot" })], ephemeral: ephemeral })
+                    interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).setColor(Colors.Green).setTimestamp().setFooter({ text: "keyauth Discord Bot" })], ephemeral: ephemeral })
                 } else {
-                    interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "mazkdevf_bot Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                    interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                 }
             })
     },
