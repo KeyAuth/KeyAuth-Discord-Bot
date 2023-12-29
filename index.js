@@ -1,9 +1,23 @@
 const fs = require("fs");
-const config = require("./utils/config.js") || { token: null, DevelopmentServerId: null, type: "development" };
+const config = require("./utils/config.js") || {
+    token: null,
+    DevelopmentServerId: null,
+    type: "development"
+};
 
 const db = require('./utils/database')
 const fetch = require('node-fetch')
-const { REST, Client, GatewayIntentBits, ActivityType, Collection, EmbedBuilder, Routes, Partials, Colors } = require("discord.js");
+const {
+    REST,
+    Client,
+    GatewayIntentBits,
+    ActivityType,
+    Collection,
+    EmbedBuilder,
+    Routes,
+    Partials,
+    Colors
+} = require("discord.js");
 
 const client = new Client({
     intents: [
@@ -11,17 +25,6 @@ const client = new Client({
     ],
     partials: [Partials.Channel]
 });
-
-/* const commandFiles = fs.readdirSync("./commands").filter(file => file.endsWith(".js"))
-const commands = [];
-
-client.commands = new Collection();
-
-for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    commands.push(command.data.toJSON());
-    client.commands.set(command.data.name, command);
-} */
 
 const commands = [];
 const clientCommands = new Collection();
@@ -38,11 +41,6 @@ function readCommandsFromDirectory(directory) {
             clientCommands.set(command.data.name, command);
         }
     }
-
-    console.log({
-        commands,
-        clientCommands
-    })
 }
 
 readCommandsFromDirectory("./commands");
@@ -50,20 +48,17 @@ readCommandsFromDirectory("./commands");
 client.on("error", console.error);
 
 process.on('unhandledRejection', error => {
-    console.error('Unhandled promise rejection:', error);
+    console.error('Encountered an unhandled promise rejection', error);
 });
 
 client.once('ready', async () => {
     console.clear();
-    console.log("Bot Online");
-    console.log("Logged in as:", client.user.tag)
+    console.log("Bot is now online.");
+    console.log("Currently signed in as:", client.user.tag)
 
     const CLIENT_ID = client.user.id;
 
     const rest = new REST().setToken(config.token);
-    /* 
-        let comds = commands.map(x => x.name)
-        console.log(`Commands: ${comds}`) */
 
     (async () => {
         try {
@@ -71,27 +66,19 @@ client.once('ready', async () => {
                 await rest.put(Routes.applicationCommands(CLIENT_ID), {
                     body: commands
                 });
-                console.log("Commands have been added to Global Usage.")
+                console.log("Commands have been incorporated for Global Usage.")
             } else {
                 await rest.put(Routes.applicationGuildCommands(CLIENT_ID, config.DevelopmentServerId), {
                     body: commands
                 })
-                console.log(`Commands have been added as Guild Only Usage.`)
+                console.log(`Command access is now restricted to guild members.`)
             }
         } catch (err) {
             console.error({
-                raw: err.rawError,
-                errors: err["rawError"]["errors"]
+                rawError: err.rawError,
+                Errors: err["rawError"]["errors"]
             });
         }
-
-        /*    rest.put(Routes.applicationGuildCommands(CLIENT_ID, config.DevelopmentServerId), { body: [] })
-       .then(() => console.log('Successfully deleted all guild commands.'))
-       .catch(console.error);
-   
-   rest.put(Routes.applicationCommands(CLIENT_ID), { body: [] })
-       .then(() => console.log('Successfully deleted all application commands.'))
-       .catch(console.error); */
     })();
 
     await setPresence(client, `mazkdevf_bot`, { type: ActivityType.Competing, status: 'online' });
@@ -104,16 +91,9 @@ client.on('interactionCreate', async interaction => {
 
     if (!command) return;
 
-    let idfrom = null;
-    let ephemeral = true;
+    let idfrom = interaction.guild ? interaction.guild.id : interaction.user.id;
+    let ephemeral = !interaction.guild ? false : true;
 
-    if (interaction.guild == null) {
-        idfrom = interaction.user.id;
-        ephemeral = false;
-    }
-    else {
-        idfrom = interaction.guild.id;
-    }
 
     await interaction.deferReply({ ephemeral: ephemeral });
 
@@ -149,7 +129,7 @@ client.on('interactionCreate', async interaction => {
 
         await interaction.editReply({
             embeds: [new EmbedBuilder()
-                .setAuthor({ name: "Interaction Failed" })
+                .setAuthor({ name: "Interaction was unsuccessful." })
                 .setColor(Colors.Red)
                 .setTimestamp()
                 .setFooter({ text: "mazkdevf_bot Discord Bot", iconURL: client.user.displayAvatarURL() })],
@@ -165,4 +145,10 @@ async function setPresence(client, text, options = { type: ActivityType.Competin
     });
 }
 
-client.login(config.token);
+client.login(config.token).catch(err => {
+    console.clear();
+    if (err.code === "TokenInvalid") {
+        console.error("The provided token is invalid. Please review your config.json file or check the Environment Variables if you're not using a JSON config, and attempt again.");
+        process.exit(1);
+    }
+})
