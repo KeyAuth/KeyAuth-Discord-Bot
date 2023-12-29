@@ -1,0 +1,79 @@
+{
+    "no_perms":{
+        "response":{
+            "default": "You need a role with the name `perms` to execute commands. Please ask an administrator to create a role with this name if not already done and assign it to you.",
+            "fi": "Tarvitset roolin, jonka nimi on `perms` komentojen suorittamiseen. Pyydä järjestelmänvalvojaa luomaan rooli tällä nimellä, ellei se ole jo tehty, ja määritä se sinulle.",
+            "fr": "Vous avez besoin d'un rôle avec le nom `perms` pour exécuter des commandes. Veuillez demander à un administrateur de créer un rôle avec ce nom si ce n'est déjà fait et de vous l'attribuer.",
+            "de": "Sie benötigen eine Rolle mit dem Namen `perms`, um Befehle auszuführen. Bitten Sie einen Administrator, eine Rolle mit diesem Namen zu erstellen, falls dies noch nicht geschehen ist, und weisen Sie sie Ihnen zu.",
+            "it": "Hai bisogno di un ruolo con il nome `perms` per eseguire i comandi. Chiedi a un amministratore di creare un ruolo con questo nome se non l'hai già fatto e assegnalo a te.",
+            "nl": "Je hebt een rol nodig met de naam `perms` om commando's uit te voeren. Vraag een beheerder om een rol met deze naam aan te maken als u dat nog niet heeft gedaan en wijs deze aan u toe.",
+            "ru": "Вам нужна роль с именем `perms` для выполнения команд. Попросите администратора создать роль с таким именем, если это еще не сделано, и назначить ее вам.",
+            "pl": "Aby wykonywać polecenia, potrzebujesz roli o nazwie `perms`. Poproś administratora o utworzenie roli o tej nazwie, jeśli jeszcze tego nie zrobiono, i przypisanie jej tobie.",
+            "tr": "Komutları yürütmek için `perms` adlı bir role ihtiyacınız var. Lütfen bir yöneticiden bu ada sahip bir rol oluşturmasını isteyin, eğer henüz yapılmadıysa ve bunu size atayın.",
+            "cs": "K provádění příkazů potřebujete roli s názvem `perms`. Požádejte prosím administrátora, aby vytvořil roli s tímto jménem, pokud jste tak ještě neudělal, a přidělil vám ji.",
+            "ja": "コマンドを実行するには、`perms` という名前のロールが必要です。 まだ作成されていない場合は、管理者にこの名前の役割を作成して割り当ててもらうよう依頼してください。",
+            "ko": "명령을 실행하려면 이름이 'perms' 인 역할이 필요합니다. 아직 수행하지 않은 경우 관리자에게 요청하여 이 이름으로 역할을 생성하고 할당하십시오."
+        }
+    },
+    "set_seller":{
+        "success":{
+            "default": "Seller Key Successfully Set!",
+            "fi": "Myyjän avain asetettu onnistuneesti!",
+            "fr": "La clé du vendeur a été définie avec succès !",
+            "de": "Verkäuferschlüssel erfolgreich festgelegt!",
+            "it": "Chiave del venditore impostata con successo!",
+            "nl": "Verkoperssleutel succesvol ingesteld!",
+            "ru": "Ключ продавца успешно установлен!",
+            "pl": "Klucz sprzedawcy pomyślnie ustawiony!",
+            "tr": "Satıcı Anahtarı Başarıyla Ayarlandı!",
+            "cs": "販売者キーが正常に設定されました!",
+            "ko": "판매자 키가 성공적으로 설정되었습니다!"
+        },
+        "fail":{
+            "default": {
+                "name": "Note:",
+                "value": "Your seller key is most likely invalid. Change your seller key with `/setseller` command.`"
+            },
+            "fi": {
+                "name": "Huomautus:",
+                "value": "Myyjäavaimesi on todennäköisesti virheellinen. Vaihda myyjäavaimesi `/setseller` komennolla."
+            },
+            "fr":{
+                "name": "Note:",
+                "value": "Votre clé de vendeur est très probablement invalide. Modifiez votre clé de vendeur avec la commande `/setseller`."
+            },
+            "de": {
+                "name": "Notiz:",
+                "value": "Ihr Verkäuferschlüssel ist höchstwahrscheinlich ungültig. Ändern Sie Ihren Verkäuferschlüssel mit dem Befehl `/seteller`."
+            },
+            "it": {
+                "name": "Nota:",
+                "value": "Molto probabilmente la tua chiave venditore non è valida. Cambia la chiave del venditore con il comando `/setseller`."
+            },
+            "nl": {
+                "name": "Opmerking:",
+                "value": "Uw verkoperssleutel is hoogstwaarschijnlijk ongeldig. Wijzig uw verkopersleutel met de opdracht `/setseller`."
+            },
+            "ru":{
+                "name": "Примечание:",
+                "value": "Ваш ключ продавца, скорее всего, недействителен. Измените ключ продавца с помощью команды `/setseller`."
+            },
+            "pl": {
+                "name": "Uwaga:",
+                "value": "Twój klucz sprzedawcy jest najprawdopodobniej nieprawidłowy. Zmień swój klucz sprzedawcy poleceniem `/setseller`."
+            },
+            "tr": {
+                "name": "Not:",
+                "value": "Satıcı anahtarınız büyük olasılıkla geçersizdir. `/setseller` komutu ile satıcı anahtarınızı değiştirin."
+            },
+            "cs": {
+                "name": "ノート：",
+                "value": "販売者キーが無効である可能性があります。 `/setseller` コマンドでセラー キーを変更します。"
+            },
+            "ko": {
+                "name": "메모:",
+                "value": "판매자 키가 유효하지 않을 가능성이 높습니다. `/setseller` 명령으로 판매자 키를 변경하십시오."
+            } 
+        }
+    }
+}
