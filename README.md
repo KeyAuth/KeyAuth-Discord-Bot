@@ -1,4 +1,4 @@
-# KeyAuth-Discord-Bot-Source
+# KeyAuth-Discord-Bot-Source **DEV**
 Source Code of Discord bot for https://keyauth.cc
 
 ## **Bugs**
