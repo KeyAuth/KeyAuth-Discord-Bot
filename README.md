@@ -1,4 +1,4 @@
-# KeyAuth-Discord-Bot-Source
+# KeyAuth-Discord-Bot-Source **2024**
 Source Code of Discord bot for https://keyauth.cc
 
 ## **Bugs**
@@ -31,7 +31,7 @@ https://www.oracle.com/cloud/free/ free forever, watch video for tutorial https:
 
 
 ## Installation
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=oJzMVIM3kbk
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=tngShw2Vmm0
 " target="_blank"><img src="https://i.imgur.com/bdjleDy.png" 
 alt="Click here to see Installation Video!" width="500" height="250" border="10" /></a>
 
@@ -40,7 +40,7 @@ alt="Click here to see Installation Video!" width="500" height="250" border="10"
 1. Install Source code.
 2. Extract to folder of your choice.
 3. Open the folder in code editor of your choice.
-4. Edit config.json <add token> <Development ServerId> <production = Public Commands, debug = Guild Only Commands> 
+4. Edit config.json.example > config.json <add token> <Development ServerId> <production = Public Commands, debug = Guild Only Commands> 
 5. Open CMD on that folder and run npm install
 6. To start bot use node . or node filename.js
 ```
