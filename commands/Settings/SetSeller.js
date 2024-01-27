@@ -41,24 +41,14 @@ module.exports = {
         .setRequired(true)
     ),
   async execute(interaction) {
-
+    let idfrom = interaction.guild ? interaction.guild.id : interaction.user.id;
+    let ephemeral = !interaction.guild ? false : true;
     let sellerkey = interaction.options.getString("sellerkey")
 
     fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=setseller`)
       .then(res => res.json())
       .then(json => {
         if (json.success) {
-          let idfrom = null;
-          let ephemeral = true;
-
-          if (interaction.guild == null) {
-            idfrom = interaction.user.id;
-            ephemeral = false;
-          }
-          else {
-            idfrom = interaction.guild.id;
-          }
-
           db.get(`token_${idfrom}`)
           db.set(`token_${idfrom}`, sellerkey)
           interaction.editReply({ embeds: [new EmbedBuilder().setTitle('Seller Key Successfully Set!').setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })

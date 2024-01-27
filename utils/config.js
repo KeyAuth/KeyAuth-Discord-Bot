@@ -9,7 +9,13 @@ const config =
             const developmentServerId = process.env.DEVELOPMENT_SERVER_ID;
             const type = process.env.TYPE || "development";
 
-            if (!token || !developmentServerId) {
+            if (type != "production") {
+                if (!developmentServerId) {
+                    throw new Error("Missing Development Server Id!")
+                }
+            }
+
+            if (!token) {
                 throw new Error("Missing required environment variables: TOKEN, DEVELOPMENT_SERVER_ID, TYPE");
             }
 
@@ -21,10 +27,16 @@ const config =
         })();
 
 function validateConfig(config) {
-    const { token, DevelopmentServerId } = config;
+    const { token, DevelopmentServerId, type } = config;
 
-    if (!token || !DevelopmentServerId) {
-        throw new Error("Missing required properties in config.json: token, DevelopmentServerId, type");
+    if (type != "production") {
+        if (!DevelopmentServerId) {
+            throw new Error("Missing Development Server Id from config.json")
+        }
+    }
+
+    if (!token) {
+        throw new Error("Missing required token from config.json!");
     }
 
     return config;
