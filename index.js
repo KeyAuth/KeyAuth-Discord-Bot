@@ -80,8 +80,13 @@ client.once('ready', async () => {
             });
         }
     })();
-
-    await setPresence(client, `KeyAuth.cc`, { type: ActivityType.Competing, status: 'online' });
+    
+    // Personalized status 
+    client.user.setActivity({
+        type: ActivityType.Custom,
+        name: 'customstatus',
+        state: '🔒 !key · keyauth.cc'
+    });
 });
 
 client.on('interactionCreate', async interaction => {
