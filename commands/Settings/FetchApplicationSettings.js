@@ -19,28 +19,28 @@ module.exports = {
                 if (json.success) {
                     const enabled = json.enabled ? "Enabled" : "Disabled";
                     const hwidlock = json["hwid-lock"] ? "Enabled" : "Disabled";
-                    const version = json.version;
-                    const download = json.download;
-                    const webdownload = json.webdownload;
-                    const webhook = json.webhook;
-                    const resellerstore = json.resellerstore;
-                    const disabledmsg = json.disabledmsg;
-                    const usernametakenmsg = json.usernametakenmsg;
-                    const licenseinvalidmsg = json.licenseinvalidmsg;
-                    const keytakenmsg = json.keytakenmsg;
-                    const nosubmsg = json.nosubmsg;
-                    const userinvalidmsg = json.userinvalidmsg;
-                    const passinvalidmsg = json.passinvalidmsg;
-                    const hwidmismatchmsg = json.hwidmismatchmsg;
-                    const noactivesubmsg = json.noactivesubmsg;
-                    const blackedmsg = json.blackedmsg;
-                    const pausedmsg = json.pausedmsg;
-                    const sellixsecret = json.sellixsecret;
-                    const dayresellerproductid = json.dayresellerproductid;
-                    const weekresellerproductid = json.weekresellerproductid;
-                    const monthresellerproductid = json.monthresellerproductid;
-                    const liferesellerproductid = json.liferesellerproductid;
-                    const cooldown = json.cooldown;
+                    const version = json.version !== undefined ? json.version : "not set";
+                    const download = json.download !== undefined ? json.download : "not set";
+                    const webdownload = json.webdownload !== undefined ? json.webdownload : "not set";
+                    const webhook = json.webhook !== undefined ? json.webhook : "not set";
+                    const resellerstore = json.resellerstore !== undefined ? json.resellerstore : "not set";
+                    const disabledmsg = json.disabledmsg !== undefined ? json.disabledmsg : "not set";
+                    const usernametakenmsg = json.usernametakenmsg !== undefined ? json.usernametakenmsg : "not set";
+                    const licenseinvalidmsg = json.licenseinvalidmsg !== undefined ? json.licenseinvalidmsg : "not set";
+                    const keytakenmsg = json.keytakenmsg !== undefined ? json.keytakenmsg : "not set";
+                    const nosubmsg = json.nosubmsg !== undefined ? json.nosubmsg : "not set";
+                    const userinvalidmsg = json.userinvalidmsg !== undefined ? json.userinvalidmsg : "not set";
+                    const passinvalidmsg = json.passinvalidmsg !== undefined ? json.passinvalidmsg : "not set";
+                    const hwidmismatchmsg = json.hwidmismatchmsg !== undefined ? json.hwidmismatchmsg : "not set";
+                    const noactivesubmsg = json.noactivesubmsg !== undefined ? json.noactivesubmsg : "not set";
+                    const blackedmsg = json.blackedmsg !== undefined ? json.blackedmsg : "not set";
+                    const pausedmsg = json.pausedmsg !== undefined ? json.pausedmsg : "not set";
+                    const sellixsecret = json.sellixsecret !== undefined ? json.sellixsecret : "not set";
+                    const dayresellerproductid = json.dayresellerproductid !== undefined ? json.dayresellerproductid : "not set";
+                    const weekresellerproductid = json.weekresellerproductid !== undefined ? json.weekresellerproductid : "not set";
+                    const monthresellerproductid = json.monthresellerproductid !== undefined ? json.monthresellerproductid : "not set";
+                    const liferesellerproductid = json.liferesellerproductid !== undefined ? json.liferesellerproductid : "not set";
+                    const cooldown = json.cooldown !== undefined ? json.cooldown : "not set";
 
                     interaction.editReply({
                         embeds: [
@@ -73,8 +73,7 @@ module.exports = {
                                     { name: 'Cooldown', value: cooldown + ' seconds' },
                                 )
                         ]
-                    })
-
+                    });
                 } else {
                     interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                 }
