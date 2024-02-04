@@ -1,5 +1,5 @@
 # KeyAuth-Discord-Bot-Source **2024**
-Source Code of Discord bot for https://keyauth.cc
+Source Code of Discord bot for https://keyauth.cc, Also if this bot doesn't work for you use https://github.com/KeyAuth/KeyAuth-Discord-Bot/tree/53a395e024834edcba56fe651ac031f4762e903f it is old bot.
 
 ## **Bugs**
 
