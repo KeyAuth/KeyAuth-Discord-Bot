@@ -1,35 +1,6 @@
 # KeyAuth-Discord-Bot-Source **2024**
 Source Code of Discord bot for https://keyauth.cc, Also if this bot doesn't work for you use https://github.com/KeyAuth/KeyAuth-Discord-Bot/tree/53a395e024834edcba56fe651ac031f4762e903f it is old bot.
 
-## **Bugs**
-
-If there's a problem with **running** the bot after following the instructions, please report a bug here https://keyauth.cc/app/?page=forms
-
-Do **not** submit a bug report if you're having issues installing NPM packages. That has nothing to do with KeyAuth and you'll need to Google/YouTube your instillation error(s)
-
-## Copyright License
-
-KeyAuth is licensed under **Elastic License 2.0**
-
-* You may not provide the software to third parties as a hosted or managed
-service, where the service provides users with access to any substantial set of
-the features or functionality of the software.
-
-* You may not move, change, disable, or circumvent the license key functionality
-in the software, and you may not remove or obscure any functionality in the
-software that is protected by the license key.
-
-* You may not alter, remove, or obscure any licensing, copyright, or other notices
-of the licensor in the software. Any use of the licensor’s trademarks is subject
-to applicable law.
-
-Thank you for your compliance, we work hard on the development of KeyAuth and do not appreciate our copyright being infringed.
-
-## Our Discord Bot is hosted on:
-https://www.oracle.com/cloud/free/ free forever, watch video for tutorial https://www.youtube.com/watch?v=90JbCrB3m3I
-
-
-
 ## Installation
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=tngShw2Vmm0
 " target="_blank"><img src="https://i.imgur.com/bdjleDy.png" 
@@ -56,7 +27,32 @@ alt="Click here to see Installation Video!" width="500" height="250" border="10"
 8. Type / in a channel to see bot's commands
 ```
 
-Enjoy
+## **Bugs**
+
+If there's a problem with **running** the bot after following the instructions, please report a bug here https://keyauth.cc/app/?page=forms
+
+Do **not** submit a bug report if you're having issues installing NPM packages. That has nothing to do with KeyAuth and you'll need to Google/YouTube your instillation error(s)
+
+## Copyright License
+
+KeyAuth is licensed under **Elastic License 2.0**
+
+* You may not provide the software to third parties as a hosted or managed
+service, where the service provides users with access to any substantial set of
+the features or functionality of the software.
+
+* You may not move, change, disable, or circumvent the license key functionality
+in the software, and you may not remove or obscure any functionality in the
+software that is protected by the license key.
+
+* You may not alter, remove, or obscure any licensing, copyright, or other notices
+of the licensor in the software. Any use of the licensor’s trademarks is subject
+to applicable law.
+
+Thank you for your compliance, we work hard on the development of KeyAuth and do not appreciate our copyright being infringed.
+
+## Our Discord Bot is hosted on:
+https://www.oracle.com/cloud/free/ free forever, watch video for tutorial https://www.youtube.com/watch?v=90JbCrB3m3I
 
 **What is KeyAuth?**
 
