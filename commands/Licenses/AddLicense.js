@@ -89,7 +89,7 @@ module.exports = {
 		.addStringOption((option) =>
 			option
 				.setName("note")
-				.setDescription("Note, Default is \"Added by keyauth Discord Bot\"")
+				.setDescription("Note, Default is \"Added by KeyAuth Discord Bot\"")
 				.setRequired(false)
 		),
 	async execute(interaction) {
@@ -106,9 +106,9 @@ module.exports = {
 		let level = interaction.options.getString("level")
 		let amount = interaction.options.getString("amount")
 		let character = interaction.options.getString("character") || 1;
-		let note = interaction.options.getString("note") || "Added by keyauth Discord Bot";
+		let note = interaction.options.getString("note") || "Added by KeyAuth Discord Bot";
 
-		if (amount > 20) return interaction.editReply({ embeds: [new EmbedBuilder().setTitle('Failure').addFields([{ name: 'Reason:', value: `You cannot add more than twenty keys at a time.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+		if (amount > 20) return interaction.editReply({ embeds: [new EmbedBuilder().setTitle('Failure').addFields([{ name: 'Reason:', value: `You cannot add more than twenty keys at a time.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
 
 		if (days) {
 			fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=add&expiry=${days}&mask=${license_mask}&level=${level}&amount=${amount}&character=${character}&note=${note}&format=text`)
@@ -121,7 +121,7 @@ module.exports = {
 					}
 					else {
 						let json = JSON.parse(text);
-						interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+						interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
 					}
 				})
 		}
@@ -139,7 +139,7 @@ module.exports = {
 					}
 					else {
 						let json = JSON.parse(text);
-						interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+						interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
 					}
 				})
 		}

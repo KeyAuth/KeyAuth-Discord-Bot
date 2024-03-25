@@ -1,0 +1,15 @@
+# Ignore Node.js basics
+node_modules/
+package-lock.json
+
+# Ignore .env files
+.env
+
+# Ignore config.json files
+config.json
+
+# Ignore package-lock.json
+package-lock.json
+
+# Ignore json.sqlite
+json.sqlite

@@ -85,6 +85,55 @@ client.once('ready', async () => {
 });
 
 client.on('interactionCreate', async interaction => {
+    if (interaction.isButton()) {
+        if (interaction.customId.startsWith("selectapp_")) {
+            const id = interaction.customId.split("_")[1];
+            const idFromGuild = interaction.guild ? interaction.guild.id : interaction.user.id;
+            const applications = await db.get(`applications_${idFromGuild}`) || [];
+
+            if (applications.length === 0) {
+                return interaction.editReply({
+                    embeds: [
+                        new EmbedBuilder()
+                            .setDescription("No applications have been added yet.")
+                            .setColor(Colors.Red)
+                            .setTimestamp()
+                    ],
+                    ephemeral: true
+                });
+            }
+
+            const selectedApp = applications.find(app => app.id === id);
+
+            if (!selectedApp) {
+                return interaction.editReply({
+                    embeds: [
+                        new EmbedBuilder()
+                            .setDescription("The selected application does not exist.")
+                            .setColor(Colors.Red)
+                            .setTimestamp()
+                    ],
+                    ephemeral: true
+                });
+            }
+
+            db.get(`token_${idFromGuild}`);
+            db.set(`token_${idFromGuild}`, selectedApp.sellerkey);
+
+            return interaction.reply({
+                embeds: [
+                    new EmbedBuilder()
+                        .setDescription(`The application \`${selectedApp.application}\` has been selected.`)
+                        .setColor(Colors.Green)
+                        .setTimestamp()
+                ],
+                ephemeral: true
+            });
+        }
+
+        return false;
+    }
+
     if (!interaction.type === 2) return;
 
     const command = clientCommands.get(interaction.commandName);

@@ -54,7 +54,7 @@ module.exports = {
         fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=info&key=${key}`)
             .then(res => res.json())
             .then(json => {
-                if (!json.success) return interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                if (!json.success) return interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                 if (json.hwid == null) { hwid == null } else { }
 
                 const embed = new EmbedBuilder()
