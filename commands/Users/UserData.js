@@ -52,7 +52,7 @@ module.exports = {
         fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=userdata&user=${user}`)
             .then(res => res.json())
             .then(json => {
-                if (!json.success) return interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                if (!json.success) return interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                 let hwid = json.hwid ?? "N/A";
                 let ip = json.ip ?? "N/A";
                 let lastlogin = (json.lastlogin !== null && json.lastlogin !== undefined) ? `<t:${json.lastlogin}:f>` : "N/A";

@@ -48,7 +48,7 @@ module.exports = {
 
         db.get(`wh_url_${idfrom}`)
         db.set(`wh_url_${idfrom}`, webhook)
-        interaction.editReply({ embeds: [new EmbedBuilder().setTitle('Successfully set discord webhook to log commands to').setColor(Colors.Green).setTimestamp().setFooter({ text: "keyauth Discord Bot" })], ephemeral: ephemeral })
+        interaction.editReply({ embeds: [new EmbedBuilder().setTitle('Successfully set discord webhook to log commands to').setColor(Colors.Green).setTimestamp().setFooter({ text: "KeyAuth Discord Bot" })], ephemeral: ephemeral })
 
     },
 };
