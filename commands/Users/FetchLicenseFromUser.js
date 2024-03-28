@@ -55,7 +55,7 @@ module.exports = {
                 if (json.success) {
                     interaction.editReply({ embeds: [new EmbedBuilder().setTitle(`License From ${un}`).addFields([{ name: 'License:', value: `\`${json['key']}\`` }]).setColor(Colors.Blue).setTimestamp()], ephemeral: ephemeral })
                 } else {
-                    interaction.editReply({ embeds: [new EmbedBuilder().setTitle(`Failure`).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "keyauth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                    interaction.editReply({ embeds: [new EmbedBuilder().setTitle(`Failure`).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                 }
 
             })
