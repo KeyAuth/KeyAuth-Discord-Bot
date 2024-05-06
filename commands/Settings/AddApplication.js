@@ -59,7 +59,7 @@ module.exports = {
           interaction.editReply({ embeds: [new EmbedBuilder().setTitle(`Application with name ${!application ? sellerkey.substring(0, 6) : application} has been added!`).setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
         }
         else {
-          interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/setseller\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+          interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/add-application\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
         }
       })
 
