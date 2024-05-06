@@ -51,7 +51,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`setseller\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let key = interaction.options.getString("license")
         let userToo = interaction.options.getBoolean("usertoo") ? 1 : 0;
@@ -63,7 +63,7 @@ module.exports = {
                     interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Key Deleted:', value: `\`${key}\`` }]).setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
                 }
                 else {
-                    interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`setseller\` command.` }]).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+                    interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/add-application\` command.` }]).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
                 }
             })
     },
