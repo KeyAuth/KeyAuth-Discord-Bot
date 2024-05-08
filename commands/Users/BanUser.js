@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("user")
-                .setDescription("User you wish to ban")
+                .setDescription("Enter the username of the user you'd like to ban.")
                 .setDescriptionLocalizations({
-                    "en-US": "User you wish to ban",
+                    "en-US": "Enter the username of the user you'd like to ban.",
                     "fi": "Käyttäjä, jonka haluat estää",
                     "fr": "Utilisateur que vous souhaitez bannir",
                     "de": "Benutzer, den Sie sperren möchten",
@@ -43,9 +43,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("reason")
-                .setDescription("Reason for the ban")
+                .setDescription("Enter the reason for the ban.")
                 .setDescriptionLocalizations({
-                    "en-US": "Reason for the ban",
+                    "en-US": "Enter the reason for the ban.",
                     "fi": "Syy bannille",
                     "fr": "Raison du bannissement",
                     "de": "Grund für die Sperrung",
@@ -65,7 +65,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let user = interaction.options.getString("user")
         let reason = interaction.options.getString("reason")

@@ -9,13 +9,13 @@ module.exports = {
     .addStringOption((option) =>
       option
         .setName("sellerkey")
-        .setDescription("Specify application seller key")
+        .setDescription("Enter your seller key.")
         .setRequired(true)
     )
     .addStringOption((option) =>
       option
         .setName("application")
-        .setDescription("Specify application name")
+        .setDescription("Enter your application name.")
     ),
   async execute(interaction) {
     let idfrom = interaction.guild ? interaction.guild.id : interaction.user.id;
@@ -28,7 +28,7 @@ module.exports = {
     console.log(temporary)
     if (application != null) {
       if (!/^[a-zA-Z0-9]+$/.test(application)) {
-        return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The application name can only contain letters and numbers.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your application name can only contain letters and numbers.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
       }
     }
 

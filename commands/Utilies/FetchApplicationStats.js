@@ -5,9 +5,9 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("fetch-application-stats")
-        .setDescription("Application Statistics")
+        .setDescription("Application statistics")
         .setDescriptionLocalizations({
-            "en-US": "Application Statistics",
+            "en-US": "Application statistics",
             "fi": "Sovelluksen tilastot",
             "fr": "Statistiques de l'application",
             "de": "Anwendungsstatistiken",
@@ -25,7 +25,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=stats`)
             .then(res => res.json())

@@ -5,11 +5,11 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("unpause-user")
-        .setDescription("Unpause User")
+        .setDescription("Unpause user")
         .addStringOption((option) =>
             option
                 .setName("username")
-                .setDescription("The username of the user you would like to unpause.")
+                .setDescription("The username of the user you'd like to unpause.")
                 .setRequired(true)
         ),
     async execute(interaction) {
@@ -17,7 +17,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let user = interaction.options.getString("username")
 

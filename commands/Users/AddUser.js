@@ -5,9 +5,9 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("add-user")
-        .setDescription("Add user to application")
+        .setDescription("Add a user to the application.")
         .setDescriptionLocalizations({
-            "en-US": "Add user to application",
+            "en-US": "Add a user to the application.",
             "fi": "Lisää käyttäjä sovellukseen",
             "fr": "Ajouter un utilisateur à l'application",
             "de": "Benutzer zur Anwendung hinzufügen",
@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("user")
-                .setDescription("Username of user you're creating")
+                .setDescription("Username of user you're creating.")
                 .setDescriptionLocalizations({
-                    "en-US": "Username of user you're creating",
+                    "en-US": "Username of user you're creating.",
                     "fi": "Luomasi käyttäjän käyttäjätunnus",
                     "fr": "Nom d'utilisateur de l'utilisateur que vous créez",
                     "de": "Benutzername des Benutzers, den Sie erstellen",
@@ -43,9 +43,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("sub")
-                .setDescription("Name of subscription you want to assign user upon creation")
+                .setDescription("Name of subscription you want to assign user upon creation.")
                 .setDescriptionLocalizations({
-                    "en-US": "Name of subscription you want to assign user upon creation",
+                    "en-US": "Name of subscription you want to assign user upon creation.",
                     "fi": "Nimi tilauksesta, jonka haluat määrittää käyttäjälle luomisen yhteydessä",
                     "fr": "Nom de l'abonnement que vous souhaitez attribuer à l'utilisateur lors de la création",
                     "de": "Name der Abonnement, das Sie dem Benutzer bei der Erstellung zuweisen möchten",
@@ -63,9 +63,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("expires")
-                .setDescription("Number in days until subscription assigned upon creation expires")
+                .setDescription("Number of days until the subscription assigned expires.")
                 .setDescriptionLocalizations({
-                    "en-US": "Number in days until subscription assigned upon creation expires",
+                    "en-US": "Number of days until the subscription assigned expires.",
                     "fi": "Luku päivissä, kunnes luomisen yhteydessä määritetty tilaus vanhenee",
                     "fr": "Nombre de jours jusqu'à l'expiration de l'abonnement attribué lors de la création",
                     "de": "Anzahl der Tage, bis das bei der Erstellung zugewiesene Abonnement abläuft",
@@ -105,7 +105,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let user = interaction.options.getString("user")
         let pass = interaction.options.getString("pass")

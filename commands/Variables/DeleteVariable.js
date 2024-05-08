@@ -5,11 +5,11 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("delete-variable")
-        .setDescription("Delete Variable")
+        .setDescription("Delete variable")
         .addStringOption((option) =>
             option
                 .setName("name")
-                .setDescription("The var name you would like to delete.")
+                .setDescription("The variable name you would like to delete.")
                 .setRequired(true)
         ),
     async execute(interaction) {
@@ -17,7 +17,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let name = interaction.options.getString("name")
 

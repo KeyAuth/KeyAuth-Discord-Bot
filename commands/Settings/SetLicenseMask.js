@@ -4,9 +4,9 @@ const db = require('../../utils/database')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("set-license-mask")
-        .setDescription("Sets License Key mask")
+        .setDescription("Sets the license key mask.")
         .setDescriptionLocalizations({
-            "en-US": "Sets License Key mask",
+            "en-US": "Sets the license key mask.",
             "fi": "Asettaa lisenssikoodin maskin",
             "fr": "Définit le masque de clé de licence",
             "de": "Setzt das Lizenzschlüssel-Masken",
@@ -22,9 +22,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("mask")
-                .setDescription("Specify mask for License / (null = default)")
+                .setDescription("Set the mask for the license. (blank = default)")
                 .setDescriptionLocalizations({
-                    "en-US": "Specify mask for License / (null = default)",
+                    "en-US": "Set the mask for the license. (blank = default)",
                     "fi": "Määritä lisenssi maski / (null = oletus)",
                     "fr": "Spécifiez le masque pour la licence / (null = par défaut)",
                     "de": "Geben Sie das Masken für die Lizenz an / (null = Standard)",
@@ -54,7 +54,7 @@ module.exports = {
 
         db.get(`licensemask_${idfrom}`)
         db.set(`licensemask_${idfrom}`, license_mask)
-        interaction.editReply({ embeds: [new EmbedBuilder().setTitle('License Mask Successfully Set!').setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+        interaction.editReply({ embeds: [new EmbedBuilder().setTitle('License mask successfully set!').setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
     },
 };

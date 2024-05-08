@@ -1,9 +1,5 @@
 const fs = require("fs");
-const config = require("./utils/config.js") || {
-    token: null,
-    DevelopmentServerId: null,
-    type: "development"
-};
+const config = require("./utils/config.js");
 
 const db = require('./utils/database')
 const fetch = require('node-fetch')

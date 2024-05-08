@@ -5,9 +5,9 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("get-license-from-user")
-        .setDescription("Get License from user")
+        .setDescription("Get a users license.")
         .setDescriptionLocalizations({
-            "en-US": "Get License from user",
+            "en-US": "Get a users license.",
             "fi": "Hae lisenssi käyttäjältä",
             "fr": "Obtenir une licence de l'utilisateur",
             "de": "Lizenz von Benutzer erhalten",
@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("username")
-                .setDescription("Username where you want the license")
+                .setDescription("Username of the user you're getting the license from.")
                 .setDescriptionLocalizations({
-                    "en-US": "Username where you want the license",
+                    "en-US": "Username of the user you're getting the license from.",
                     "fi": "Käyttäjätunnus, johon haluat lisenssin",
                     "fr": "Nom d'utilisateur où vous souhaitez la licence",
                     "de": "Benutzername, an dem Sie die Lizenz möchten",
@@ -45,7 +45,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let un = interaction.options.getString("username")
 

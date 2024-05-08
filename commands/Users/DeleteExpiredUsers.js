@@ -5,9 +5,9 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("delete-expired-users")
-        .setDescription("Delete users with no active subscriptions")
+        .setDescription("Delete users with no active subscription.")
         .setDescriptionLocalizations({
-            "en-US": "Delete users with no active subscriptions",
+            "en-US": "Delete users with no active subscription.",
             "fi": "Poista käyttäjät, joilla ei ole aktiivisia tilauksia",
             "fr": "Supprimer les utilisateurs sans abonnement actif",
             "de": "Benutzer mit keinem aktiven Abonnement löschen",
@@ -25,7 +25,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=delexpusers`)
             .then(res => res.json())
