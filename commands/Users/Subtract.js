@@ -5,23 +5,23 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("subtract")
-        .setDescription("Subtract From User Subscription")
+        .setDescription("Subtract from user subscription,")
         .addStringOption((option) =>
             option
                 .setName("user")
-                .setDescription("The username of the user you are subtracting time form.")
+                .setDescription("The username of the user you're subtracting time form.")
                 .setRequired(true)
         )
         .addStringOption((option) =>
             option
                 .setName("sub")
-                .setDescription("Their subscription name")
+                .setDescription("Their subscription name.")
                 .setRequired(true)
         )
         .addIntegerOption((option) =>
             option
                 .setName("seconds")
-                .setDescription("Time to subtract from their subscription")
+                .setDescription("Time to subtract from their subscription.")
                 .setRequired(true)
         ),
     async execute(interaction) {
@@ -29,7 +29,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let user = interaction.options.getString("user")
         let sub = interaction.options.getString("sub")

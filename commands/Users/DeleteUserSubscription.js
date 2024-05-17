@@ -5,9 +5,9 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("delete-user-subscription")
-        .setDescription("Delete user's subscription")
+        .setDescription("Delete users subscription")
         .setDescriptionLocalizations({
-            "en-US": "Delete user's subscription",
+            "en-US": "Delete users subscription",
             "fi": "Poista käyttäjän tilaus",
             "fr": "Supprimer l'abonnement de l'utilisateur",
             "de": "Löschen Sie das Abonnement des Benutzers",
@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("user")
-                .setDescription("Username of user you're deleting subscription from")
+                .setDescription("Username of the user you'd like to delete the subscription from.")
                 .setDescriptionLocalizations({
-                    "en-US": "Username of user you're deleting subscription from",
+                    "en-US": "Username of the user you'd like to delete the subscription from.",
                     "fi": "Käyttäjän käyttäjänimi, jolta poistat tilauksen",
                     "fr": "Nom d'utilisateur de l'utilisateur dont vous supprimez l'abonnement",
                     "de": "Benutzername des Benutzers, von dem Sie das Abonnement löschen",
@@ -43,9 +43,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("name")
-                .setDescription("Name of subscription you're deleting from user")
+                .setDescription("Enter the name of the subscription you're deleting from user.")
                 .setDescriptionLocalizations({
-                    "en-US": "Name of subscription you're deleting from user",
+                    "en-US": "Enter the name of the subscription you're deleting from user.",
                     "fi": "Tilauksen nimi, jonka poistat käyttäjältä",
                     "fr": "Nom de l'abonnement que vous supprimez de l'utilisateur",
                     "de": "Name des Abonnements, das Sie vom Benutzer löschen",
@@ -65,7 +65,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let user = interaction.options.getString("user")
         let name = interaction.options.getString("name")

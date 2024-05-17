@@ -5,9 +5,9 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("retrieve-user-data")
-        .setDescription("Retrieve info from a user")
+        .setDescription("Retrieve information about a user.")
         .setDescriptionLocalizations({
-            "en-US": "Retrieve info from a user",
+            "en-US": "Retrieve information about a user.",
             "fi": "Hae tietoja käyttäjältä",
             "fr": "Récupérer des informations sur un utilisateur",
             "de": "Informationen von einem Benutzer abrufen",
@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("user")
-                .setDescription("Specify user to lookup")
+                .setDescription("Specify the user to lookup")
                 .setDescriptionLocalizations({
-                    "en-US": "Specify user to lookup",
+                    "en-US": "Specify the user to lookup",
                     "fi": "Määritä käyttäjä, jota etsitään",
                     "fr": "Spécifiez l'utilisateur à rechercher",
                     "de": "Geben Sie den Benutzer an, nach dem gesucht werden soll",
@@ -45,7 +45,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let user = interaction.options.getString("user")
 

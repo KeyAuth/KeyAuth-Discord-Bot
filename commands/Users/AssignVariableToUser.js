@@ -5,9 +5,9 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("assign-user-variable")
-        .setDescription("Assign variable to user(s)")
+        .setDescription("Assign a variable to user(s)")
         .setDescriptionLocalizations({
-            "en-US": "Assign variable to user(s)",
+            "en-US": "Assign a variable to user(s)",
             "fi": "Määritä muuttuja käyttäjälle",
             "fr": "Assigner une variable à l'utilisateur",
             "de": "Variablen einem Benutzer zuweisen",
@@ -23,7 +23,7 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("name")
-                .setDescription("User variable name")
+                .setDescription("Enter the user variable name.")
                 .setDescriptionLocalizations({
                     "en-US": "User variable name",
                     "fi": "Käyttäjän muuttujan nimi",
@@ -43,9 +43,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("data")
-                .setDescription("User variable data")
+                .setDescription("Enter the user variable data.")
                 .setDescriptionLocalizations({
-                    "en-US": "User variable data",
+                    "en-US": "Enter the user variable data",
                     "fi": "Käyttäjän muuttujan tiedot",
                     "fr": "Données de la variable utilisateur",
                     "de": "Benutzervariablen-Daten",
@@ -63,7 +63,7 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("user")
-                .setDescription("User to set variable of. If you leave blank, all users will be assigned user variable")
+                .setDescription("Enter the username of the user to set variable of. If you leave blank, all users will be assigned to the user variable.",)
                 .setDescriptionLocalizations({
                     "en-US": "User to set variable of. If you leave blank, all users will be assigned user variable",
                     "fi": "Käyttäjä asettaa muuttujan. Jätä tyhjäksi kaikille käyttäjille",
@@ -83,7 +83,7 @@ module.exports = {
         .addIntegerOption((option) =>
             option
                 .setName("readonly")
-                .setDescription("Whether user var can be changed from program (0 = no, 1 = yes)")
+                .setDescription("Should the user variable be read only? (0 = no, 1 = yes)")
                 .setRequired(false)
         ),
     async execute(interaction) {
@@ -91,7 +91,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let name = interaction.options.getString("name")
         let data = interaction.options.getString("data")

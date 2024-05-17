@@ -4,10 +4,10 @@ const fetch = require('node-fetch')
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName("extend-users")
-        .setDescription("Extend Users")
+        .setName("extend-user")
+        .setDescription("Extend user")
         .setDescriptionLocalizations({
-            "en-US": "Extend Users",
+            "en-US": "Extend user",
             "fi": "Pidentä käyttäjiä",
             "fr": "Étendre l'utilisateur",
             "de": "Benutzer erweitern",
@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("username")
-                .setDescription("Enter username to extend")
+                .setDescription("Enter username of the user you want to extend.")
                 .setDescriptionLocalizations({
-                    "en-US": "Enter username to extend",
+                    "en-US": "Enter username of the user you want to extend.",
                     "fi": "Anna käyttäjätunnus jatkaa",
                     "fr": "Entrez le nom d'utilisateur à étendre",
                     "de": "Geben Sie den Benutzernamen ein, um ihn zu erweitern",
@@ -43,9 +43,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("subname")
-                .setDescription("Enter Subscription Name")
+                .setDescription("Enter the name of the subscription.")
                 .setDescriptionLocalizations({
-                    "en-US": "Enter Subscription Name",
+                    "en-US": "Enter the name of the subscription.",
                     "fi": "Anna tilausnimi",
                     "fr": "Entrez le nom de l'abonnement",
                     "de": "Geben Sie den Abonnementsnamen ein",
@@ -63,9 +63,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("expiry")
-                .setDescription("Enter Days Subscription Should Last")
+                .setDescription("Enter the amount of time you want to extend the subscription for.")
                 .setDescriptionLocalizations({
-                    "en-US": "Enter Days Subscription Should Last",
+                    "en-US": "Enter the amount of time you want to extend the subscription for.",
                     "fi": "Anna päivät, jolloin tilaus pitäisi kestää",
                     "fr": "Entrez les jours pendant lesquels l'abonnement devrait durer",
                     "de": "Geben Sie die Tage ein, an denen die Abonnementdauer enden soll",
@@ -91,7 +91,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
 
         let un = interaction.options.getString("username")

@@ -3,9 +3,9 @@ const { SlashCommandBuilder, Colors, EmbedBuilder } = require("discord.js");
 module.exports = {
   data: new SlashCommandBuilder()
     .setName("help")
-    .setDescription("Help command for bot")
+    .setDescription("Help command for bot.")
     .setDescriptionLocalizations({
-      "en-US": "Help command for bot",
+      "en-US": "Help command for bot.",
       "fi": "Ohje-komento bottia varten",
       "fr": "Commande d'aide pour le bot",
       "de": "Hilfsbefehl für den Bot",

@@ -9,7 +9,7 @@ module.exports = {
     .addStringOption((option) =>
       option
         .setName("application")
-        .setDescription("Specify the application name to delete.")
+        .setDescription("Enter the name of the application you'd like to delete.")
         .setRequired(true)
     ),
   async execute(interaction) {
@@ -48,7 +48,7 @@ module.exports = {
       return interaction.editReply({
         embeds: [
           new EmbedBuilder()
-            .setDescription("Please specify the application name to delete.")
+            .setDescription("Enter the name of the application you'd like to delete.")
             .setColor(Colors.Red)
             .setTimestamp()
         ],
@@ -82,7 +82,7 @@ module.exports = {
     interaction.editReply({
       embeds: [
         new EmbedBuilder()
-          .setTitle(`Application(s) with name ${application} have been deleted!`)
+          .setTitle(`The application(s) with the name ${application} have been deleted!`)
           .setColor(Colors.Green)
           .setTimestamp()
       ],

@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("user")
-                .setDescription("Username of user variable you wish to delete")
+                .setDescription("Username of the user variable you'd like to delete")
                 .setDescriptionLocalizations({
-                    "en-US": "Username of user variable you wish to delete",
+                    "en-US": "Username of the user variable you'd like to delete",
                     "fi": "Poistettavan käyttäjän muuttujan käyttäjätunnus",
                     "fr": "Nom d'utilisateur de la variable utilisateur que vous souhaitez supprimer",
                     "de": "Benutzername der Benutzervariable, die Sie löschen möchten",
@@ -43,9 +43,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("name")
-                .setDescription("Name of user variable you wish to delete")
+                .setDescription("Enter the name of the user variable you'd like to delete.")
                 .setDescriptionLocalizations({
-                    "en-US": "Name of user variable you wish to delete",
+                    "en-US": "Enter the name of the user variable you'd like to delete.",
                     "fi": "Poistettavan käyttäjän muuttujan nimi",
                     "fr": "Nom de la variable utilisateur que vous souhaitez supprimer",
                     "de": "Name der Benutzervariable, die Sie löschen möchten",
@@ -65,7 +65,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let user = interaction.options.getString("user")
         let name = interaction.options.getString("name")

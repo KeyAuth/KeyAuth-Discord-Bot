@@ -5,9 +5,9 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("add-application-hash")
-        .setDescription("Add Additional Hash to your Application")
+        .setDescription("Add an additional hash to your application.")
         .setDescriptionLocalizations({
-            "en-US": "Add Additional Hash to your Application",
+            "en-US": "Add an additional hash to your application.",
             "fi": "Lisää lisähash sovellukseesi",
             "fr": "Ajouter un hash supplémentaire à votre application",
             "de": "Fügen Sie Ihrer Anwendung einen zusätzlichen Hash hinzu",
@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("hash")
-                .setDescription("MD5 hash you want to add")
+                .setDescription("The MD5 hash you want to add")
                 .setDescriptionLocalizations({
-                    "en-US": "MD5 hash you want to add",
+                    "en-US": "The MD5 hash you want to add",
                     "fi": "MD5-tiiviste, jonka haluat lisätä",
                     "fr": "hachage MD5 que vous souhaitez ajouter",
                     "de": "MD5-Hash, den Sie hinzufügen möchten",
@@ -45,7 +45,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let md5hash = interaction.options.getString("hash")
 

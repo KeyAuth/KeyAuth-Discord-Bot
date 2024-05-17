@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("name")
-                .setDescription("Variable Name?")
+                .setDescription("Variable name?")
                 .setDescriptionLocalizations({
-                    "en-US": "Variable Name?",
+                    "en-US": "Variable name?",
                     "fi": "Muuttujan nimi?",
                     "fr": "Nom de la variable?",
                     "de": "Variablenname?",
@@ -43,7 +43,7 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("value")
-                .setDescription("Variable Value?")
+                .setDescription("Variable value?")
                 .setDescriptionLocalizations({
                     "en-US": "Variable Value?",
                     "fi": "Muuttujan arvo?",
@@ -63,9 +63,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("authed")
-                .setDescription("Determines whether user needs to be logged in (1) or not (0)")
+                .setDescription("Determines whether the user needs to be logged in (1) or not (0)")
                 .setDescriptionLocalizations({
-                    "en-US": "Determines whether user needs to be logged in (1) or not (0)",
+                    "en-US": "Determines whether the user needs to be logged in (1) or not (0)",
                     "fi": "Määrittää, onko käyttäjän kirjautua sisään (1) tai ei (0)",
                     "fr": "Détermine si l'utilisateur doit être connecté (1) ou non (0)",
                     "de": "Bestimmt, ob der Benutzer angemeldet sein muss (1) oder nicht (0)",
@@ -85,7 +85,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let varname = interaction.options.getString("name")
         let varvalue = interaction.options.getString("value")

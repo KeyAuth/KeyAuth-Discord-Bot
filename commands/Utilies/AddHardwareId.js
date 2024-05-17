@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("username")
-                .setDescription("Enter Username")
+                .setDescription("Enter username")
                 .setDescriptionLocalizations({
-                    "en-US": "Enter Username",
+                    "en-US": "Enter username",
                     "fi": "Anna käyttäjätunnus",
                     "fr": "Entrez le nom d'utilisateur",
                     "de": "Geben Sie den Benutzernamen ein",
@@ -43,9 +43,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("hwid")
-                .setDescription("Enter Additional HWID")
+                .setDescription("Enter additional HWID")
                 .setDescriptionLocalizations({
-                    "en-US": "Enter Additional HWID",
+                    "en-US": "Enter additional HWID",
                     "fi": "Anna lisä HWID",
                     "fr": "Entrez un HWID supplémentaire",
                     "de": "Geben Sie zusätzliche HWID ein",
@@ -65,7 +65,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let un = interaction.options.getString("username")
         let auxhwid = interaction.options.getString("hwid")

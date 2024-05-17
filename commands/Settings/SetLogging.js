@@ -4,9 +4,9 @@ const db = require('../../utils/database')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("set-logging")
-        .setDescription("Sets a Discord webhook to log commands used on this bot.")
+        .setDescription("Set a Discord webhook to log commands used on this bot.")
         .setDescriptionLocalizations({
-            "en-US": "Sets a Discord webhook to log commands used on this bot.",
+            "en-US": "Set a Discord webhook to log commands used on this bot.",
             "fi": "Asettaa Discord-webhookin lokitukseen käytetyt komennot tässä botti.",
             "fr": "Définit un webhook Discord pour enregistrer les commandes utilisées sur ce bot.",
             "de": "Stellt einen Discord-Webhook ein, um Befehle zu protokollieren, die auf diesem Bot verwendet werden.",
@@ -22,19 +22,19 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("webhook")
-                .setDescription("Discord webhook URL")
+                .setDescription("Enter the webhook URL.")
                 .setDescriptionLocalizations({
-                    "en-US": "Discord webhook URL",
-                    "fi": "Discord webhook URL",
+                    "en-US": "Enter the webhook URL.",
+                    "fi": "Enter the webhook URL.",
                     "fr": "URL de webhook Discord",
                     "de": "Discord-Webhook-URL",
                     "it": "URL webhook Discord",
                     "nl": "Discord-webhook-URL",
                     "ru": "URL Discord-веб-хука",
                     "pl": "URL webhook Discord",
-                    "tr": "Discord webhook URL",
+                    "tr": "Enter the webhook URL.",
                     "cs": "URL webhook Discord",
-                    "ja": "Discord Webhook URL",
+                    "ja": "Enter the webhook URL.",
                     "ko": "Discord 웹 훅 URL",
                 })
                 .setRequired(true)

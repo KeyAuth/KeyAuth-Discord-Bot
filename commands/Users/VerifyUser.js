@@ -5,9 +5,9 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("verify-user")
-        .setDescription("Verify user exists")
+        .setDescription("Verify the user exists.")
         .setDescriptionLocalizations({
-            "en-US": "Verify user exists",
+            "en-US": "Verify the user exists.",
             "fi": "Tarkista, että käyttäjä on olemassa",
             "fr": "Vérifier que l'utilisateur existe",
             "de": "Überprüfen, ob Benutzer existiert",
@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("user")
-                .setDescription("Username of user you would like to check the existence of")
+                .setDescription("The username of the user you would like to check the existence of")
                 .setDescriptionLocalizations({
-                    "en-US": "Username of user you would like to check the existence of",
+                    "en-US": "The username of the user you would like to check the existence of",
                     "fi": "Käyttäjän käyttäjätunnus, jonka olemassaolon haluat tarkistaa",
                     "fr": "Nom d'utilisateur de l'utilisateur dont vous souhaitez vérifier l'existence",
                     "de": "Benutzername des Benutzers, dessen Existenz Sie überprüfen möchten",
@@ -45,7 +45,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let user = interaction.options.getString("user")
 

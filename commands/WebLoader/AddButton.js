@@ -5,11 +5,11 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("add-webloader-button")
-        .setDescription("Create New Web Loader Button")
+        .setDescription("Create new web loader button")
         .addStringOption((option) =>
             option
                 .setName("value")
-                .setDescription("Value of the web loader button")
+                .setDescription("The value of the web loader button")
                 .setRequired(true)
         )
         .addStringOption((option) =>
@@ -23,7 +23,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let value = interaction.options.getString("value")
         let text = interaction.options.getString("text")

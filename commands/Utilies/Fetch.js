@@ -95,7 +95,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let subcommand = interaction.options.getSubcommand();
 
@@ -144,7 +144,7 @@ module.exports = {
                     if (json.success) {
                         var vars = "";
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application User Vars").setDescription(`**${vars}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application User Vars").setDescription(`**${vars}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
                     } else {
@@ -164,7 +164,7 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application User Vars").setDescription(`**${usernames}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application User Vars").setDescription(`**${usernames}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
@@ -173,7 +173,7 @@ module.exports = {
                     }
                 })
         } else if (subcommand === "subs") {
-            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching Subs...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching subscriptions...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
             fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallsubs`)
                 .then(res => res.json())
@@ -186,7 +186,7 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application Subscriptions").setDescription(`**${subs}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application Subscriptions").setDescription(`**${subs}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
@@ -196,7 +196,7 @@ module.exports = {
                 })
 
         } else if (subcommand === "chats") {
-            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching Chats...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching chats...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
             fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallchats`)
                 .then(res => res.json())
@@ -209,7 +209,7 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application Chat Channels").setDescription(`**${chats}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application Chat Channels").setDescription(`**${chats}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
@@ -219,7 +219,7 @@ module.exports = {
                 })
 
         } else if (subcommand === "sessions") {
-            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching Sessions...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching sessions...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
             fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallsessions`)
                 .then(res => res.json())
@@ -232,7 +232,7 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application Sessions").setDescription(`**${sessions}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application Sessions").setDescription(`**${sessions}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
@@ -243,7 +243,7 @@ module.exports = {
 
 
         } else if (subcommand === "files") {
-            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching Files...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching files...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
             fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallfiles`)
                 .then(res => res.json())
@@ -256,7 +256,7 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application Files").setDescription(`**${files}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application Files").setDescription(`**${files}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
@@ -267,7 +267,7 @@ module.exports = {
 
 
         } else if (subcommand === "vars") {
-            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching Vars...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching variables...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
             fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallvars`)
                 .then(res => res.json())
@@ -280,7 +280,7 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application Variables").setDescription(`**${vars}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application Variables").setDescription(`**${vars}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
@@ -290,7 +290,7 @@ module.exports = {
                 })
 
         } else if (subcommand === "blacklists") {
-            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching Blacklists...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching blacklists...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
             fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallblacks`)
                 .then(res => res.json())
@@ -310,7 +310,7 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application Blacklists").setDescription(`${blacklists}`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application Blacklists").setDescription(`${blacklists}`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
@@ -320,7 +320,7 @@ module.exports = {
                 })
 
         } else if (subcommand === "webhooks") {
-            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching Webhooks...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching webhooks...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
             fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallwebhooks`)
                 .then(res => res.json())
@@ -333,7 +333,7 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application Webhooks").setDescription(`**${webhooks}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application Webhooks").setDescription(`**${webhooks}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
                     } else {
@@ -341,7 +341,7 @@ module.exports = {
                     }
                 })
         } else if (subcommand === "buttons") {
-            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching Buttons...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching buttons...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
             fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallbuttons`)
                 .then(res => res.json())
@@ -354,7 +354,7 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application Buttons").setDescription(`**${buttons}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application Buttons").setDescription(`**${buttons}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
@@ -363,7 +363,7 @@ module.exports = {
                     }
                 })
         } else if (subcommand === "mutes") {
-            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching Mutes...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching mutes...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
             fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallmutes`)
                 .then(res => res.json())
@@ -376,7 +376,7 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application Mutes").setDescription(`**${mutes}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application Mutes").setDescription(`**${mutes}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
@@ -385,7 +385,7 @@ module.exports = {
                     }
                 })
         } else if (subcommand === "channels") {
-            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching Channels...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching channels...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
             fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchallchats`)
                 .then(res => res.json())
@@ -398,7 +398,7 @@ module.exports = {
                         }
 
                         interaction.editReply({
-                            embeds: [new EmbedBuilder().setTitle("keyauth Application Channels").setDescription(`**${channels}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
+                            embeds: [new EmbedBuilder().setTitle("KeyAuth Application Channels").setDescription(`**${channels}**`).setFooter({ text: "KeyAuth Discord Bot" }).setColor(Colors.Green).setTimestamp()],
                             ephemeral: ephemeral
                         });
 
@@ -407,7 +407,7 @@ module.exports = {
                     }
                 })
         } else if (subcommand === "appdetails") {
-            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching Appdetails...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching application details...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
 
             fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=appdetails`)
                 .then(res => res.json())

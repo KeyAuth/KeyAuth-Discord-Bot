@@ -5,17 +5,17 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("edit-email")
-        .setDescription("Change User's Email Address")
+        .setDescription("Change users email address.")
         .addStringOption((option) =>
             option
                 .setName("user")
-                .setDescription("The username of the user you would like to change email for.")
+                .setDescription("The username of the user you'd like to change email for.")
                 .setRequired(true)
         )
         .addStringOption((option) =>
             option
                 .setName("email")
-                .setDescription("New email address for the user to use in forgot() function")
+                .setDescription("Enter the new email address.")
                 .setRequired(true)
         ),
     async execute(interaction) {
@@ -23,7 +23,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let user = interaction.options.getString("user")
         let email = interaction.options.getString("email")

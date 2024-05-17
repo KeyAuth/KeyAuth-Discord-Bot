@@ -5,9 +5,9 @@ const fetch = require('node-fetch')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName("reset-password")
-        .setDescription("Reset password of user")
+        .setDescription("Reset a users password.")
         .setDescriptionLocalizations({
-            "en-US": "Reset password of user",
+            "en-US": "Reset a users password.",
             "fi": "Nollaa käyttäjän salasana",
             "fr": "Réinitialiser le mot de passe de l'utilisateur",
             "de": "Passwort des Benutzers zurücksetzen",
@@ -23,9 +23,9 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("user")
-                .setDescription("Username of user you're resetting password of")
+                .setDescription("Username of the user you're password resettings.")
                 .setDescriptionLocalizations({
-                    "en-US": "Username of user you're resetting password of",
+                    "en-US": "Username of the user you're password resettings.",
                     "fi": "Käyttäjänimi, jonka salasanaa nollaat",
                     "fr": "Nom d'utilisateur de l'utilisateur dont vous réinitialisez le mot de passe",
                     "de": "Benutzername des Benutzers, dessen Passwort Sie zurücksetzen",
@@ -43,7 +43,7 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("pass")
-                .setDescription("Password for user (optional) if not set, will be set later on login - (default = passwd)")
+                .setDescription("Uesrs new password (optional), if one is not set the user will set one upon login. (default = passwd)")
                 .setDescriptionLocalizations({
                     "en-US": "Password for user (optional) if not set, will be set later on login",
                     "fi": "Käyttäjän salasana (valinnainen) jos ei aseteta, asetetaan myöhemmin kirjautumisen yhteydessä",
@@ -65,7 +65,7 @@ module.exports = {
         let ephemeral = !interaction.guild ? false : true;
 
         let sellerkey = await db.get(`token_${idfrom}`)
-        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`SellerKey\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
+        if (sellerkey === null) return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your \`SellerKey\` **has not been set!**\n In order to use this bot, you must run the \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
         let user = interaction.options.getString("user")
         let pass = interaction.options.getString("pass") || "passwd";
