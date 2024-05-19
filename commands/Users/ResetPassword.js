@@ -43,7 +43,7 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("pass")
-                .setDescription("Uesrs new password (optional), if one is not set the user will set one upon login. (default = passwd)")
+                .setDescription("User's new password (optional), or will set on login. (default = passwd)")
                 .setDescriptionLocalizations({
                     "en-US": "Password for user (optional) if not set, will be set later on login",
                     "fi": "Käyttäjän salasana (valinnainen) jos ei aseteta, asetetaan myöhemmin kirjautumisen yhteydessä",
