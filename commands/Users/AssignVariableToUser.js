@@ -63,20 +63,20 @@ module.exports = {
         .addStringOption((option) =>
             option
                 .setName("user")
-                .setDescription("Enter the username of the user to set variable of. If you leave blank, all users will be assigned to the user variable.",)
+                .setDescription("Enter the user to set variable for, or leave blank for all users.")
                 .setDescriptionLocalizations({
-                    "en-US": "User to set variable of. If you leave blank, all users will be assigned user variable",
-                    "fi": "Käyttäjä asettaa muuttujan. Jätä tyhjäksi kaikille käyttäjille",
-                    "fr": "L'utilisateur doit définir la variable de. Laisser vide pour tous les utilisateurs",
-                    "de": "Benutzer zum Festlegen der Variablen. Für alle Benutzer leer lassen",
-                    "it": "Utente di cui impostare la variabile. Lascia vuoto per tutti gli utenti",
-                    "nl": "Gebruiker om variabele van in te stellen. Leeg laten voor alle gebruikers",
-                    "ru": "Пользователь для установки переменной. Оставьте пустым для всех пользователей",
-                    "pl": "Użytkownik do ustawienia zmiennej. Pozostaw puste dla wszystkich użytkowników",
-                    "tr": "Değişkeni ayarlayacak kullanıcı. Tüm kullanıcılar için boş bırakın",
-                    "cs": "Uživatel k nastavení proměnné. Ponechte prázdné pro všechny uživatele",
-                    "ja": "変数を設定するユーザー。空のままにすると、すべてのユーザーにユーザー変数が割り当てられます",
-                    "ko": "변수를 설정할 사용자. 비워 두면 모든 사용자에게 사용자 변수가 할당됩니다",
+                    "en-US": "User to set variable for, or leave blank for all users",
+                    "fi": "Käyttäjä asettaa muuttujan, tai jätä tyhjäksi kaikille käyttäjille",
+                    "fr": "Utilisateur pour définir la variable, ou laisser vide pour tous les utilisateurs",
+                    "de": "Benutzer zum Festlegen der Variablen, oder leer lassen für alle Benutzer",
+                    "it": "Utente per impostare la variabile, o lascia vuoto per tutti gli utenti",
+                    "nl": "Gebruiker om variabele voor in te stellen, of leeg laten voor alle gebruikers",
+                    "ru": "Пользователь для установки переменной, или оставьте пустым для всех пользователей",
+                    "pl": "Użytkownik do ustawienia zmiennej, lub pozostaw puste dla wszystkich użytkowników",
+                    "tr": "Değişkeni ayarlayacak kullanıcı, veya tüm kullanıcılar için boş bırakın",
+                    "cs": "Uživatel k nastavení proměnné, nebo ponechte prázdné pro všechny uživatele",
+                    "ja": "変数を設定するユーザー、またはすべてのユーザーのために空白のままにします",
+                    "ko": "변수를 설정할 사용자, 또는 모든 사용자에 대해 비워 둡니다",
                 })
                 .setRequired(true)
         )
