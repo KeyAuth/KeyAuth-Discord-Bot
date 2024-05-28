@@ -23,7 +23,7 @@ module.exports = {
             return interaction.editReply({ embeds: [noApplicationsEmbed], ephemeral });
         }
 
-        const buttons = applications.map((app, index) =>
+        const buttons = applications.map((app) =>
             new ButtonBuilder()
                 .setCustomId(`selectapp_${app.id}`)
                 .setLabel(app.application)
@@ -32,7 +32,8 @@ module.exports = {
 
         const rows = [];
         for (let i = 0; i < buttons.length; i += 5) {
-            rows.push(new ActionRowBuilder().addComponents(buttons.slice(i, i + 5)));
+            const actionRow = new ActionRowBuilder().addComponents(buttons.slice(i, i + 5));
+            rows.push(actionRow);
         }
 
         const Embed = new EmbedBuilder()

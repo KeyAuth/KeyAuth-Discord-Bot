@@ -4,8 +4,8 @@ const fetch = require('node-fetch');
 
 module.exports = {
   data: new SlashCommandBuilder()
-    .setName("del-application")
-    .setDescription("Delete an application or seller key from the bot.")
+    .setName("remove-application")
+    .setDescription("Removes an application or seller key from the bot.")
     .addStringOption((option) =>
       option
         .setName("application")
