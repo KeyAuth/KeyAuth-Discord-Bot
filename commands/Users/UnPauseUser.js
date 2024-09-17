@@ -21,7 +21,7 @@ module.exports = {
 
         let user = interaction.options.getString("username")
 
-        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=unpause&username=${user}`)
+        fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=unpauseuser&username=${user}`)
             .then(res => res.json())
             .then(json => {
                 if (json.success) {
