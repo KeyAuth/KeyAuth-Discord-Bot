@@ -23,9 +23,9 @@ module.exports = {
     let sellerkey = interaction.options.getString("sellerkey")
 
     const application = interaction.options.getString("application");
-//    let temporary = !application ? sellerkey.substring(0, 6) : application
-//
-//    console.log(temporary)
+    let temporary = !application ? sellerkey.substring(0, 6) : application
+    //
+    //    console.log(temporary)
     if (application != null) {
       if (!/^[a-zA-Z0-9]+$/.test(application)) {
         return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your application name can only contain letters and numbers.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
@@ -56,7 +56,7 @@ module.exports = {
             id: IdGenerator()
           });
           await db.set(`applications_${idfrom}`, applications);
-          interaction.editReply({ embeds: [new EmbedBuilder().setTitle(`Application with name ${!application ? sellerkey.substring(0, 6) : application} has been added!`).setColor(Colors.Green).setTimestamp().setFoorter({ text: "Please use the command '/select-application' to start using the bot." })], ephemeral: ephemeral })
+          interaction.editReply({ embeds: [new EmbedBuilder().setTitle(`Application with name ${!application ? sellerkey.substring(0, 6) : application} has been added!`).setColor(Colors.Green).setTimestamp().setFooter({ text: "Please use the command '/select-application' to start using the bot." })], ephemeral: ephemeral })
         }
         else {
           interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/add-application\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
