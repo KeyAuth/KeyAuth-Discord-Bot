@@ -24,8 +24,8 @@ module.exports = {
 
     const application = interaction.options.getString("application");
     let temporary = !application ? sellerkey.substring(0, 6) : application
-
-    console.log(temporary)
+    //
+    //    console.log(temporary)
     if (application != null) {
       if (!/^[a-zA-Z0-9]+$/.test(application)) {
         return interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`Your application name can only contain letters and numbers.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
