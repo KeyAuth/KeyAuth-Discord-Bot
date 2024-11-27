@@ -12,7 +12,8 @@
   "description": "KeyAuth Authentication SellerAPI Discord Bot",
   "main": "index.js",
   "scripts": {
-    "test": "/help"
+    "test": "/help",
+    "start": "node index.js"
   },
   "engines": {
     "node": ">=20.0.0"
