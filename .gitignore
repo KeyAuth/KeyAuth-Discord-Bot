@@ -13,3 +13,6 @@ package-lock.json
 
 # Ignore json.sqlite
 json.sqlite
+
+# Ignore JetBrains IDE
+.idea

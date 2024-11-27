@@ -56,7 +56,13 @@ module.exports = {
             id: IdGenerator()
           });
           await db.set(`applications_${idfrom}`, applications);
-          interaction.editReply({ embeds: [new EmbedBuilder().setTitle(`Application with name ${!application ? sellerkey.substring(0, 6) : application} has been added!`).setColor(Colors.Green).setTimestamp().setFooter({ text: "Please use the command '/select-application' to start using the bot." })], ephemeral: ephemeral })
+          interaction.editReply({ embeds: [new EmbedBuilder()
+            .setTitle(`Application with name ${!application ? sellerkey.substring(0, 6) : application} has been added!`)
+            .setColor(Colors.Green)
+            .setTimestamp()
+            .addFields([
+              { name: 'Next Step', value: 'Please use the command `/select-application` to start using this bot' }
+            ])], ephemeral: ephemeral })
         }
         else {
           interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/add-application\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
