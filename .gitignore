@@ -10,6 +10,10 @@ config.json
 
 # Ignore package-lock.json
 package-lock.json
+yarn.lock
+bun.lock
+bun.lockb
+deno.lock
 
 # Ignore json.sqlite
 json.sqlite

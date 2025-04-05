@@ -89,6 +89,16 @@ module.exports = {
             subcommand
                 .setName('appdetails')
                 .setDescription('Fetch Application Details')
+        )
+        .addSubcommand((subcommand) => 
+            subcommand
+                .setName('logs')
+                .setDescription('Fetch All Logs')
+        )
+        .addSubcommand((subcommand) =>
+            subcommand
+                .setName('team')
+                .setDescription('Fetch All Resellers and Managers')
         ),
     async execute(interaction) {
         let idfrom = interaction.guild ? interaction.guild.id : interaction.user.id;
@@ -432,6 +442,94 @@ module.exports = {
                         interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/add-application\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
                     }
                 })
+        } else if (subcommand === "logs") {
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching logs...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+
+            fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchalllogs`)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.success) {
+                        interaction.editReply({
+                            embeds: [
+                                new EmbedBuilder()
+                                    .setTitle("KeyAuth Application Logs")
+                                    .setFooter({ text: "KeyAuth Discord Bot" })
+                                    .addFields(
+                                        { name: 'Logs', value: json.logs }
+                                    )
+                                    .setColor(Colors.Green).setTimestamp()],
+                            ephemeral: ephemeral
+                        });
+
+                    } else {
+                        interaction.editReply({ embeds: [new EmbedBuilder().setTitle(json.message).addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/add-application\` command.` }]).setColor(Colors.Red).setFooter({ text: "KeyAuth Discord Bot" }).setTimestamp()], ephemeral: ephemeral })
+                    }
+                })
+        } else if (subcommand === "team") {
+            interaction.editReply({ embeds: [new EmbedBuilder().setTitle("Fetching team members...").setColor(Colors.Green).setTimestamp()], ephemeral: ephemeral })
+
+            fetch(`https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=fetchteam`)
+                .then(res => res.json())
+                .then(json => {
+                    if (json.success) {
+                        // Create fields for resellers
+                        const resellerFields = json.resellers.map(reseller => {
+                            return {
+                                name: `Reseller: ${reseller.username}`,
+                                value: `Balance: ${reseller.balance}\nKey Levels: ${reseller.key_levels}`
+                            };
+                        });
+
+                        // Create fields for managers
+                        const managerFields = json.managers.map(manager => {
+                            return {
+                                name: `Manager: ${manager.username}`,
+                                value: `Permissions: ${JSON.stringify(manager.permissions)}`
+                            };
+                        });
+
+                        // Combine all fields
+                        const allFields = [...resellerFields, ...managerFields];
+
+                        interaction.editReply({
+                            embeds: [
+                                new EmbedBuilder()
+                                    .setTitle("KeyAuth Application Team Members")
+                                    .setFooter({ text: "KeyAuth Discord Bot" })
+                                    .addFields(allFields.length > 0 ? allFields : [{ name: 'No Team Members', value: 'No resellers or managers found.' }])
+                                    .setColor(Colors.Green)
+                                    .setTimestamp()
+                            ],
+                            ephemeral: ephemeral
+                        });
+                    } else {
+                        interaction.editReply({ 
+                            embeds: [
+                                new EmbedBuilder()
+                                    .setTitle(json.message)
+                                    .addFields([{ name: 'Note:', value: `Your seller key is most likely invalid. Change your seller key with \`/add-application\` command.` }])
+                                    .setColor(Colors.Red)
+                                    .setFooter({ text: "KeyAuth Discord Bot" })
+                                    .setTimestamp()
+                            ], 
+                            ephemeral: ephemeral 
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching team data:', error);
+                    interaction.editReply({ 
+                        embeds: [
+                            new EmbedBuilder()
+                                .setTitle('Error fetching team data')
+                                .setDescription('An error occurred while fetching team data.')
+                                .setColor(Colors.Red)
+                                .setFooter({ text: "KeyAuth Discord Bot" })
+                                .setTimestamp()
+                        ], 
+                        ephemeral: ephemeral 
+                    });
+                });
         } else {
             interaction.editReply({ embeds: [new EmbedBuilder().setDescription(`The \`Subcommand\` **Has Not Been Set!**\n In Order To Use This Bot You Must Run The \`/add-application\` Command First.`).setColor(Colors.Red).setTimestamp()], ephemeral: ephemeral })
 
