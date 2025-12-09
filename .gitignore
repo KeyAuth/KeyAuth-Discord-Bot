@@ -20,3 +20,5 @@ json.sqlite
 
 # Ignore JetBrains IDE
 .idea
+
+.nixpacks/
