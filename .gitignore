@@ -14,6 +14,7 @@ yarn.lock
 bun.lock
 bun.lockb
 deno.lock
+pnpm-lock.yaml
 
 # Ignore json.sqlite
 json.sqlite
