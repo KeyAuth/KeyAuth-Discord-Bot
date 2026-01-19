@@ -107,6 +107,29 @@ module.exports = {
           ko: "사용자의 비밀번호 (선택 사항) 설정되지 않은 경우 로그인 후 설정됩니다",
         })
         .setRequired(false),
+    )
+    .addBooleanOption((option) =>
+      option
+        .setName("hwid-affected")
+        .setDescription(
+          "Can user use credentials on multiple devices? (default: yes)",
+        )
+        .setDescriptionLocalizations({
+          "en-US":
+            "Can user use credentials on multiple devices? (default: yes)",
+          fi: "Voiko käyttäjä käyttää kirjautumistietoja useissa laitteissa? (oletus: kyllä)",
+          fr: "L'utilisateur peut-il utiliser ses identifiants sur plusieurs appareils? (par défaut: oui)",
+          de: "Kann der Benutzer seine Anmeldedaten auf mehreren Geräten verwenden? (Standard: ja)",
+          it: "L'utente può usare le credenziali su più dispositivi? (predefinito: sì)",
+          nl: "Kan de gebruiker inloggegevens op meerdere apparaten gebruiken? (standaard: ja)",
+          ru: "Может ли пользователь использовать учетные данные на нескольких устройствах? (по умолчанию: да)",
+          pl: "Czy użytkownik może używać danych logowania na wielu urządzeniach? (domyślnie: tak)",
+          tr: "Kullanıcı kimlik bilgilerini birden fazla cihazda kullanabilir mi? (varsayılan: evet)",
+          cs: "Může uživatel používat přihlašovací údaje na více zařízeních? (výchozí: ano)",
+          ja: "ユーザーは複数のデバイスで資格情報を使用できますか？（デフォルト：はい）",
+          ko: "사용자가 여러 장치에서 자격 증명을 사용할 수 있습니까? (기본값: 예)",
+        })
+        .setRequired(false),
     ),
   async execute(interaction) {
     let idfrom = interaction.guild ? interaction.guild.id : interaction.user.id;
@@ -130,10 +153,13 @@ module.exports = {
     let pass = interaction.options.getString("pass");
     let sub = interaction.options.getString("sub");
     let expires = interaction.options.getString("expires");
+    // hwidAffected: true (1) = user CAN use credentials on multiple devices, false (0) = cannot
+    let hwidAffected =
+      (interaction.options.getBoolean("hwid-affected") ?? true) ? 1 : 0;
 
-    let url = `https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=adduser&user=${user}&sub=${sub}&expiry=${expires}&pass=${pass}&hwidAffected=1`;
+    let url = `https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=adduser&user=${user}&sub=${sub}&expiry=${expires}&pass=${pass}&hwidAffected=${hwidAffected}`;
     if (!pass)
-      url = `https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=adduser&user=${user}&sub=${sub}&expiry=${expires}&hwidAffected=1`;
+      url = `https://keyauth.win/api/seller/?sellerkey=${sellerkey}&type=adduser&user=${user}&sub=${sub}&expiry=${expires}&hwidAffected=${hwidAffected}`;
 
     fetch(url)
       .then((res) => res.json())
