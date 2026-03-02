@@ -1,4 +1,4 @@
-# KeyAuth-Discord-Bot-Source **2024**
+# KeyAuth-Discord-Bot-Source **2026**
 Source Code of Discord bot for https://keyauth.cc, Also if this bot doesn't work for you use https://github.com/KeyAuth/KeyAuth-Discord-Bot/tree/53a395e024834edcba56fe651ac031f4762e903f it is old bot.
 
 ## Installation
@@ -29,7 +29,7 @@ alt="Click here to see Installation Video!" width="500" height="250" border="10"
 
 ## **Bugs**
 
-If there's a problem with **running** the bot after following the instructions, please report a bug here https://keyauth.cc/app/?page=forms
+If there's a problem with **running** the bot after following the instructions, please report a bug here https://keyauth.fdback.io
 
 Do **not** submit a bug report if you're having issues installing NPM packages. That has nothing to do with KeyAuth and you'll need to Google/YouTube your instillation error(s)
 
