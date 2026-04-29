@@ -2,11 +2,19 @@ const { SlashCommandBuilder, Colors, EmbedBuilder } = require("discord.js");
 const db = require('../../utils/database')
 const fetch = require('node-fetch')
 
-function buildDeletedKeyFields(keys) {
+function normalizeKeysInput(keys) {
     const keyList = keys
-        .split(",")
+        .split(/[\s,]+/)
         .map((key) => key.trim())
         .filter(Boolean);
+
+    return {
+        keyList,
+        normalizedKeys: keyList.join(", "),
+    };
+}
+
+function buildDeletedKeyFields(keyList) {
 
     const maxFieldLength = 1024;
     const maxFields = 25;
@@ -76,9 +84,23 @@ module.exports = {
 
         let keys = interaction.options.getString("licenses")
         let userToo = interaction.options.getBoolean("usertoo") ? 1 : 0;
+        const { keyList, normalizedKeys } = normalizeKeysInput(keys);
+
+        if (keyList.length === 0) {
+            return interaction.editReply({
+                embeds: [
+                    new EmbedBuilder()
+                        .setTitle("No valid license keys were provided.")
+                        .setDescription("Submit keys separated by spaces, commas, or new lines.")
+                        .setColor(Colors.Red)
+                        .setTimestamp()
+                ],
+                ephemeral: ephemeral
+            })
+        }
 
         try {
-            const res = await fetch(`https://keyauth.win/api/seller/?sellerkey=${encodeURIComponent(sellerkey)}&type=delmultiple&key=${encodeURIComponent(keys)}&userToo=${userToo}&format=json`)
+            const res = await fetch(`https://keyauth.win/api/seller/?sellerkey=${encodeURIComponent(sellerkey)}&type=delmultiple&key=${encodeURIComponent(normalizedKeys)}&userToo=${userToo}&format=json`)
             const json = await res.json()
 
             if (json.success) {
@@ -86,7 +108,7 @@ module.exports = {
                     embeds: [
                         new EmbedBuilder()
                             .setTitle(json.message)
-                            .addFields(buildDeletedKeyFields(keys))
+                            .addFields(buildDeletedKeyFields(keyList))
                             .setColor(Colors.Green)
                             .setTimestamp()
                     ],
